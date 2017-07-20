@@ -36,7 +36,7 @@ module.exports = (client, message) => {
 
   // If the command exists, **AND** the user has permission, run it.
   if (cmd && level >= cmd.conf.permLevel) {
-    if(cmd.conf.enabled === "true") {
+    if(cmd.conf.enabled === true) {
       client.log("log", `${message.guild.name}/#${message.channel.name}:
         ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
       cmd.run(client, message, args, level);
