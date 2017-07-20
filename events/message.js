@@ -39,13 +39,17 @@ module.exports = (client, message) => {
     if(cmd.conf.enabled === true) {
       client.log("log", `${message.guild.name}/#${message.channel.name}:
         ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
+        message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") ran command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").catch ((e) => { console.log(e)});
       cmd.run(client, message, args, level);
     } else {
-      message.reply("This command is disabled");
+        message.reply("This command is disabled");
+        message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") tried to run disabled command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").catch ((e) => { console.log(e)});
     }
+  } else {
+    message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") tried to run command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ") without having correct permission level").catch ((e) => { console.log(e)});
   }
 
-  message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") ran command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")");
+
   // Best Practice: **do not** reply with a message if the command does
   // not exist, or permissions lack.
 };
