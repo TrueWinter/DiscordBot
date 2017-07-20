@@ -11,7 +11,7 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
     {name: "• Servers" value: "${client.guilds.size.toLocaleString()}"}, +
     {name: "• Channels" value: "${client.channels.size.toLocaleString()}"}, +
     {name: "• Discord.js" value: "v${version}"}, +
-    {name: "• Node" value: "${process.version}"}, ] }});
+    {name: "• Node" value: "${process.version}"} ] }});
   }
 }
 };
