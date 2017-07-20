@@ -42,7 +42,7 @@ const init = async () => {
   });
 
   client.on('messageDeleted', () => {
-    client.guild.channels.find('name', config.modLogChannel).send("Message deleted: `" + message.content "` sent by " + message.author);
+    message.guild.channels.find('name', config.modLogChannel).send("Message deleted: `" + message.content "` sent by " + message.author);
   });
 
   client.login(client.config.token);
