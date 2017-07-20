@@ -40,7 +40,11 @@ const init = async () => {
     client.on(eventName, event.bind(null, client));
     delete require.cache[require.resolve(`./events/${file}`)];
   });
-  
+
+  client.on('messageDeleted') {
+    client.guild.channels.find('name', config.modLogChannel).send("Message deleted: `" + message.content "` sent by " + message.author);
+  }
+
   client.login(client.config.token);
 
 
