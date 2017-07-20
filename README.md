@@ -25,6 +25,8 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
 
 This bot requires [Node.js](https://nodejs.org/) v8+ to run. It also requires [Python](https://www.python.org/downloads/) **2.7.x** (no, Python 3.x.x does not work) for the node-opus dependency (for music commands). 
 
+Also, please create a channel on your Discord server for mod logs and change the channel name in the config file if needed.
+
 Once you have those installed, install the dependencies and start the bot
 
 ```sh
