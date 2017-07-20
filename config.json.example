@@ -1,0 +1,12 @@
+{
+  "ownerID": "Your ID here",
+  "token": "Your Discord Bot token here",
+  "defaultSettings" : {
+    "prefix": "!",
+    "modLogChannel": "mod-log",
+    "modRole": "Moderator",
+    "adminRole": "Admin",
+    "welcomeMessage": "Welcome {{user}}!",
+    "welcomeEnabled": "false"
+  }
+}
