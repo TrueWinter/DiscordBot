@@ -36,7 +36,7 @@ module.exports = (client, message) => {
   // using this const varName = thing OR otherthign; is a pretty efficient
   // and clean way to grab one of 2 values!
 
-  // If the command exists, **AND** the user has permission, run it.
+  // If the command exists, **AND** the user has permission and it is not disabled, run it. Else, give error
   if(cmd) {
     if(level >= cmd.conf.permLevel) {
       if(cmd.conf.enabled === true) {
