@@ -42,7 +42,7 @@ const init = async () => {
   });
 
   client.on('messageDeleted', () => {
-    message.guild.channels.find('name', 'mod-log').send("Message deleted: `" + message.content "` sent by " + message.author);
+    message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") deleted their message: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").catch ((e) => { console.log(e)});
   });
 
   client.login(client.config.token);
