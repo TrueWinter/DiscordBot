@@ -13,8 +13,7 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
     {name: "• Discord.js" value: "v${version}"}, +
     {name: "• Node" value: "${process.version}"} ] }});
   }
-}
-};
+
 
 exports.conf = {
   enabled: true,
