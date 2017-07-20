@@ -38,7 +38,7 @@ module.exports = (client, message) => {
   if(cmd && level >= cmd.conf.permLevel) {
     if(cmd.conf.enabled === true) {
       message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") ran command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").then ((e) => {
-        client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
+        client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
       }).catch((e) => {
         console.log(e);
       });
