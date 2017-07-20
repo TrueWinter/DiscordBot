@@ -11,7 +11,7 @@ exports.run = async (client, message, args, level) => {
       yt.getInfo(args.join(" "), function(err, info) {
       const title = info.title
 	  message.channel.sendMessage(`Now playing \`${title}\``)
-      })
+	})
       const dispatcher = connection.playStream(stream);
       dispatcher.on('end', () => {
          voiceChannel.leave();

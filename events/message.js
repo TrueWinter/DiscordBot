@@ -36,11 +36,15 @@ module.exports = (client, message) => {
 
   // If the command exists, **AND** the user has permission, run it.
   if (cmd && level >= cmd.conf.permLevel) {
-    client.log("log", `${message.guild.name}/#${message.channel.name}:
-      ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
-    cmd.run(client, message, args, level);
+    if(cmd.conf.enabled === "true") {
+      client.log("log", `${message.guild.name}/#${message.channel.name}:
+        ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "CMD");
+      cmd.run(client, message, args, level);
+    } else {
+      message.reply("This command is disabled");
+    }
   }
-  
+
   message.guild.channels.find('name', 'mod-log').send(message.author.tag + " (" + message.author.id + ") ran command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")");
   // Best Practice: **do not** reply with a message if the command does
   // not exist, or permissions lack.
