@@ -52,6 +52,9 @@ run_bot() {
 				echo "Starting bot..."
 				npm install
         npm start
+      fi
+    fi
+  fi
 }
 
 updater
