@@ -41,6 +41,8 @@ const init = async () => {
     delete require.cache[require.resolve(`./events/${file}`)];
   });
 
+  process.on('unhandledRejection', err => console.error(`Uncaught Promise Error: \n${err.stack}`));
+
   client.login(client.config.token);
 
 
