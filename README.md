@@ -13,11 +13,11 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
   - Stopping the bot using a command
   - Testing command (Testing, testing, 1 2 3)
   - Change settings command
+  - Embed command (basic, using RichEmbed)
 
 # Planned features!
 
   - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features
-  - Embeds
   - Deleted message logs
 
 ### Installation
