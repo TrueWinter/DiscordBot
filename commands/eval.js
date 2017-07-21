@@ -12,6 +12,12 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     const evaled = eval(code);
     const clean = await client.clean(client, evaled);
     message.channel.send(`\`\`\`xl\n${clean}\n\`\`\``);
+    console.log(`${message.author.tag} (${message.author.id}) used the eval command to run ` + code).then(() => {
+      guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(`${message.author.tag} (${message.author.id}) used the eval command to run ` + code);
+    }).catch((e) => {
+      console.log(e);
+    }
+    }
   } catch(err) {
     message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
   }
