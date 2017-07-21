@@ -1,9 +1,8 @@
-exports.run = async (client, message, args, level) => {
+exports.run = (client, message, args) => {
   const embed = new Discord.RichEmbed()
-      .setDescription(args.join(" "))
-      .setColor([114, 137, 218]);
-    msg.channel.send({embed});
-  };
+    .setDescription(args.join(" "))
+    .setColor([114, 137, 218]);
+  message.channel.send({embed});
 };
 
 exports.conf = {
