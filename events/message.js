@@ -41,7 +41,7 @@ module.exports = (client, message) => {
     if(level >= cmd.conf.permLevel) {
       if(cmd.conf.enabled === true) {
         message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(message.author.tag + " (" + message.author.id + ") ran command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").then ((e) => {
-          client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
+          client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
           }).catch((e) => {
             console.log(e);
           });
@@ -49,15 +49,15 @@ module.exports = (client, message) => {
         } else {
           message.reply("This command is disabled");
           message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(message.author.tag + " (" + message.author.id + ") tried to run disabled command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").catch ((e) => { console.log(e)});
-          client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, "CMD");
+          client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, "CMD");
         }
     } else {
     message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(message.author.tag + " (" + message.author.id + ") tried to run command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ") without having correct permission level").catch ((e) => { console.log(e)});
-    client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, "CMD");
+    client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, "CMD");
   }
 } else {
-message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(message.author.tag + " (" + message.author.id + ") tried to run non-existant command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ") without having correct permission level").catch ((e) => { console.log(e)});
-client.log("log", `${message.guild.name}/#${message.channel.name}:${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content} without having the correct permission level`, "CMD");
+message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(message.author.tag + " (" + message.author.id + ") tried to run non-existant command: `" + message.content + "` in " + message.channel.name + " (" + message.channel.id + ")").catch ((e) => { console.log(e)});
+client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, "CMD");
 }
 
 
