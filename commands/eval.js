@@ -16,7 +16,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
       guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(`${message.author.tag} (${message.author.id}) used the eval command to run ` + code);
     }).catch((e) => {
       console.log(e);
-    }
+    });
     }
   } catch(err) {
     message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
