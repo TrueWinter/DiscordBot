@@ -11,20 +11,19 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
   - Say command (says what you tell it to say)
   - Stats
   - Stopping the bot using a command
-  - Playing music (new feature, not yet tested/finished)
   - Testing command (Testing, testing, 1 2 3)
   - Change settings command
 
 # Planned features!
 
-  - Music commands
+  - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features
   - Embeds
   - Deleted message logs
 
 ### Installation
 First of all, clone this repository.
 
-This bot requires [Node.js](https://nodejs.org/) v8+ to run. It also requires [Python](https://www.python.org/downloads/) **2.7.x** (no, Python 3.x.x does not work) for the node-opus dependency (for music commands). 
+This bot requires [Node.js](https://nodejs.org/) v8+ to run. It also requires [Python](https://www.python.org/downloads/) **2.7.x** (no, Python 3.x.x does not work) for the node-opus dependency (for music commands).
 
 Also, please make a channel for mod logs in your Discord server and change the name of it in the config file if needed.
 
