@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const PersistentCollection = require("djs-collection-persistent");
-const yt = require('ytdl-core');
 
 const client = new Discord.Client();
 
