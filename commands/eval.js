@@ -12,10 +12,6 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     const evaled = eval(code);
     const clean = await client.clean(client, evaled);
     message.channel.send(`\`\`\`xl\n${clean}\n\`\`\``);
-    console.log(`${message.author.tag} (${message.author.id}) used the eval command to run ` + code).then((e) => {
-      guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(`${message.author.tag} (${message.author.id}) used the eval command to run ` + code);
-      });
-    }
   } catch(err) {
     message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
   }
@@ -32,5 +28,5 @@ exports.help = {
   name: "eval",
   category: "System",
   description: "Evaluates arbitrary javascript. With great power comes great responsibility",
-  usage: "eval [...code]"
+  usage: "eval [code]"
 };
