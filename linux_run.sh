@@ -52,6 +52,7 @@ run_bot() {
       echo "Has Node.js v8+"
     else
       echo "Please install Node.js version 8 or up"
+    fi
 		if hash npm 2>/dev/null; then
 				echo "Starting bot..."
         cd ./
@@ -59,7 +60,6 @@ run_bot() {
         npm start
       else
         echo "npm command not found!"
-      fi
     fi
   else
     echo "Node.js not found"
