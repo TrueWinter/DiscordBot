@@ -29,8 +29,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "purge",
+  name: "purgeuser",
   category: "Moderation",
   description: "Allows you to purge between 2 and 100 messages",
-  usage: "purge [number of messages]"
+  usage: "purgeuser"
 };
