@@ -54,6 +54,7 @@ run_bot() {
       echo "Please install Node.js version 8 or up"
 		if hash npm 2>/dev/null; then
 				echo "Starting bot..."
+        cd ./
 				npm install
         npm start
       else
