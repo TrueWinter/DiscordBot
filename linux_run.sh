@@ -43,7 +43,7 @@ updater() {
 
 run_bot() {
 	echo "Checking requirements..."
-  if hash config.json.backup 2>./; then
+  if [-f config.json.backup]; then
     rm config.json
     mv config.json.backup config.json
   fi
