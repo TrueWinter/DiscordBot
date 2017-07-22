@@ -11,9 +11,13 @@ exports.run = async (client, message, args, level) => {
 
 		client.getChannelLog(message.channel.id, function(error, messages) {
       if (error) {
-        message.channel.send("Error" + error);
+        message.channel.send("Error" + error).catch((e) => {
+          console.log(e);
+        });
       } else {
-        message.channel.send(messages);
+        message.channel.send(messages).catch((e) => {
+          console.log(e);
+        });
       }
     });
 		//message.channel.bulkDelete(deleteCount + 1)
