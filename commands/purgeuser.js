@@ -15,6 +15,9 @@ exports.run = async (client, message, args, level) => {
           console.log(e);
         });
       } else {
+        for(var i=0;i<messages.length;i++){
+          messages[i]=messages[i].replace(/^\[ *'|' *\]$/g,'');
+        }
         message.channel.send(messages).catch((e) => {
           console.log(e);
         });
