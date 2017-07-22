@@ -17,8 +17,8 @@
   };
 
   exports.help = {
-    name: "test",
+    name: "purge2",
     category: "Miscelaneous",
-    description: "Testing, testing",
-    usage: "test"
+    description: "Purge messages",
+    usage: "purge2 [number of messages]"
   };
