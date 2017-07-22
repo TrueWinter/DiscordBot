@@ -23,7 +23,7 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
 ### Installation
 First of all, clone this repository.
 
-This bot requires [Node.js](https://nodejs.org/) v8+ to run.
+This bot requires [Node.js](https://nodejs.org/) v8+ (and npm) to run.
 
 Also, please make a channel for mod logs in your Discord server.
 
