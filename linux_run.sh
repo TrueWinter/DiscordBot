@@ -34,8 +34,6 @@ updater() {
 			fi
 		fi
 		sleep 1
-		rm config.json
-    cp config.json.backup config.json
 	else
 		echo "You do not have git installed. Updating using bash is not currently supported" # TODO HTTP update
 		echo "Git is almost certainly available from your package manager. Install with:"
@@ -45,6 +43,10 @@ updater() {
 
 run_bot() {
 	echo "Checking requirements..."
+  if hash config.json.backup 2>./; then
+    rm config.json
+    mv config.json.backup config.json
+  fi
 	if hash node 2>/dev/null; then
     if (node -v || grep "8"); then
       echo "Has Node.js v8+"
