@@ -9,15 +9,8 @@ exports.run = async (client, message, args, level) => {
 		//if(!deleteCount || deleteCount < 1 || deleteCount > 100)
 		//	return message.reply("Please provide a number between 1 and 100 for the number of messages to delete");
 
-		client.getChannelLog(message.channel.id, function(error, messages) {
-      if (error) {
-        message.channel.send("Error" + error).catch((e) => {
-          console.log(e);
-        });
-      } else {
-        message.channel.send(messages[0]).catch((e) => {
-          console.log(e);
-        });
+		  message.channel.send(message.channel.fetchMessages);
+
       }
     });
 		//message.channel.bulkDelete(deleteCount + 1)
