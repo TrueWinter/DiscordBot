@@ -30,11 +30,14 @@ Also, please make a channel for mod logs in your Discord server.
 Once you have that done, edit the `config.json.example` file and then rename the file to `config.json`.
 After that, you can install the dependencies and start the bot
 
+**You can use the command line**
 ```sh
 $ cd DiscordBot
 $ npm install
 $ npm start
 ```
+**OR** start the bot using the `linux_run.sh` for Linux or `windows_run.bat` for Windows.
+
 >This bot must be run on a Discord bot account. Do __NOT__ try to run this on a normal user account. This is against the Discord Terms of Service.
 
 >>Also, do __NOT__ play with the `eval` command. As this bot is made with Node.js, it has access to your entire hard drive. You have been warned
