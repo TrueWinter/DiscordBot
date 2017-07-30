@@ -1,3 +1,4 @@
+const exec = require('child_process');
 exports.run = async (client, message, args, level) => {
   const code = args.join(" ");
   try {
