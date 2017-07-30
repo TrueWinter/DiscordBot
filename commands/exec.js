@@ -13,7 +13,6 @@ exports.run = async (client, message, args, level) => {
       console.log(`stdout: ${stdout}`);
       console.log(`stderr: ${stderr}`);
     });
-    const clean = await client.clean(client, execCommand);
     message.channel.send(`\`\`\`xl\n${clean}\n\`\`\``);
   } catch(err) {
     message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
