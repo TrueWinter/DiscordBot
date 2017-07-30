@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 exports.run = async (client, message, args, level) => {
-  const code = args.join(" ");
   try {
+    const code = args.join(" ");
     const execCommand = exec(code, (error, stdout, stderr) => {
       const clean = await client.clean(client, execCommand);
       message.channel.send(`\`\`\`xl\n${clean}\n\`\`\``);
