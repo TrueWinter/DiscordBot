@@ -20,6 +20,7 @@ exports.conf = {
 
 exports.help = {
   name: 'exec',
+  category: 'System',
   description: 'Executes a console command.',
   usage: 'exec [command]'
 };
