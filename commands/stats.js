@@ -6,6 +6,8 @@ const Discord = require("discord.js");
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
   const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
   const embed = new Discord.RichEmbed()
+  .setColor("RED")
+  .setAuthor(client.user.name, client.user.avatarURL)
   .setTitle("BOT STATS")
   .addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
   .addField(`Uptime`, `${duration}`, true)
