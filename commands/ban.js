@@ -1,8 +1,5 @@
 exports.run = async (client, message, args, level) => {
 	configFile = require("../config.json");
-	if (message.channel.type === "dm") {
-		  message.channel.send("This is not a command that can be used in a direct message.");
-	} else {
 
 		let member = message.mentions.members.first();
 		if(!member)
@@ -18,7 +15,6 @@ exports.run = async (client, message, args, level) => {
 		.catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
 		message.reply(`${member.user.tag} (${member.user.id}) has been banned by ${message.author.tag} because: ${reason}`);
 		message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(`${member.user.tag} )(${member.user.id}) was banned by ${message.author.tag} (${message.author.id}) with reason: \`${reason}\``).catch((error) => { console.log(error) });
-	}
 };
 
 exports.conf = {

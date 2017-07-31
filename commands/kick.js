@@ -1,7 +1,4 @@
 exports.run = async (client, message, args, level) => {
-	if (message.channel.type === "dm") {
-		  message.channel.send("This is not a command that can be used in a direct message.");
-	} else {
 
 		let member = message.mentions.members.first();
 		if(!member)
@@ -16,7 +13,6 @@ exports.run = async (client, message, args, level) => {
 			member.kick(message.author.username + " kicked this user with reason: " + reason)
 			.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
 			message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
-	}
 };
 
 exports.conf = {

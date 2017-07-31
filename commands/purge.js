@@ -1,7 +1,4 @@
 exports.run = async (client, message, args, level) => {
-	if (message.channel.type === "dm") {
-		message.channel.send("This is not a command that can be used in a direct message.");
-	} else {
 
 		var deleteCount = parseInt(args[0]);
 
@@ -11,7 +8,6 @@ exports.run = async (client, message, args, level) => {
 		//var fetched =  message.channel.fetchMessages({count: deleteCount});
 		message.channel.bulkDelete(deleteCount + 1)
 		.catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
-	}
 };
 
 exports.conf = {
