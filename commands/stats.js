@@ -1,7 +1,7 @@
 const { version } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
-const Discord = require("discord.js");
+const { Discord } = require("discord.js");
 
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
   const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
@@ -14,7 +14,7 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
   .addField(`• Channels   :: ${client.channels.size.toLocaleString()}`)
   .addField(`• Discord.js :: v${version}`)
   .addField(`• Node       :: ${process.version}`)
-  message.channel.send(embed);
+  message.channel.send( { embed } );
 };
 
 exports.conf = {
