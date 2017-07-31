@@ -9,7 +9,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
     message.reply("As you forgot to include the max age of the invite (in seconds) it will not expire");
     age = 0;
   }
-  const invite = message.guild.channel.createInvite({maxUses: uses, maxAge: age});
+  const invite = message.channel.createInvite({maxUses: uses, maxAge: age});
   message.channel.send(`Your invite \`${invite}\` with settings \`maxUses: ${uses}, maxAge: ${age}\``)
 };
 
