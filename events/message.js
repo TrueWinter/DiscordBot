@@ -6,8 +6,7 @@ module.exports = (client, message) => {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
   if(message.author.bot) return;
-  if (message.channel.type === "dm")
-		  return message.reply("No commands in direct messages");
+  if (message.channel.type === "dm") return;
 
   configFile = require('../config.json');
 
