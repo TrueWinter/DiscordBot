@@ -7,13 +7,13 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
   const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
   const embed = new Discord.RichEmbed()
   .setTitle("BOT STATS")
-  .addField(`• Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`)
-  .addField(`• Uptime     :: ${duration}`)
-  .addField(`• Users      :: ${client.users.size.toLocaleString()}`)
-  .addField(`• Servers    :: ${client.guilds.size.toLocaleString()}`)
-  .addField(`• Channels   :: ${client.channels.size.toLocaleString()}`)
-  .addField(`• Discord.js :: v${version}`)
-  .addField(`• Node       :: ${process.version}`)
+  .addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
+  .addField(`Uptime`, `${duration}`, true)
+  .addField(`Users`, `${client.users.size.toLocaleString()}`, true)
+  .addField(`Servers`, `${client.guilds.size.toLocaleString()}`, true)
+  .addField(`Channels`, `${client.channels.size.toLocaleString()}`, true)
+  .addField(`Discord.js`, `v${version}`, true)
+  .addField(`Node`, `${process.version}`, true)
   message.channel.send({ embed });
 };
 
