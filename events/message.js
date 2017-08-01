@@ -43,9 +43,9 @@ module.exports = (client, message) => {
       if(cmd.conf.enabled === true) {
         const commandEmbed = new Discord.RichEmbed()
         .setTitle("Command Used")
-        .setField("User", `${message.author.tag} (${message.author.id})`, true)
-        .setField("Command", `${message.content}`, true)
-        .setField("Channel", `${message.channel.name} (${message.channel.id})`, true)
+        .setField(`User`, `${message.author.tag} (${message.author.id})`, true)
+        .setField(`Command`, `${message.content}`, true)
+        .setField(`Channel`, `${message.channel.name} (${message.channel.id})`, true)
         message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({ commandEmbed }).then ((e) => {
           client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
           }).catch((e) => {
@@ -56,27 +56,27 @@ module.exports = (client, message) => {
           message.reply("This command is disabled");
           const disabledEmbed = new Discord.RichEmbed()
           .setTitle("Disabled Command Usage")
-          .setField("User", `${message.author.tag} (${message.author.id})`, true)
-          .setField("Command", `${message.content}`, true)
-          .setField("Channel", `${message.channel.name} (${message.channel.id})`, true)
+          .setField(`User`, `${message.author.tag} (${message.author.id})`, true)
+          .setField(`Command`, `${message.content}`, true)
+          .setField(`Channel`, `${message.channel.name} (${message.channel.id})`, true)
           message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({ disabledEmbed }).catch ((e) => { console.log(e)});
           client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, "CMD");
         }
     } else {
     const permEmbed = new Discord.RichEmbed()
     .setTitle("No Permissions")
-    .setField("User", `${message.author.tag} (${message.author.id})`, true)
-    .setField("Command", `${message.content}`, true)
-    .setField("Channel", `${message.channel.name} (${message.channel.id})`, true)
+    .setField(`User`, `${message.author.tag} (${message.author.id})`, true)
+    .setField(`Command`, `${message.content}`, true)
+    .setField(`Channel`, `${message.channel.name} (${message.channel.id})`, true)
     message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({ permEmbed }).catch ((e) => { console.log(e)});
     client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, "CMD");
   }
 } else {
   const nonExistantEmbed = new Discord.RichEmbed()
   .setTitle("Non-existant Command")
-  .setField("User", `${message.author.tag} (${message.author.id})`, true)
-  .setField("Command", `${message.content}`, true)
-  .setField("Channel", `${message.channel.name} (${message.channel.id})`, true)
+  .setField(`User`, `${message.author.tag} (${message.author.id})`, true)
+  .setField(`Command`, `${message.content}`, true)
+  .setField(`Channel`, `${message.channel.name} (${message.channel.id})`, true)
 message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({ nonExistantEmbed }).catch ((e) => { console.log(e)});
 client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, "CMD");
 }
