@@ -42,6 +42,7 @@ module.exports = (client, message) => {
     if(level >= cmd.conf.permLevel) {
       if(cmd.conf.enabled === true) {
         const embed = new Discord.RichEmbed()
+        .setColor("RED")
         .setTitle("Command Used")
         .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
         .addField(`Command`, `${message.content}`, true)
@@ -55,6 +56,7 @@ module.exports = (client, message) => {
         } else {
           message.reply("This command is disabled");
           const embed = new Discord.RichEmbed()
+          .setColor("RED")
           .setTitle("Disabled Command Usage")
           .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
           .addField(`Command`, `${message.content}`, true)
@@ -64,6 +66,7 @@ module.exports = (client, message) => {
         }
     } else {
     const embed = new Discord.RichEmbed()
+    .setColor("RED")
     .setTitle("No Permissions")
     .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
     .addField(`Command`, `${message.content}`, true)
@@ -73,6 +76,7 @@ module.exports = (client, message) => {
   }
 } else {
   const embed = new Discord.RichEmbed()
+  .setColor("RED")
   .setTitle("Non-existant Command")
   .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
   .addField(`Command`, `${message.content}`, true)
