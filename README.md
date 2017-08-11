@@ -2,7 +2,7 @@
 
 This is my first Discord bot made using [Discord.js](https://github.com/hydrabolt/discord.js).
 
-# It currently has these features:
+## It currently has these features:
   - Kicking users
   - Banning users
   - Ping command
@@ -16,7 +16,7 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
   - Embed command (basic, using RichEmbed)
   - Deleted message logs
 
-# Planned features!
+## Planned features!
 
   - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features
 
@@ -42,8 +42,12 @@ $ npm start
 
 >>Also, do __NOT__ play with the `eval` command. As this bot is made with Node.js, it has access to your entire hard drive. You have been warned
 
-### Contributing
+## Contributing
 
 Want to contribute?
 
 NdT3 Discord Bot is written in Discord.js. If you want to add a feature or work on the code, make a pull request and if your code is good enough, I will merge the changes.
+
+## Credits
+
+This bot based on AnIdiotsGuide's example bot https://github.com/An-Idiots-Guide/guidebot
