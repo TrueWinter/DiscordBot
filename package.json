@@ -20,5 +20,7 @@
   },
   "author": "NdT3",
   "license": "UNLICENSED",
-  "devDependencies": {}
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  }
 }
