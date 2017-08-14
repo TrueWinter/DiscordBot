@@ -18,7 +18,7 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
 
 ## Planned features!
 
-  - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features
+  - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features (Found issue in [#1](https://github.com/NdT3Development/DiscordBot/issues/1) and given reasons for this decision [here](https://github.com/NdT3Development/DiscordBot/projects/1#card-4201008))
 
 ### Installation
 First of all, clone this repository.
@@ -50,4 +50,4 @@ NdT3 Discord Bot is written in Discord.js. If you want to add a feature or work 
 
 ## Credits
 
-This bot based on AnIdiotsGuide's example bot https://github.com/An-Idiots-Guide/guidebot
+This bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Guide/guidebot) and made using [Discord.js](https://github.com/hydrabolt/discord.js)
