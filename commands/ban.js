@@ -7,11 +7,11 @@ exports.run = async (client, message, args, level) => {
 		if(!member.bannable)
 			return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
-		let reason = args.slice(1).join(' ');
+		let reason = args.slice(2).join(' ');
 		if(!reason)
 			return message.reply("Please indicate a reason for the ban!");
 
-		member.ban(message.author.username + " banned this user with reason: " + reason)
+		message.guild.ban(member, days, message.author.username + " banned this user with reason: " + reason)
 		.catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
 		message.reply(`${member.user.tag} (${member.user.id}) has been banned by ${message.author.tag} because: ${reason}`);
 		message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send(`${member.user.tag} )(${member.user.id}) was banned by ${message.author.tag} (${message.author.id}) with reason: \`${reason}\``).catch((error) => { console.log(error) });

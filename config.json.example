@@ -1,6 +1,9 @@
 {
   "ownerID": "Your ID here",
   "token": "Your Discord Bot token here",
+  "inviteFilter" : {
+    "enabled": false
+  },
   "defaultSettings" : {
     "prefix": "!",
     "modLogChannel": "mod-log",

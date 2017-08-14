@@ -5,8 +5,18 @@ const Discord = require("discord.js");
 module.exports = (client, message) => {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
-  if(message.author.bot) return;
+
+  if (message.author.bot) return;
   if (message.channel.type === "dm") return;
+
+  var configFile = require('../config.json');
+
+  if (configFile.inviteFilter.enabled === true) {
+    if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.co)\/invite).*/)) {
+      message.delete();
+      message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
+    }
+  }
 
   configFile = require('../config.json');
 
