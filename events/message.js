@@ -18,8 +18,6 @@ module.exports = (client, message) => {
     }
   }
 
-  configFile = require('../config.json');
-
   // Grab the settings for this server from the PersistentCollection
   const settings = client.settings.get(message.guild.id);
 
