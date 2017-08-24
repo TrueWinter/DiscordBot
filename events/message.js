@@ -13,7 +13,7 @@ module.exports = (client, message) => {
 
   if (configFile.inviteFilter.enabled === "true") {
     if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
-      var invite = message.content.split(/((discord\.(gg))|(discordapp\.com|discord\.com)\/invite)\//);
+      var invite = message.content.split('discord.gg/');
       message.channel.send(invite);
       if (!(invite === 'discord-testers' || invite === 'discord-developers' || invite === 'discord-feedback' || invite === 'events' || invite === 'gamenight' || invite === 'discord-linux' || invite === 'discord-api')) { // Invite whitelist, by default includes some official and official/unoffical Discord servers
         message.delete();
