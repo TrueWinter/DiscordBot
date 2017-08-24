@@ -13,7 +13,7 @@ module.exports = (client, message) => {
 
   if (configFile.inviteFilter.enabled === "true") {
     if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
-      var invite = message.content.split(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/);
+      var invite = message.content.split(/((discord\.(gg))|(discordapp\.com|discord\.com)\/invite)/);
       message.channel.send(invite);
       message.delete();
       message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
