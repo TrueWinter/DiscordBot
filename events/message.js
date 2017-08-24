@@ -15,6 +15,7 @@ module.exports = (client, message) => {
     if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
       var invite = message.content.split('discord.gg/');
       message.channel.send(invite[1]);
+      var invite = invite[1];
       if (!(invite === 'discord-testers' || invite === 'discord-developers' || invite === 'discord-feedback' || invite === 'events' || invite === 'gamenight' || invite === 'discord-linux' || invite === 'discord-api')) { // Invite whitelist, by default includes some official and official/unoffical Discord servers
         message.delete();
         message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
