@@ -11,8 +11,8 @@ module.exports = (client, message) => {
 
   var configFile = require('../config.json');
 
-  if (configFile.inviteFilter.enabled === true) {
-    if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.co)\/invite).*/)) {
+  if (configFile.inviteFilter.enabled === "true") {
+    if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
       message.delete();
       message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
     }
