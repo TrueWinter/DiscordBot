@@ -19,7 +19,7 @@
     "start": "node bot.js"
   },
   "author": "NdT3",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "devDependencies": {
     "jshint": "^2.9.5"
   }
