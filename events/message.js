@@ -12,7 +12,7 @@ module.exports = (client, message) => {
   if (message.channel.type === "dm") {
     return;
   }
-
+  
   var configFile = require('../config.json');
 
   if (configFile.inviteFilter.enabled === "true") {
@@ -30,8 +30,8 @@ module.exports = (client, message) => {
     }
   }
 
-  if (message.content.replace('_', '').toLowerCase()
-    .indexOf('facepalm') !== -1) { // Because why not. TODO: Add cooldown
+  if (message.content.toLowerCase()
+    .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1) { // Because why not. TODO: Add cooldown
     message.channel.send(':face_palm:');
   }
 
