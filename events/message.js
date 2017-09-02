@@ -30,7 +30,7 @@ module.exports = (client, message) => {
     }
   }
 
-  if (message.content.toLowerCase().replace('_', '')
+  if (message.content.replace('_', '').toLowerCase()
     .indexOf('facepalm') !== -1) { // Because why not. TODO: Add cooldown
     message.channel.send(':face_palm:');
   }
