@@ -15,7 +15,7 @@ exports.run = async (client, message, args, level) => {
 		const embed = new Discord.RichEmbed()
     .setColor("RED")
     .setTitle("User unanned")
-    .addField(`User`, `${member.user.tag} (${member.user.id})`, true)
+    .addField(`User`, `${member}`, true)
     .addField(`Moderator`, `${message.author.tag} (${message.author.id})`, true)
     .addField(`Reason`, `${reason}`, true);
     message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({embed})
