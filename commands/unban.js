@@ -20,7 +20,7 @@ exports.run = async (client, message, args, level) => {
     .addField(`Reason`, `${reason}`, true);
     message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({embed})
     .then(() => {
-      client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member.user.tag} (${member.user.id}) was unbanned by ${message.author.tag} (${message.author.id})`, "CMD");
+      client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member} was unbanned by ${message.author.tag} (${message.author.id})`, "CMD");
       })
       .catch((err) => {
         console.log(err);
