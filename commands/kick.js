@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-
+	const Discord = require("discord.js");
 		let member = message.mentions.members.first();
 		if(!member)
 			return message.reply("Please mention a valid member of this server");
@@ -12,7 +12,20 @@ exports.run = async (client, message, args, level) => {
 
 			member.kick(message.author.username + " kicked this user with reason: " + reason)
 			.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-			message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+			message.reply(`${member.user.tag} (${message.user.id}) has been kicked by ${message.author.tag} (${message.author.id}) because: ${reason}`);
+			const embed = new Discord.RichEmbed()
+			.setColor("RED")
+			.setTitle("User Kicked")
+			.addField(`User`, `${member.user.tag} (${member.user.id})`, true)
+			.addField(`Moderator`, `${message.author.tag} (${message.author.id})`, true)
+			.addField(`Reason`, `${reason}`, true);
+			message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({embed})
+			.then(() => {
+				client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member.user.tag} (${member.user.id}) was banned by ${message.author.tag} (${message.author.id})`, "CMD");
+				})
+				.catch((err) => {
+					console.log(err);
+				});
 };
 
 exports.conf = {
