@@ -12,7 +12,7 @@ exports.run = async (client, message, args, level) => {
 
 			member.kick(message.author.username + " kicked this user with reason: " + reason)
 			.catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-			message.reply(`${member.user.tag} (${message.user.id}) has been kicked by ${message.author.tag} (${message.author.id}) because: ${reason}`);
+			message.reply(`${member.user.tag} (${member.user.id}) has been kicked by ${message.author.tag} (${message.author.id}) because: ${reason}`);
 			const embed = new Discord.RichEmbed()
 			.setColor("RED")
 			.setTitle("User Kicked")
