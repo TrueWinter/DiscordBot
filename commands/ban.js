@@ -7,7 +7,7 @@ exports.run = async (client, message, args, level) => {
 		if(!member.bannable)
 			return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
-		let reason = args.slice(2).join(' ');
+		let reason = args.slice(1).join(' ');
 		if(!reason)
 			return message.reply("Please indicate a reason for the ban!");
 
