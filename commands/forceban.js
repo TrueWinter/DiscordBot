@@ -11,7 +11,7 @@ exports.run = async (client, message, args, level) => {
 
 		message.guild.ban(member)
 		.catch(error => message.reply(`Sorry, I couldn't ban because of : ${error}`));
-		message.reply(`${member} has been banned by ${message.author.tag} because: ${reason}`);
+		message.reply(`${member} has been force banned by ${message.author.tag} because: ${reason}`);
 		const embed = new Discord.RichEmbed()
     .setColor("RED")
     .setTitle("User force banned")
