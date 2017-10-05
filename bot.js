@@ -5,7 +5,7 @@ const PersistentCollection = require("djs-collection-persistent");
 
 const client = new Discord.Client();
 
-client.config = require("./config.json");
+client.config = require("./config");
 
 require("./modules/functions.js")(client);
 

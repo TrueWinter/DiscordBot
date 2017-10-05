@@ -12,8 +12,8 @@ module.exports = (client, message) => {
   if (message.channel.type === "dm") {
     return;
   }
-  
-  var configFile = require('../config.json');
+
+  var configFile = require("./config");
 
   if (configFile.inviteFilter.enabled === "true") {
     if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { // Have to add in invite whitelist

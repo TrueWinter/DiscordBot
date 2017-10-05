@@ -1,0 +1,17 @@
+var config = {
+  "ownerID": "Your ID here",
+  "token": "Your Discord Bot token here",
+  "inviteFilter" : {
+    "enabled": "false"
+  },
+  "defaultSettings" : {
+    "prefix": ";;",
+    "modLogChannel": "mod-log",
+    "modRole": "Moderator",
+    "adminRole": "Admin",
+    "welcomeMessage": "Welcome {{user}}!",
+    "welcomeEnabled": "false"
+  }
+};
+
+module.exports = config;

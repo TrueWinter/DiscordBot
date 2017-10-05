@@ -1,5 +1,5 @@
 exports.run = (client, message, args, level) => {
-  configFile = require('../config.json');
+  configFile = require("./config");
   if (!args[0]) {
     const myCommands = client.commands.filter(c=>c.conf.permLevel <= level);
     const commandNames = myCommands.keyArray();

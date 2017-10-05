@@ -1,5 +1,6 @@
-node_modules/*
+node_modules
 config.json
-data/*
+data
 config.json.backup
-.vscode/*
+config.json.example
+configsetup.js

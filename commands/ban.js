@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-	configFile = require("../config.json");
+	configFile = require("./config");
 	const Discord = require("discord.js");
 		let member = message.mentions.members.first();
 		if(!member)
@@ -28,7 +28,7 @@ exports.run = async (client, message, args, level) => {
         });
     })
 		.catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-		
+
 };
 
 exports.conf = {

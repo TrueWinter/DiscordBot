@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-	configFile = require("../config.json");
+	configFile = require("./config");
 	const Discord = require("discord.js");
 		let member = args[0];
 		if(isNaN(member))
@@ -26,7 +26,7 @@ exports.run = async (client, message, args, level) => {
         });
     })
 		.catch(error => message.reply(`Sorry, I couldn't unban because of : ${error}`));
-		
+
 };
 
 exports.conf = {
