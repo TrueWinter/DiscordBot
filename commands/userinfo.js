@@ -4,7 +4,7 @@ exports.run = async (client, message, args, level) => {
   if (!message.author.presence.game) {
     game = 'No Game';
   } else {
-    game = message.author.presence.game;
+    game = message.author.presence.game.name;
   }
   const embed = new Discord.RichEmbed()
   .setColor("RED")

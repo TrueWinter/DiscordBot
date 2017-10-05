@@ -11,5 +11,6 @@ module.exports = async client => {
   // Ensure that any guild added while the bot was offline gets a default configuration.
   client.guilds.forEach(guild => client.settings.set(guild.id, client.config.defaultSettings));
   client.user.setGame(client.config.defaultSettings.prefix + "help");
+  client.user.setPresence({ game: { name: client.config.defaultSettings.prefix + 'help', type: 0 } });
   client.user.setStatus("dnd");
 };

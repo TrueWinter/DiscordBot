@@ -2,7 +2,7 @@
   "ownerID": "Your ID here",
   "token": "Your Discord Bot token here",
   "inviteFilter" : {
-    "enabled": false
+    "enabled": "false"
   },
   "defaultSettings" : {
     "prefix": "!",
