@@ -18,6 +18,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bot.js"
   },
+  "engines": {
+    "node": ">8.0.0"
+  },
   "author": "NdT3",
   "license": "UNLICENSED",
   "devDependencies": {
