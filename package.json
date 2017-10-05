@@ -20,7 +20,7 @@
     "start": "node bot.js"
   },
   "engines": {
-    "node": "8.x"
+    "node": ">8.1.4"
   },
   "author": "NdT3",
   "license": "Apache-2.0",
