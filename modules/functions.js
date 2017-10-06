@@ -13,7 +13,9 @@ module.exports = (client) => {
     let permlvl = 0;
 
     // If bot owner, return max perm level
-    if(message.author.id === client.config.ownerID) return 10;
+    var ownerID = client.config.ownerID || process.env.OWNERID;
+
+    if(message.author.id === ownerID) return 10;
 
     // If DMs or webhook, return 0 perm level.
     if(!message.guild || !message.member) return 0;

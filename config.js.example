@@ -1,6 +1,6 @@
 var config = {
-  "ownerID": "Your ID here",
-  "token": "Your Discord Bot token here",
+  "ownerID": "Your ID here", // Your ID here (or leave blank or use 'process.env.OWNERID' (both should do the same but using 'process...' is recommended))
+  "token": "Your Discord Bot token here", // Your bot token here (or leave blank or use 'process.env.TOKEN' (both should do the same but using 'process...' is recommended))
   "inviteFilter" : {
     "enabled": "false"
   },

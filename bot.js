@@ -42,7 +42,9 @@ const init = async () => {
 
   process.on('unhandledRejection', err => console.error(`Uncaught Promise Error: \n${err.stack}`));
 
-  client.login(client.config.token);
+  var token = client.config.token || process.env.TOKEN;
+
+  client.login(token);
 
 
 };
