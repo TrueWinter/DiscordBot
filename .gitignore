@@ -1,6 +1,5 @@
 node_modules
 config.json
 data
-config.json.backup
 config.json.example
 configsetup.js
