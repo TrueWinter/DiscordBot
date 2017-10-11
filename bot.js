@@ -1,3 +1,5 @@
+if(process.version.slice(1).split(".")[0] < 8) throw new Error('Node 8.0.0 or higher is required.'); // Have to check for this...
+
 const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
@@ -5,7 +7,13 @@ const PersistentCollection = require("djs-collection-persistent");
 
 const client = new Discord.Client();
 
-client.config = require("./config.js");
+try {
+  client.config = require("./config.js");
+} catch (err) {
+  console.error('Unable to load config.js \n', err);
+  process.exit(1);
+}
+
 
 require("./modules/functions.js")(client);
 
