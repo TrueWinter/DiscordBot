@@ -5,7 +5,7 @@ var config = {
     "enabled": "false"
   },
   "defaultSettings" : {
-    "prefix": ";;",
+    "prefix": "!",
     "modLogChannel": "mod-log",
     "modRole": "Moderator",
     "adminRole": "Admin",
