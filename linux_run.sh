@@ -7,7 +7,7 @@ updater() {
     echo "Fetching origin"
 		git init >/dev/null 2>&1
 		git remote add NdT3DiscordBot https://github.com/NdT3Development/DiscordBot.git >/dev/null 2>&1
-		cp config.json config.json.backup
+		cp config.js config.js.backup
     new=$(git remote show origin)
 		if [[ "${new}" =~ "up" ]] || [[ "${new}" =~ "fast-forwardable" ]] ; then
 			echo "The bot is up to date."
@@ -43,9 +43,9 @@ updater() {
 
 run_bot() {
 	echo "Checking requirements..."
-  if [ -f config.json.backup ] ; then
-    rm config.json
-    mv config.json.backup config.json
+  if [ -f config.js.backup ] ; then
+    rm config.js
+    mv config.js.backup config.js
   fi
 	if hash node 2>/dev/null; then
     if (node -v || grep "8"); then

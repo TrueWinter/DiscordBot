@@ -1,6 +1,6 @@
 exports.run = async (client, message, args, level) => {
 	const Discord = require("discord.js");
-	var configFile = require("./config");
+	var configFile = client.config;
 		let member = message.mentions.members.first();
 		if(!member)
 			return message.reply("Please mention a valid member of this server");

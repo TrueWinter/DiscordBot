@@ -1,6 +1,6 @@
 {
   "name": "ndt3-discord-bot",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "My first Discord bot made in Discord.js",
   "main": "bot.js",
   "dependencies": {

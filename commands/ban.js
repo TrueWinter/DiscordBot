@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-	configFile = require("./config");
+	configFile = client.config;
 	const Discord = require("discord.js");
 		let member = message.mentions.members.first();
 		if(!member)

@@ -26,7 +26,7 @@ goto run
 :update
 	echo Starting update...
 	echo Backing up your settings...
-	echo d | copy config.json config.json.backup >nul
+	echo d | copy config.js config.js.backup >nul
 	echo Latest update:
 	git --no-pager log --pretty=oneline -n1 NdT3DiscordBot/master ^master
 	git pull NdTDiscordBot master
@@ -58,8 +58,8 @@ goto run
 	goto :EOF
 :run
 	if exist "tmp.txt" del "tmp.txt"
-	if exist "config.json.backup" del "config.json"
-	if exist "config.json.backup" ren config.json.backup config.json
+	if exist "config.js.backup" del "config.js"
+	if exist "config.js.backup" ren config.js.backup config.js
 	echo Starting the bot...
 	call npm install
   call npm start

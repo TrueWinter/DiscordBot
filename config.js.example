@@ -1,6 +1,6 @@
 var config = {
-  "ownerID": "Your ID here", // Your ID here (or leave blank or use 'process.env.OWNERID' (both should do the same but using 'process...' is recommended))
-  "token": "Your Discord Bot token here", // Your bot token here (or leave blank or use 'process.env.TOKEN' (both should do the same but using 'process...' is recommended))
+  "ownerID": "Your ID here", // Your ID here (or use `process.env.OWNERID`)
+  "token": "Your Discord Bot token here", // Your bot token here (or use `process.env.TOKEN`)
   "inviteFilter" : {
     "enabled": "false"
   },
@@ -10,7 +10,7 @@ var config = {
     "modRole": "Moderator",
     "adminRole": "Admin",
     "welcomeMessage": "Welcome {{user}}!",
-    "welcomeEnabled": "false"
+    "welcomeEnabled": false
   }
 };
 
