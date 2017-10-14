@@ -12,5 +12,7 @@ module.exports = (client, member) => {
 
   // Send the welcome message to the default server channel. Not ideal,
   // there's a place for more configs here.
-  member.guild.defaultChannel.send(welcomeMessage).catch(console.error);
+  const guild = message.channel.guild;
+  const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
+  defaultChannel.send(welcomeMessage).catch(console.error);
 };
