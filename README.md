@@ -52,4 +52,4 @@ NdT3 Discord Bot is written in Discord.js. If you want to add a feature or work 
 
 ## Credits
 
-This bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Guide/guidebot) and made using [Discord.js](https://github.com/hydrabolt/discord.js)
+This bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Guide/guidebot) with the dashboard being based on the one [here](https://idiots-dashboard.glitch.me/) and made using [Discord.js](https://github.com/hydrabolt/discord.js)
