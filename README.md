@@ -29,7 +29,7 @@ This bot requires [Node.js](https://nodejs.org/) v8+ (and npm) to run.
 
 Also, please make a channel for mod logs in your Discord server.
 
-Once you have that done, edit the `config.json.example` file and then rename the file to `config.json`.
+Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`.
 After that, you can install the dependencies and start the bot
 
 **You can use the command line**
