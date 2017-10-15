@@ -1,0 +1,24 @@
+var config = {
+  "ownerID": "", // Your ID here (or use `process.env.OWNERID`)
+  "token": "", // Your bot token here (or use `process.env.TOKEN`)
+  "defaultSettings" : {
+    "prefix": "!",
+    "modLogChannel": "mod-log",
+    "modRole": "Moderator",
+    "adminRole": "Admin",
+    "welcomeChannel": "general",
+    "welcomeMessage": "Welcome {{user}}!",
+    "welcomeEnabled": "true",
+    "inviteFilterEnabled": "true",
+    "inviteWhitelist": ["discord-testers", "discord-developers"] // This can be changed, these are just defaults as an example
+  },
+    "dashboard" : {
+    "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
+    "callbackURL": `https://{{DOMAIN_NAME}}/callback`, // IMPORTANT: Replace {{DOMAIN_NAME}} with the domain name of the server the bot is hosted on 
+    "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
+    "domain": `{{DOMAIN_NAME}}`, // Similar to the callbackURL above but this is without the protocol
+    "port": "33445", // The port that it should run on, (you can also store this in an environmental variable)
+  }
+};
+
+module.exports = config;

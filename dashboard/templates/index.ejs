@@ -1,0 +1,33 @@
+<%- include('blocks/header', {bot:bot, user: user, auth: auth}) %>
+<div class="jumbotron">
+    <div class="col-sm-8 mx-auto">
+      <h1><%= bot.user.username %> Dashboard</h1>
+      <p>This is an <a href="https://github.com/NdT3Development/DiscordBot">opensource bot</a> made by NdT3.</p>
+      <p>
+        <a class="btn btn-primary" href="/commands" role="button">Bot Documentation »</a>
+      </p>
+    </div>
+  </div>
+
+<div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Discord Server</h2>
+          <p>Coming soon</p>
+          <p><a class="btn btn-secondary disabled" href="" role="button">Coming Soon! »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Open Source</h2>
+          <p>This bot (complete with the dashboard) is completely opensource.</p>
+          <p><a class="btn btn-secondary" href="https://github.com/NdT3Development/DiscordBot" role="button">GitHub repository »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Dashboard!</h2>
+          <p>Yeah, the bot now has a dashboard!</p>
+          <p><a class="btn btn-secondary" href="/login" role="button">Login »</a></p>
+        </div>
+      </div>
+    </div>
+
+<% include ./blocks/footer %>
