@@ -42,7 +42,7 @@ $ npm start
 
 >This bot must be run on a Discord bot account. Do __NOT__ try to run this on a normal user account. This is against the Discord Terms of Service.
 
->>Also, do __NOT__ play with the `eval` command. As this bot is made with Node.js, it has access to your entire hard drive. You have been warned
+>Also, do __NOT__ play with the `eval` or `exex` command. You have been warned.
 
 ## Contributing
 
