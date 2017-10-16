@@ -155,7 +155,7 @@ module.exports = (client) => {
   });
   
   
-   app.get('/stats', (req, res) => {
+   app.get('/stats', checkAuth, (req, res) => {
     const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
     const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
     const textChannels = client.channels.filter(c => c.type === 'text').size;
