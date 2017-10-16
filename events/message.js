@@ -89,7 +89,8 @@ module.exports = (client, message) => {
         } else {
           console.log(`Unable to send message to modLogChannel (${message.settings.modLogChannel})`)
         }
-          cmd.run(client, message, args, level).then(() => client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD"));
+          cmd.run(client, message, args, level)
+          console.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
         } else {
           message.reply("This command is disabled");
           const embed = new Discord.RichEmbed()
