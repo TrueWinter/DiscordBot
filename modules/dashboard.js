@@ -169,8 +169,8 @@ module.exports = (client) => {
   passport.authenticate("discord"));
 
   app.get("/callback", passport.authenticate("discord", {
-    failureRedirect: "/autherror"
-  }).catch((err) => res.send("Error" + err)), (req, res) => {
+    failureRedirect: "/"
+  }), (req, res) => {
     if (req.session.backURL) {
       res.redirect(req.session.backURL);
       req.session.backURL = null;
