@@ -150,6 +150,30 @@ module.exports = (client) => {
       });
     }
   });
+  
+  
+   app.get('/stats', (req, res) => {
+    const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
+    const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
+    const textChannels = client.channels.filter(c => c.type === 'text').size;
+    const voiceChannels = client.channels.filter(c => c.type === 'voice').size;
+    const guilds = client.guilds.size;
+    res.render(path.resolve(`${templateDir}${path.sep}stats.ejs`), {
+      bot: client,
+      auth: req.isAuthenticated() ? true : false,
+      user: req.isAuthenticated() ? req.user : null,
+      stats: {
+        servers: guilds,
+        members: members,
+        text: textChannels,
+        voice: voiceChannels,
+        uptime: duration,
+        memoryUsage: (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2),
+        dVersion: Discord.version,
+        nVersion: process.version
+      }
+    });
+  });
 
   // The login page saves the page the person was on in the session,
   // then throws the user to the Discord OAuth2 login page.
