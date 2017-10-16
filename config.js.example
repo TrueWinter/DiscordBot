@@ -1,24 +1,25 @@
 var config = {
-  "ownerID": "237637417174171651", // Your ID here (or use `process.env.OWNERID`)
-  "token": "MzY5NDk3NjQzNDUxMTU0NDMy.DMZZAg.rpScBJpBxNF9WUQx3aojg3UChao", // Your bot token here (or use `process.env.TOKEN`)
+  "ownerID": "", // Your ID here (or use `process.env.OWNERID`)
+  "token": "", // Your bot token here (or use `process.env.TOKEN`)
   "defaultSettings" : {
-    "prefix": "$",
+    "prefix": "!",
     "modLogChannel": "mod-log",
     "modRole": "Moderator",
     "adminRole": "Admin",
     "welcomeChannel": "general",
     "welcomeMessage": "Welcome {{user}}!",
     "welcomeEnabled": "true",
-    "inviteFilterEnabled": "true",
+    "inviteFilterEnabled": "false",
     "inviteWhitelist": ["discord-testers", "discord-developers"] // This can be changed, these are just defaults as an example
   },
     "dashboard" : {
-    "oauthSecret": "JnfvqKdizSKCcB14yxUgz03wEwsdI8ON", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
-    "callbackURL": `https://dashboard.ndt3.ml/callback`, // IMPORTANT: Replace {{DOMAIN_NAME}} with the domain name of the server the bot is hosted on 
-    "sessionSecret": "NDb071736023398212197970001A", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
-    "domain": `dashboard.ndt3.ml`, // Similar to the callbackURL above but this is without the protocol
+    "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
+    "callbackURL": `https://{{DOMAIN_NAME}}/callback`, // IMPORTANT: Replace {{DOMAIN_NAME}} with the domain name of the server the bot is hosted on 
+    "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
+    "domain": `{{DOMAIN_NAME}}`, // Similar to the callbackURL above but this is without the protocol
     "port": "33445", // The port that it should run on, (you can also store this in an environmental variable)
   }
 };
 
 module.exports = config;
+
