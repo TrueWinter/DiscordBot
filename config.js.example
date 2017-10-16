@@ -10,7 +10,8 @@ var config = {
     "welcomeMessage": "Welcome {{user}}!",
     "welcomeEnabled": "true",
     "inviteFilterEnabled": "false",
-    "inviteWhitelist": ["discord-testers", "discord-developers"] // This can be changed, these are just defaults as an example
+    "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
+    "facepalms": "false"
   },
     "dashboard" : {
     "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
