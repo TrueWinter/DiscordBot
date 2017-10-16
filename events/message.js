@@ -16,12 +16,6 @@ module.exports = (client, message) => {
   var configFile = client.config;
 
 
-
-  if (message.content.toLowerCase()
-    .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1) { // Because why not. TODO: Add cooldown
-    message.channel.send(':face_palm:');
-  }
-
   // Grab the settings for this server from the PersistentCollection
   const settings = client.settings.get(message.guild.id);
 
@@ -31,22 +25,27 @@ module.exports = (client, message) => {
   
   
     if (message.settings.inviteFilterEnabled === "true" || message.settings.inviteFilterEnabled) {
-    if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { // TODO: Have to add in invite whitelist
+      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { // TODO: Have to add in invite whitelist
       
-      var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
-      //console.log(msgInv);
-      var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
-      //console.log(dggInvCode);
-      
-      var whitelist = message.settings.inviteWhitelist;
-      //console.log(whitelist.includes(dggInvCode));
-      if (whitelist.includes(dggInvCode)) return;
-        message.delete();
-        message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
-      //}
-      //}
+        var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
+        //console.log(msgInv);
+        var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
+        //console.log(dggInvCode);
+
+        var whitelist = message.settings.inviteWhitelist;
+        //console.log(whitelist.includes(dggInvCode));
+        if (whitelist.includes(dggInvCode)) return;
+          message.delete();
+          message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
+        //}
+        //}
+      }
     }
-  }
+  
+    if (message.settings.facepalm === "true" && message.content.toLowerCase()
+      .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1) { // Because why not. TODO: Add cooldown
+        message.channel.send(':face_palm:');
+      }
 
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
