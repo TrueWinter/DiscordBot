@@ -39,6 +39,9 @@ const md = require("marked");
 // For logging
 const morgan = require('morgan');
 
+// For stats
+const moment = require('moment');
+
 module.exports = (client) => {
   // It's easier to deal with complex paths. 
   // This resolves to: yourbotdir/dashboard/
