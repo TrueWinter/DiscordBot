@@ -42,8 +42,8 @@ module.exports = (client, message) => {
       }
     }
   
-    if (message.settings.facepalms === "true" && message.content.toLowerCase()
-      .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1) { // Because why not. TODO: Add cooldown
+    if (message.settings.facepalms === "true" && (message.content.toLowerCase()
+      .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
         message.channel.send(':face_palm:');
       }
 
