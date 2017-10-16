@@ -25,7 +25,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/commands">Commands</a></li>
-         <% if(!bot.appInfo.botPublic) { %><li class="nav-item"><a class="nav-link" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot&response_type=code&redirect_uri=<%= encodeURIComponent(`https://${bot.config.dashboard.domain}/dashboard`) %>">Add to Server</a></li> <% } %>
+         <% if(bot.appInfo.botPublic) { %><li class="nav-item"><a class="nav-link" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot&response_type=code&redirect_uri=<%= encodeURIComponent(`https://${bot.config.dashboard.domain}/dashboard`) %>">Add to Server</a></li><% } else if(auth) { %><li class="nav-item"><a class="nav-link" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot&response_type=code&redirect_uri=<%= encodeURIComponent(`https://${bot.config.dashboard.domain}/dashboard`) %>">Add to Server</a></li><% } %>
         <li class="nav-item"><a class="nav-link disabled">On <%= bot.guilds.size %>  Servers</a></li>
         </ul>
         <ul class="navbar-nav">
