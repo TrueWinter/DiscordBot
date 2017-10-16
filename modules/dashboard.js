@@ -48,11 +48,11 @@ module.exports = (client) => {
   // which is the folder that stores all the internal template files.
   const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
 
-
+  app.set('trust proxy', '127.0.0.1'); // Proxy support
   // The public data directory, which is accessible from the *browser*. 
   // It contains all css, client javascript, and images needed for the site.
   app.use("/public", express.static(path.resolve(`${dataDir}${path.sep}public`)));
-  app.use(morgan('combined'));
+  app.use(morgan('combined')); // Logger
 
   // uhhhh check what these do. 
   passport.serializeUser((user, done) => {
