@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   message.reply(`Running command \`${args.join(' ').replace('`', '\`')}\`... Please wait.`);
   var execProcess = exec(`${args.join(' ')}`, (error, stdout) => {
       const response = (error || stdout);
-       console.log(`${message.author.tag} (${message.author.id}) ran console command: \`${args.join(' ')}\``);
+       
        if (response.length > 1800) {
          var chunks = [];
  
@@ -19,8 +19,10 @@ exports.run = async (client, message, args) => {
            //endOutput += chunks[i];
            message.channel.send(`${chunks[c]}`,).catch(console.error);
          }
+         console.log(`${message.author.tag} (${message.author.id}) ran console command that was split into ${chunks.length} parts: \`${args.join(' ')}\``);
          //message.channel.send(`\`OUTPUT\` \n\`\`\`\n${endOutput}\`\`\``,).catch(console.error);
        } else {
+         console.log(`${message.author.tag} (${message.author.id}) ran console command: \`${args.join(' ')}\``);
          message.channel.send(`\`OUTPUT\` \n\`\`\`\n${response}\`\`\``,).catch(console.error);
        }
      });   
