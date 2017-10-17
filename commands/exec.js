@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
              chunks.push("```" + response.replace('`', '\`').substring(i, i + 1800) + "```");
          }
  
-         console.log(chunks); 
+         //console.log(chunks); 
          var endOutput = "";
          message.channel.send(`\`OUTPUT\``);
          for (var c = 0; c < chunks.length; c++) {
