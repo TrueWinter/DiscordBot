@@ -48,9 +48,12 @@ var config = {
     "adminRole": "Admin",
     "welcomeChannel": "general",
     "welcomeMessage": "Welcome {{user}}!",
-    "welcomeEnabled": "true",
-    "inviteFilterEnabled": "true",
-    "inviteWhitelist": ["discord-testers", "discord-developers"] // This can be changed, these are just defaults as an example
+    "welcomeEnabled": "true", // Yes, this is a string due to the way some things in the code work
+    "inviteFilterEnabled": "false", // Yes, this is a string due to the way some things in the code work
+    "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
+    "facepalms": "false", // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'. (And yes, this is a string due to the way some things in the code work)
+    "swearFilter": "false", // Yes, this is a string due to the way some things in the code work
+    "swearWords": ["damn"] // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
   },
     "dashboard" : {
     "oauthSecret": "0eFle4ArGsecret0sa", // The client secret from the Discord bot page, (you can also store this in an environmental variable)

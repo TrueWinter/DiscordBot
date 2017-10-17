@@ -22,11 +22,11 @@ module.exports = (client, message) => {
   // For ease of use in commands and functions, we'll attach the settings
   // to the message object, so `message.settings` is accessible.
   message.settings = settings;
-  
-  
+
+
     if (message.settings.inviteFilterEnabled === "true" || message.settings.inviteFilterEnabled) {
-      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { // TODO: Have to add in invite whitelist
-      
+      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { 
+
         var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
         //console.log(msgInv);
         var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
@@ -41,7 +41,12 @@ module.exports = (client, message) => {
         //}
       }
     }
-  
+
+    if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
+      message.delete();
+      message.reply('Swear words are not allowed');
+    }
+
     if (message.settings.facepalms === "true" && (message.content.toLowerCase()
       .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
         message.channel.send(':face_palm:');
