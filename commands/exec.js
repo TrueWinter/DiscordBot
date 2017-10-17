@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
          }
          //message.channel.send(`\`OUTPUT\` \n\`\`\`\n${endOutput}\`\`\``,).catch(console.error);
        } else {
-         message.channel.send(`\`OUTPUT\` \n\`\`\`\n${endOutput}\`\`\``,).catch(console.error);
+         message.channel.send(`\`OUTPUT\` \n\`\`\`\n${response}\`\`\``,).catch(console.error);
        }
      });   
 };
