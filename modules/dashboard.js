@@ -312,10 +312,7 @@ module.exports = (client) => {
   });
   
     app.get("*", function(req, res) { // Catch-all 404      
-      res.status('302').write('404 File Not Found. Please wait...');
-      setTimeout(function() {
-        res.redirect("/");
-      }, 1000);
+      res.end('404 File Not Found. Please wait...   <script> setTimeout(function () { window.location = "/"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/" /></noscript>');
     });
 
   client.site = app.listen(client.config.dashboard.port);
