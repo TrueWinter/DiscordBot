@@ -31,6 +31,7 @@ Also, please make a channel for mod logs in your Discord server.
 
 Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`.
 ### Example Configuration
+
 #### config.js
 
 ```javascript
@@ -61,6 +62,21 @@ module.exports = config;
 ```
 
 **It is recommended to run the dashboard with a proxy (like Nginx)**
+
+#### Nginx Configuration
+
+```
+server {
+    listen 80;
+
+    server_name dashboard.bot-website.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:33445;
+    }
+}
+```
+
 After that, you can install the dependencies and start the bot
 
 **You can use the command line**
@@ -70,6 +86,8 @@ $ npm install
 $ npm start
 ```
 **OR** start the bot using the `linux_run.sh` for Linux or `windows_run.bat` for Windows.
+
+**NOTE:** Running the bot with a process manager (like PM2) is recommended.
 
 >This bot must be run on a Discord bot account. Do __NOT__ try to run this on a normal user account. This is against the Discord Terms of Service.
 
