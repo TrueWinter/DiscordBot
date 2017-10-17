@@ -42,7 +42,7 @@ module.exports = (client, message) => {
       }
     }
 
-    if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
+    if (message.settings.swearFilter === "true" && message.settings.swearWords.includes(message.content.toLowerCase())) {
       message.delete();
       message.reply('Swear words are not allowed');
     }
