@@ -1,5 +1,6 @@
 exports.run = async (client, message, args, level) => {
-  await client.settings.set(message.guild.id, client.config.defaultSettings);
+  const guild = client.guilds.get(message.guild.id);
+  client.settings.set(guild.id, client.config.defaultSettings);
   message.reply('Done');
 };
 
