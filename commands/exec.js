@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
  
          console.log(chunks); 
          var endOutput = "";
-         message.channel.send(`\`OUTPUT\`);
+         message.channel.send(`\`OUTPUT\``);
          for (var c = 0; c < chunks.length; c++) {
            //endOutput += chunks[i];
            message.channel.send(`\`\`\`\n${chunks[c]}\`\`\``,).catch(console.error);
