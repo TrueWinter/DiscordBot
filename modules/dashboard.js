@@ -1,4 +1,4 @@
-/* 
+/*
 DASHBOARD EXAMPLE
 
 This is a very simple dashboard example, but even in its simple state, there are still a
@@ -6,7 +6,7 @@ lot of moving parts working together to make this a reality. I shall attempt to 
 those parts in as much details as possible, but be aware: there's still a lot of complexity
 and you shouldn't expect to really understand all of it instantly.
 
-Pay attention, be aware of the details, and read the comments. 
+Pay attention, be aware of the details, and read the comments.
 
 Note that this *could* be split into multiple files, but for the purpose of this
 example, putting it in one file is a little simpler. Just *a little*.
@@ -30,7 +30,7 @@ const passport = require("passport");
 const session = require("express-session");
 const Strategy = require("passport-discord").Strategy;
 
-// Helmet is specifically a security plugin that enables 
+// Helmet is specifically a security plugin that enables
 const helmet = require('helmet');
 
 // Used to parse Markdown from things like ExtendedHelp
@@ -43,21 +43,21 @@ const morgan = require('morgan');
 const moment = require('moment');
 
 module.exports = (client) => {
-  // It's easier to deal with complex paths. 
+  // It's easier to deal with complex paths.
   // This resolves to: yourbotdir/dashboard/
   const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
 
-  // This resolves to: yourbotdir/dashboard/templates/ 
+  // This resolves to: yourbotdir/dashboard/templates/
   // which is the folder that stores all the internal template files.
   const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
 
   app.set('trust proxy', '127.0.0.1'); // Proxy support
-  // The public data directory, which is accessible from the *browser*. 
+  // The public data directory, which is accessible from the *browser*.
   // It contains all css, client javascript, and images needed for the site.
   app.use("/public", express.static(path.resolve(`${dataDir}${path.sep}public`)));
   app.use(morgan('combined')); // Logger
 
-  // uhhhh check what these do. 
+  // uhhhh check what these do.
   passport.serializeUser((user, done) => {
     done(null, user);
   });
@@ -65,21 +65,21 @@ module.exports = (client) => {
     done(null, obj);
   });
 
-  /* 
+  /*
   This defines the **Passport** oauth2 data. A few things are necessary here.
-  
-  clientID = Your bot's client ID, at the top of your app page. Please note, 
+
+  clientID = Your bot's client ID, at the top of your app page. Please note,
     older bots have BOTH a client ID and a Bot ID. Use the Client one.
-  clientSecret: The secret code at the top of the app page that you have to 
+  clientSecret: The secret code at the top of the app page that you have to
     click to reveal. Yes that one we told you you'd never use.
   callbackURL: The URL that will be called after the login. This URL must be
     available from your PC for now, but must be available publically if you're
-    ever to use this dashboard in an actual bot. 
+    ever to use this dashboard in an actual bot.
   scope: The data scopes we need for data. identify and guilds are sufficient
     for most purposes. You might have to add more if you want access to more
-    stuff from the user. See: https://discordapp.com/developers/docs/topics/oauth2 
+    stuff from the user. See: https://discordapp.com/developers/docs/topics/oauth2
 
-  See config.js.example to set these up. 
+  See config.js.example to set these up.
   */
   passport.use(new Strategy({
     clientID: client.appInfo.id,
@@ -91,7 +91,7 @@ module.exports = (client) => {
     process.nextTick(() => done(null, profile));
   }));
 
-  
+
   // Session data, used for temporary storage of your visitor's session information.
   // the `secret` is in fact a "salt" for the data, and should not be shared publicly.
   app.use(session({
@@ -106,8 +106,8 @@ module.exports = (client) => {
 
   // The domain name used in various endpoints to link between pages.
   app.locals.domain = client.config.dashboard.domain;
-  
-  // The EJS templating engine gives us more power 
+
+  // The EJS templating engine gives us more power
   app.engine("html", require("ejs").renderFile);
   app.set("view engine", "html");
 
@@ -117,12 +117,12 @@ module.exports = (client) => {
   app.use(bodyParser.json());       // to support JSON-encoded bodies
   app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
-  })); 
+  }));
 
-  /* 
+  /*
   Authentication Checks. checkAuth verifies regular authentication,
   whereas checkAdmin verifies the bot owner. Those are used in url
-  endpoints to give specific permissions. 
+  endpoints to give specific permissions.
   */
   function checkAuth(req, res, next) {
     if (req.isAuthenticated()) return next();
@@ -153,8 +153,8 @@ module.exports = (client) => {
       });
     }
   });
-  
-  
+
+
    app.get('/stats', checkAuth, (req, res) => {
     const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
     const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
@@ -232,7 +232,7 @@ module.exports = (client) => {
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/");
+      res.redirect("/dashboard");
     }
     const settings = client.settings.get(guild.id);
     for (const key in settings) {
@@ -248,7 +248,7 @@ module.exports = (client) => {
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/");
+      res.redirect("/dashboard");
     }
     res.render(path.resolve(`${templateDir}${path.sep}manage.ejs`), {
       bot: client,
@@ -257,7 +257,7 @@ module.exports = (client) => {
       auth: true
     });
   });
-  
+
   app.get("/leave/:guildID", checkAuth, async (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
@@ -265,7 +265,7 @@ module.exports = (client) => {
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/");
+      res.redirect("/dashboard");
     }
     await guild.leave();
     if (req.user.id === client.config.ownerID) {
@@ -281,13 +281,13 @@ module.exports = (client) => {
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/");
+      res.redirect("/dashboard");
     }
     client.settings.set(guild.id, client.config.defaultSettings);
     res.redirect("/manage/"+req.params.guildID);
   });
-  
-  
+
+
   app.get("/commands", (req, res) => {
     if (req.isAuthenticated()) {
       res.render(path.resolve(`${templateDir}${path.sep}commands.ejs`), {
@@ -310,8 +310,8 @@ module.exports = (client) => {
     req.logout();
     res.redirect("/");
   });
-  
-    app.get("*", function(req, res) { // Catch-all 404      
+
+    app.get("*", function(req, res) { // Catch-all 404
       res.send('<p>404 File Not Found. Please wait...<p> <script>setTimeout(function () { window.location = "/"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/" /></noscript>');
     });
 
