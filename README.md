@@ -29,7 +29,10 @@ This bot requires [Node.js](https://nodejs.org/) v8+ (and npm) to run.
 
 Also, please make a channel for mod logs in your Discord server.
 
-Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`.
+Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`. Make sure the callback URL specified is the same one as the redirection URL in the bot settings on the Discord Applications page.
+
+![Bot Application](https://i.imgur.com/sechKvg.png)
+
 ### Example Configuration
 
 #### config.js
