@@ -5,7 +5,19 @@ exports.run = async (client, message, args) => {
   var execProcess = exec(`${args.join(' ')}`, (error, stdout) => {
       const response = (error || stdout);
       console.log(`${message.author.tag} (${message.author.id}) is ran console command: \`${args.join(' ')}\``);
-      message.channel.send(`\`OUTPUT\` \n\`\`\`\n${response.replace('`', '\\`')}\`\`\``, {split: true}).catch(console.error);
+      if (response > 1800) {
+        var chunks = [];
+
+        for (var i = 0, charsLength = response.length; i < charsLength; i += 1800) {
+            chunks.push("```" + response.replace('`', '\`').substring(i, i + 1800) + "```");
+        }
+
+        console.log(chunks); 
+        var endOutput = "";
+        for (var c = 0; c < chunks.length; c++) {
+          endOutput += chunks[i]; 
+        }
+      message.channel.send(`\`OUTPUT\` \n\`\`\`\n${endOutput}\`\`\``, {split: true}).catch(console.error);
     });
     
 };
