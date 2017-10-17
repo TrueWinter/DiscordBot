@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
          message.channel.send(`\`OUTPUT\``);
          for (var c = 0; c < chunks.length; c++) {
            //endOutput += chunks[i];
-           message.channel.send(`\`\`\`\n${chunks[c]}\`\`\``,).catch(console.error);
+           message.channel.send(`${chunks[c]}`,).catch(console.error);
          }
          //message.channel.send(`\`OUTPUT\` \n\`\`\`\n${endOutput}\`\`\``,).catch(console.error);
        } else {
