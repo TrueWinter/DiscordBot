@@ -1,8 +1,8 @@
 const { exec } = require("child_process");
 
 exports.run = async (client, message, args) => {
-  message.reply(`Running command \`${args.join(' ').replace('`', '\`')}\`... Please wait.`);
-  var execProcess = exec(`${args.join(' ')}`, (error, stdout) => {
+  message.reply(`Running command \`${args.join(' ').replace('`', '\`')}\`... Please wait. _(The exec command **will** terminate the exec process if it takes longer that 10 seconds)_`);
+  var execProcess = exec(`${args.join(' ')}`, { timeout: 10000 }, (error, stdout) => {
       const response = (error || stdout);
        
        if (response.length > 1800) {
