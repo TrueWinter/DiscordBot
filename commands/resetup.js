@@ -1,10 +1,10 @@
 exports.run = async (client, message, args, level) => {
-  if (args === "viewAll") {
-    return message.channel.send(inspect(client.settings), {code: "json"});
-  }
-  const guild = client.guilds.get(message.guild.id);
-  client.settings.set(guild.id, client.config.defaultSettings);
-  message.reply('Done');
+  //if (args === "viewAll") {
+    message.channel.send(inspect(client.settings), {code: "json"});
+  //}
+  //const guild = client.guilds.get(message.guild.id);
+  //client.settings.set(guild.id, client.config.defaultSettings);
+  //message.reply('Done');
 };
 
 exports.conf = {
