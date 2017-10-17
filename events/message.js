@@ -25,7 +25,7 @@ module.exports = (client, message) => {
 
 
     if (message.settings.inviteFilterEnabled === "true" || message.settings.inviteFilterEnabled) {
-      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) { 
+      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
 
         var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
         //console.log(msgInv);
@@ -42,10 +42,10 @@ module.exports = (client, message) => {
       }
     }
 
-    if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
-      message.delete();
-      message.reply('Swear words are not allowed');
-    }
+    //if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
+    //  message.delete();
+    //  message.reply('Swear words are not allowed');
+    //}
 
     if (message.settings.facepalms === "true" && (message.content.toLowerCase()
       .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
