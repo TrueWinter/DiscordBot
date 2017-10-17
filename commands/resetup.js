@@ -1,7 +1,7 @@
 exports.run = async (client, message, args, level) => {
-  client.settings.delete(guild.id);
+  client.settings.delete(message.guild.id);
   setTimeout(function () {
-    client.settings.set(guild.id, client.config.defaultSettings);
+    client.settings.set(message.guild.id, client.config.defaultSettings);
   }, 1000);
   message.reply('Done');
 };
