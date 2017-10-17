@@ -42,10 +42,10 @@ module.exports = (client, message) => {
       }
     }
 
-    //if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
-    //  message.delete();
-    //  message.reply('Swear words are not allowed');
-    //}
+    if (message.settings.swearFilter === "true" && swearWords.includes(message.content.toLowerCase())) {
+      message.delete();
+      message.reply('Swear words are not allowed');
+    }
 
     if (message.settings.facepalms === "true" && (message.content.toLowerCase()
       .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown

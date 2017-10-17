@@ -1,7 +1,4 @@
 exports.run = async (client, message, args, level) => {
-  console.log(message.guild.id);
-  console.log(client.config.defaultSettings);
-  console.log(client.settings.get(message.guild.id));
   client.settings.set(message.guild.id, client.config.defaultSettings);
   message.reply('Done');
 };
