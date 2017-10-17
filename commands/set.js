@@ -20,6 +20,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
   } else
   if (action === "reset") {
     client.settings.set(message.guild.id, defaultSet);
+    message.reply('Done');
   } else {
     message.channel.send(inspect(settings), {code: "json"});
   }
