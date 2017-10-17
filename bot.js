@@ -57,8 +57,3 @@ const init = async () => {
 };
 
 init();
-
-const http = require('http');
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
