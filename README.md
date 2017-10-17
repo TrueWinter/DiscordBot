@@ -30,6 +30,37 @@ This bot requires [Node.js](https://nodejs.org/) v8+ (and npm) to run.
 Also, please make a channel for mod logs in your Discord server.
 
 Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`.
+### Example Configuration
+#### config.js
+
+```javascript
+var config = {
+  "ownerID": "123456789012345678", // Your ID here (or use `process.env.OWNERID`)
+  "token": "Mxfxawx-token021kxxmkalpr-m", // Your bot token here (or use `process.env.TOKEN`)
+  "defaultSettings" : {
+    "prefix": "!",
+    "modLogChannel": "mod-log",
+    "modRole": "Moderator",
+    "adminRole": "Admin",
+    "welcomeChannel": "general",
+    "welcomeMessage": "Welcome {{user}}!",
+    "welcomeEnabled": "true",
+    "inviteFilterEnabled": "true",
+    "inviteWhitelist": ["discord-testers", "discord-developers"] // This can be changed, these are just defaults as an example
+  },
+    "dashboard" : {
+    "oauthSecret": "0eFle4ArGsecret0sa", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
+    "callbackURL": `https://dashboard.bot-website.com/callback`, // IMPORTANT: Replace {{DOMAIN_NAME}} with the domain name of the server the bot is hosted on
+    "sessionSecret": "-crazyKeyboard-qwaszxerdfcvtyghbnuijkmopl", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
+    "domain": `dashboard.bot-website.com`, // Similar to the callbackURL above but this is without the protocol
+    "port": "33445", // The port that it should run on, (you can also store this in an environmental variable)
+  }
+};
+
+module.exports = config;
+```
+
+**It is recommended to run the dashboard with a proxy (like Nginx)**
 After that, you can install the dependencies and start the bot
 
 **You can use the command line**

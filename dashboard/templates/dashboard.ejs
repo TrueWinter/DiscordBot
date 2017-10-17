@@ -1,7 +1,7 @@
 <%- include('blocks/header', {bot:bot, user: user, auth: auth}) %>
 <h1 class="display-3">Dashboard</h1>
 <ul class="list-unstyled">
-<% user.guilds.forEach(guild => { 
+<% user.guilds.forEach(guild => {
   const permsOnGuild = new perms(guild.permissions);
   if(!permsOnGuild.has("MANAGE_GUILD")) return;
 %>
@@ -13,7 +13,7 @@
     <% } %>
     <div class="media-body">
       <h5 class="mt-0 mb-1"><%= guild.name %></h5>
-      <% 
+      <%
       let href, text;
       let enabled;
       if(bot.guilds.get(guild.id)) {
@@ -21,11 +21,11 @@
         text = "Manage";
         enabled = true;
       } else {
-        href = `https://discordapp.com/oauth2/authorize?client_id=${bot.appInfo.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${bot.config.dashboard.domain}/dashboard`)}`;
+        href = `https://discordapp.com/oauth2/authorize?client_id=${bot.appInfo.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${bot.config.dashboard.callbackURL}`)}`;
         text = "Invite Bot";
         enabled = user.id === bot.config.ownerID || bot.appInfo.botPublic;
       }
-      %> 
+      %>
       <a class="btn btn-primary btn-lg<% if(!enabled) { %> disabled<% } %>" role="button" href="<%= href %>">
         <%= text %>
         <i class="right chevron icon"></i>
