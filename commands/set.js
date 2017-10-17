@@ -2,6 +2,7 @@ const { inspect } = require("util");
 
 exports.run = async (client, message, [action, key, ...value]) => {
   const settings = client.settings.get(message.guild.id);
+  const default = client.config.defaultSettings;
 
   if(action === "edit") {
     if(!key) return message.reply("Please specify a key to edit");
@@ -16,7 +17,9 @@ exports.run = async (client, message, [action, key, ...value]) => {
     if(!key) return message.reply("Please specify a key to view");
     if(!settings[key]) return message.reply("This key does not exist in the settings");
     message.reply(`The value of ${key} is currently ${settings[key]}`);
-  } else {
+  } if (action === "reset") {
+    client.settings.set(message.guild.id, default);
+  }else {
     message.channel.send(inspect(settings), {code: "json"});
   }
 };
@@ -32,5 +35,5 @@ exports.help = {
   name: "set",
   category: "System",
   description: "View or change settings for your server.",
-  usage: "set <view/get/edit> <key> <value>"
+  usage: "set [view/get/edit] [key] [value]"
 };
