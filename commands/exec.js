@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
   var execProcess = exec(`${args.join(' ')}`, (error, stdout) => {
       const response = (error || stdout);
        console.log(`${message.author.tag} (${message.author.id}) ran console command: \`${args.join(' ')}\``);
-       if (response > 1800) {
+       if (response.length > 1800) {
          var chunks = [];
  
          for (var i = 0, charsLength = response.length; i < charsLength; i += 1800) {
