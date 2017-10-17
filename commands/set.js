@@ -10,7 +10,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     if(!value) return message.reply("Please specify a new value");
 
     settings[key] = value.join(" ");
-    client.settings.set(message.guild.id, settings);
+    settings.set(message.guild.id, settings);
     message.reply(`${key} successfully edited to ${value}`);
   } else
   if(action === "get") {
@@ -19,7 +19,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
     message.reply(`The value of ${key} is currently ${settings[key]}`);
   } else
   if (action === "reset") {
-    client.settings.set(message.guild.id, defaultSet);
+    settings.set(message.guild.id, defaultSet);
     message.reply('Done');
   } else {
     message.channel.send(inspect(settings), {code: "json"});
