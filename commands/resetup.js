@@ -1,3 +1,5 @@
+const { inspect } = require("util");
+
 exports.run = async (client, message, args, level) => {
   //if (args === "viewAll") {
     message.channel.send(inspect(client.settings), {code: "json"});
