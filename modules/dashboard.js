@@ -310,6 +310,13 @@ module.exports = (client) => {
     req.logout();
     res.redirect("/");
   });
+  
+    app.get("*", function(req, res) { // Catch-all 404      
+      res.write('404 File Not Found. Please wait...');
+      setTimeout(function() {
+        res.redirect("/");
+      }, 1000);
+    });
 
   client.site = app.listen(client.config.dashboard.port);
 };
