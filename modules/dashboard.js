@@ -226,7 +226,7 @@ module.exports = (client) => {
 
   app.get('/add/:guildID', checkAuth, (req, res) => {
     invitePerm = '470019271';
-    inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${bot.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
+    inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
     res.redirect(inviteURL);
   });
 
