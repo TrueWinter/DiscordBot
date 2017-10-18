@@ -21,7 +21,7 @@
         text = "Manage";
         enabled = true;
       } else {
-        href = `https://discordapp.com/oauth2/authorize?client_id=${bot.appInfo.id}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(`${bot.config.dashboard.callbackURL}`)}`;
+        href = `/add/${guild.id}`;
         text = "Invite Bot";
         enabled = user.id === bot.config.ownerID || bot.appInfo.botPublic;
       }

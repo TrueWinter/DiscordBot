@@ -224,6 +224,11 @@ module.exports = (client) => {
     });
   });
 
+  app.get('/add/:guildID', checkAuth, (req, res) => {
+    invitePerm = '470019271';
+    inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${bot.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
+    res.redirect(inviteURL);
+  });
 
   app.post("/manage/:guildID", checkAuth, (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
@@ -241,6 +246,7 @@ module.exports = (client) => {
     client.settings.set(guild.id, settings);
     res.redirect("/manage/"+req.params.guildID);
   });
+
   app.get("/manage/:guildID", checkAuth, (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
