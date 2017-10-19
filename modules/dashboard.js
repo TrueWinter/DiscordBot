@@ -226,9 +226,13 @@ module.exports = (client) => {
 
   app.get('/add/:guildID', checkAuth, (req, res) => {
     req.session.backURL = '/dashboard';
-    invitePerm = '470019271';
+    invitePerm = '470019271'; // TODO: Allow this to be changed in config file
     inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
-    res.redirect(inviteURL);
+    if (client.guilds.has(guildID)) {
+      res.send('<p>The bot is already there... <script>setTimeout(function () { window.location="/dashboard"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/dashboard" /></noscript>');
+    } else {
+      res.redirect(inviteURL);
+    }
   });
 
   app.post("/manage/:guildID", checkAuth, (req, res) => {
