@@ -13,3 +13,7 @@ __Not all changes will be posted here.__
 - Some changes were done to ensure that per guild settings are used in the code where required.
 - `resetup` command removed as it is not needed. The `set` has the feature that it was created for
 - And `CHANGELOG.md` was created
+
+## Version 5.0.1-alpha:
+
+Small change involving a bot invite link on the dashboard
