@@ -16,15 +16,10 @@ module.exports = (client, message) => {
   var configFile = client.config;
 
 
-  // Grab the settings for this server from the PersistentCollection
-  const settings = client.settings.get(message.guild.id);
+  // Grab the settings for this server from the enmap
+  const guildSettings = client.settings.get(message.guild.id);
 
-  // For ease of use in commands and functions, we'll attach the settings
-  // to the message object, so `message.settings` is accessible.
-  message.settings = settings;
-
-
-    if (message.settings.inviteFilterEnabled === "true" || message.settings.inviteFilterEnabled) {
+    if (guildSettings.inviteFilterEnabled === "true" || guildSettings.inviteFilterEnabled) {
       if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
 
         var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
@@ -32,7 +27,7 @@ module.exports = (client, message) => {
         var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
         //console.log(dggInvCode);
 
-        var whitelist = message.settings.inviteWhitelist;
+        var whitelist = guildSettings.inviteWhitelist;
         //console.log(whitelist.includes(dggInvCode));
         if (whitelist.includes(dggInvCode)) return;
           message.delete();
@@ -42,19 +37,19 @@ module.exports = (client, message) => {
       }
     }
 
-    if (message.settings.swearFilter === "true" && message.settings.swearWords.includes(message.content.toLowerCase())) {
+    if (guildSettings.swearFilter === "true" && guildSettings.swearWords.includes(message.content.toLowerCase())) {
       message.delete();
       message.reply('Swear words are not allowed');
     }
 
-    if (message.settings.facepalms === "true" && (message.content.toLowerCase()
+    if (guildSettings.facepalms === "true" && (message.content.toLowerCase()
       .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
         message.channel.send(':face_palm:');
       }
 
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
-  if (message.content.indexOf(settings.prefix) !== 0) {
+  if (message.content.indexOf(guildSettings.prefix) !== 0) {
     return;
   }
 
@@ -63,7 +58,7 @@ module.exports = (client, message) => {
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.split(/\s+/g);
-  const command = args.shift().slice(settings.prefix.length)
+  const command = args.shift().slice(guildSettings.prefix.length)
     .toLowerCase();
 
   // Get the user or member's permission level from the elevation
@@ -85,13 +80,13 @@ module.exports = (client, message) => {
         .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
         .addField(`Command`, `${message.content}`, true)
         .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-        if (message.guild.channels.find('name', message.settings.modLogChannel)) {
-          message.guild.channels.find('name', message.settings.modLogChannel).send({embed})
+        if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+          message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
             .catch((err) => {
               console.log(err);
             });
         } else {
-          console.log(`Unable to send message to modLogChannel (${message.settings.modLogChannel})`)
+          console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
         }
           cmd.run(client, message, args, level)
           console.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
@@ -103,13 +98,13 @@ module.exports = (client, message) => {
           .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
           .addField(`Command`, `${message.content}`, true)
           .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-          if (message.guild.channels.find('name', message.settings.modLogChannel)) {
-            message.guild.channels.find('name', message.settings.modLogChannel).send({embed})
+          if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+            message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
             .catch((err) => {
               console.log(err);
             });
           } else {
-            console.log(`Unable to send message to modLogChannel (${message.settings.modLogChannel})`)
+            console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
           }
           client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, "CMD");
         }
@@ -120,13 +115,13 @@ module.exports = (client, message) => {
     .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
     .addField(`Command`, `${message.content}`, true)
     .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-    if (message.guild.channels.find('name', message.settings.modLogChannel)) {
-      message.guild.channels.find('name', message.settings.modLogChannel).send({embed})
+    if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+      message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
       .catch((err) => {
         console.log(err);
       });
     } else {
-      console.log(`Unable to send message to modLogChannel (${message.settings.modLogChannel})`)
+      console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
     }
     client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, "CMD");
   }
@@ -137,13 +132,13 @@ module.exports = (client, message) => {
   .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
   .addField(`Command`, `${message.content}`, true)
   .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-if (message.guild.channels.find('name', message.settings.modLogChannel)) {
-  message.guild.channels.find('name', message.settings.modLogChannel).send({embed})
+if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+  message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
   .catch((err) => {
     console.log(err);
   });
 } else {
-  console.log(`Unable to send message to modLogChannel (${message.settings.modLogChannel})`)
+  console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
 }
 client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, "CMD");
 }

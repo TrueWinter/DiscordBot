@@ -1,6 +1,7 @@
 exports.run = async (client, message, args, level) => {
 	const Discord = require("discord.js");
-	var configFile = client.config;
+	const guildSettings = client.settings.get(message.guild.id);
+
 		let member = message.mentions.members.first();
 		if(!member)
 			return message.reply("Please mention a valid member of this server");
@@ -13,14 +14,14 @@ exports.run = async (client, message, args, level) => {
 
 			member.kick(message.author.username + " kicked this user with reason: " + reason).then(() => {
 				message.reply(`${member.user.tag} (${member.user.id}) has been kicked by ${message.author.tag} (${message.author.id}) because: ${reason}`);
-        if (!message.guild.channels.find('name', configFile.defaultSettings.modLogChannel)) return console.log('modLogChannel does not exist on this server');
+        if (!message.guild.channels.find('name', guildSettings.modLogChannel)) return console.log('modLogChannel does not exist on this server');
 				const embed = new Discord.RichEmbed()
 				.setColor("RED")
 				.setTitle("User Kicked")
 				.addField(`User`, `${member.user.tag} (${member.user.id})`, true)
 				.addField(`Moderator`, `${message.author.tag} (${message.author.id})`, true)
 				.addField(`Reason`, `${reason}`, true);
-				message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({embed})
+				message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
 				.then(() => {
 					client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member.user.tag} (${member.user.id}) was kicked by ${message.author.tag} (${message.author.id})`, "CMD");
 					})

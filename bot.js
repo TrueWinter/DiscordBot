@@ -3,7 +3,9 @@ if(process.version.slice(1).split(".")[0] < 8) throw new Error('Node 8.0.0 or hi
 const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
-const PersistentCollection = require("djs-collection-persistent");
+//const PersistentCollection = require("djs-collection-persistent");
+const Enmap = require('enmap');
+const EnmapLevel = require('enmap-level');
 
 const client = new Discord.Client();
 
@@ -18,7 +20,7 @@ require("./modules/functions.js")(client);
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-client.settings = new PersistentCollection({name: "defaultSettings"});
+client.settings = new Enmap({provider: new EnmapLevel({name: "settings"})});
 
 const init = async () => {
 
@@ -49,7 +51,7 @@ const init = async () => {
 
   process.on('unhandledRejection', err => console.error(`Uncaught Promise Error: \n${err.stack}`));
 
-  var token = client.config.token || process.env.TOKEN;
+  var token = client.config.token;
 
   client.login(token);
 

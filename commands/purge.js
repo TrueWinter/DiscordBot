@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-
+	// TODO: Include the deleted messages as an attachment in the logs (and add logs for this of course)
 		var deleteCount = parseInt(args[0]);
 
 		if(!deleteCount || deleteCount < 1 || deleteCount > 100)

@@ -94,7 +94,7 @@ module.exports = (client) => {
     text = text
       .replace(/`/g, "`" + String.fromCharCode(8203))
       .replace(/@/g, "@" + String.fromCharCode(8203))
-      .replace(client.token, "mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --");
+      .replace(client.config.token, "mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --");
 
     return text;
   };

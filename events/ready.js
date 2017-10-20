@@ -11,12 +11,12 @@ module.exports = async client => {
   }, 60000);
 
   require("../modules/dashboard")(client);
-  
+
   // Both `wait` and `client.log` are in `./modules/functions`.
   client.log("log", `Ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "Ready!");
 
   // Ensure that any guild added while the bot was offline gets a default configuration.
-  client.guilds.forEach(guild => client.settings.set(guild.id, client.config.defaultSettings));
+  //client.guilds.forEach(guild => client.settings.set(guild.id, client.config.defaultSettings));
   client.user.setGame(client.config.defaultSettings.prefix + "help");
   client.user.setPresence({ status: "dnd", game: { name: client.config.defaultSettings.prefix + 'help', type: 0 } });
   //client.user.setStatus("dnd");

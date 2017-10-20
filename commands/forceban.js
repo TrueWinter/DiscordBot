@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {
-	configFile = client.config;
+	const guildSettings = client.settings.get(message.guild.id);
 	const Discord = require("discord.js");
 		let member = args[0];
 		if(isNaN(member))
@@ -11,14 +11,14 @@ exports.run = async (client, message, args, level) => {
 
 		message.guild.ban(member).then(() => {
       message.reply(`${member} has been force banned by ${message.author.tag} because: ${reason}`);
-      if (!message.guild.channels.find('name', configFile.defaultSettings.modLogChannel)) return console.log('modLogChannel does not exist on this server');
+      if (!message.guild.channels.find('name', guildSettings.modLogChannel)) return console.log('modLogChannel does not exist on this server');
       const embed = new Discord.RichEmbed()
       .setColor("RED")
       .setTitle("User force banned")
       .addField(`User`, `${member}`, true)
       .addField(`Moderator`, `${message.author.tag} (${message.author.id})`, true)
       .addField(`Reason`, `${reason}`, true);
-      message.guild.channels.find('name', configFile.defaultSettings.modLogChannel).send({embed})
+      message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
       .then(() => {
         client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member} was force banned by ${message.author.tag} (${message.author.id})`, "CMD");
         })

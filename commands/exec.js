@@ -4,15 +4,17 @@ exports.run = async (client, message, args) => {
   message.reply(`Running command \`${args.join(' ').replace('`', '\`')}\`... Please wait. _(The exec command **will** terminate the exec process if it takes longer that 10 seconds)_`);
   var execProcess = exec(`${args.join(' ')}`, { timeout: 10000 }, (error, stdout) => {
       const response = (error || stdout);
-       
-       if (response.length > 1800) {
+      //const clean = await client.clean(client, response);
+
+
+       if (response.length > 1800) { // Had to add this
          var chunks = [];
- 
+
          for (var i = 0, charsLength = response.length; i < charsLength; i += 1800) {
-             chunks.push("```" + response.replace('`', '\`').substring(i, i + 1800) + "```");
+             chunks.push("```" + response.replace('`', '\`').replace(client.config.token, "mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --").substring(i, i + 1800) + "```");
          }
- 
-         //console.log(chunks); 
+
+         //console.log(chunks);
          var endOutput = "";
          message.channel.send(`\`OUTPUT\``);
          for (var c = 0; c < chunks.length; c++) {
@@ -25,7 +27,7 @@ exports.run = async (client, message, args) => {
          console.log(`${message.author.tag} (${message.author.id}) ran console command: \`${args.join(' ')}\``);
          message.channel.send(`\`OUTPUT\` \n\`\`\`\n${response}\`\`\``,).catch(console.error);
        }
-     });   
+     });
 };
 
 exports.conf = {

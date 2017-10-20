@@ -244,11 +244,11 @@ module.exports = (client) => {
     } else if (!isManaged) {
       res.redirect("/dashboard");
     }
-    const settings = client.settings.get(guild.id);
-    for (const key in settings) {
-      settings[key] = req.body[key];
+    const guildSettings = client.settings.get(guild.id);
+    for (const key in guildSettings) {
+      guildSettings[key] = req.body[key];
     }
-    client.settings.set(guild.id, settings);
+    client.settings.set(guild.id, guildSettings);
     res.redirect("/manage/"+req.params.guildID);
   });
 
