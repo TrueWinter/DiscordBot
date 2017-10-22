@@ -1,5 +1,7 @@
 # NdT3 Discord Bot
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a53801bdb675456da9c9e0f5794d26f5)](https://www.codacy.com/app/NdT3Development/DiscordBot?utm_source=github.com&utm_medium=referral&utm_content=NdT3Development/DiscordBot&utm_campaign=badger)
+
 This is my first Discord bot made using [Discord.js](https://github.com/hydrabolt/discord.js).
 
 ## It currently has these features:
