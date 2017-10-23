@@ -1,4 +1,4 @@
-var config = {
+var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
   "ownerID": "", // Your ID here (or use `process.env.OWNERID`)
   "token": "", // Your bot token here (or use `process.env.TOKEN`)
   "defaultSettings" : {
@@ -8,7 +8,7 @@ var config = {
     "adminRole": "Admin",
     "welcomeChannel": "general",
     "welcomeMessage": "Welcome {{user}}!",
-    "welcomeEnabled": "false",
+    "welcomeEnabled": "false", // Yes, this is a string due to the way some things in the code work
     "inviteFilterEnabled": "false", // Yes, this is a string due to the way some things in the code work
     "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
     "facepalms": "false", // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'
