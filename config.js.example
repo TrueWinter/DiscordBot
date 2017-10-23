@@ -25,4 +25,4 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
   }
 };
 
-module.exports = config; 
+module.exports = config;
