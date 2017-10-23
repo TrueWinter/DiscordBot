@@ -17,3 +17,7 @@ __Not all changes will be posted here.__
 ## Version 5.0.1-alpha:
 
 Small change involving a bot invite link on the dashboard
+
+## Version 5.0.2-alpha:
+
+Used Eslint to fix up the code style a bit

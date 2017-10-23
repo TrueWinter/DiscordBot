@@ -1,7 +1,7 @@
 // The MESSAGE event runs anytime a message is received
 // Note that due to the binding of client to every event, every event
 // goes `client, other, args` when this function is run.
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 module.exports = (client, message) => {
   // It's good practice to ignore other bots. This also makes your bot ignore itself
   // and not get into a spam loop (we call that "botception").
@@ -9,43 +9,41 @@ module.exports = (client, message) => {
   if (message.author.bot) {
     return;
   }
-  if (message.channel.type === "dm") {
+  if (message.channel.type === 'dm') {
     return;
   }
-
-  var configFile = client.config;
 
 
   // Grab the settings for this server from the enmap
   const guildSettings = client.settings.get(message.guild.id);
 
-    if (guildSettings.inviteFilterEnabled === "true" || guildSettings.inviteFilterEnabled) {
-      if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
+  if (guildSettings.inviteFilterEnabled === 'true' || guildSettings.inviteFilterEnabled) {
+    if (message.content.match(/(discord\.(gg|me|io)|(discordapp\.com|discord\.com)\/invite).*/)) {
 
-        var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
-        //console.log(msgInv);
-        var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
-        //console.log(dggInvCode);
+      var msgInv = message.content.match(/discord\.gg\/[0-9A-Za-z-]+/);
+      //console.log(msgInv);
+      var dggInvCode = msgInv[0].replace(/discord\.gg\//, '');
+      //console.log(dggInvCode);
 
-        var whitelist = guildSettings.inviteWhitelist;
-        //console.log(whitelist.includes(dggInvCode));
-        if (whitelist.includes(dggInvCode)) return;
-          message.delete();
-          message.channel.send('<@' + message.author.id +'>, Invite links are not allowed');
-        //}
-        //}
-      }
-    }
-
-    if (guildSettings.swearFilter === "true" && guildSettings.swearWords.includes(message.content.toLowerCase())) {
+      var whitelist = guildSettings.inviteWhitelist;
+      //console.log(whitelist.includes(dggInvCode));
+      if (whitelist.includes(dggInvCode)) return;
       message.delete();
-      message.reply('Swear words are not allowed');
+      message.reply('Invite links are not allowed');
+      //}
+      //}
     }
+  }
 
-    if (guildSettings.facepalms === "true" && (message.content.toLowerCase()
-      .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
-        message.channel.send(':face_palm:');
-      }
+  if (guildSettings.swearFilter === 'true' && guildSettings.swearWords.includes(message.content.toLowerCase())) {
+    message.delete();
+    message.reply('Swear words are not allowed');
+  }
+
+  if (guildSettings.facepalms === 'true' && (message.content.toLowerCase()
+    .indexOf('facepalm') !== -1 || message.content.indexOf('🤦') !== -1)) { // Because why not. TODO: Add cooldown
+    message.channel.send(':face_palm:');
+  }
 
   // Also good practice to ignore any message that does not start with our prefix,
   // which is set in the configuration file.
@@ -71,77 +69,77 @@ module.exports = (client, message) => {
   // and clean way to grab one of 2 values!
 
   // If the command exists, **AND** the user has permission and it is not disabled, run it. Else, give error
-  if(cmd) {
-    if(level >= cmd.conf.permLevel) {
-      if(cmd.conf.enabled === true) {
+  if (cmd) {
+    if (level >= cmd.conf.permLevel) {
+      if (cmd.conf.enabled === true) {
         const embed = new Discord.RichEmbed()
-        .setColor("RED")
-        .setTitle("Command Used")
-        .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-        .addField(`Command`, `${message.content}`, true)
-        .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-        if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-          message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
-        }
-          cmd.run(client, message, args, level)
-          console.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, "CMD");
-        } else {
-          message.reply("This command is disabled");
-          const embed = new Discord.RichEmbed()
-          .setColor("RED")
-          .setTitle("Disabled Command Usage")
+          .setColor('RED')
+          .setTitle('Command Used')
           .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
           .addField(`Command`, `${message.content}`, true)
           .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-          if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-            message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
+        if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+          message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
             .catch((err) => {
               console.log(err);
             });
-          } else {
-            console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
-          }
-          client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, "CMD");
+        } else {
+          console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
         }
+        cmd.run(client, message, args, level);
+        console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
+      } else {
+        message.reply('This command is disabled');
+        const embed = new Discord.RichEmbed()
+          .setColor('RED')
+          .setTitle('Disabled Command Usage')
+          .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
+          .addField(`Command`, `${message.content}`, true)
+          .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+        if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+          message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+        }
+        client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
+      }
     } else {
-    const embed = new Discord.RichEmbed()
-    .setColor("RED")
-    .setTitle("No Permissions")
-    .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-    .addField(`Command`, `${message.content}`, true)
-    .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-    if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-      message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
-      .catch((err) => {
-        console.log(err);
-      });
-    } else {
-      console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
+      const embed = new Discord.RichEmbed()
+        .setColor('RED')
+        .setTitle('No Permissions')
+        .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
+        .addField(`Command`, `${message.content}`, true)
+        .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+      if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+        message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+      }
+      client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
     }
-    client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, "CMD");
+  } else {
+    const embed = new Discord.RichEmbed()
+      .setColor('RED')
+      .setTitle('Non-existant Command')
+      .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
+      .addField(`Command`, `${message.content}`, true)
+      .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+    if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+      message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+    }
+    client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
   }
-} else {
-  const embed = new Discord.RichEmbed()
-  .setColor("RED")
-  .setTitle("Non-existant Command")
-  .addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-  .addField(`Command`, `${message.content}`, true)
-  .addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-  message.guild.channels.find('name', guildSettings.modLogChannel).send({embed})
-  .catch((err) => {
-    console.log(err);
-  });
-} else {
-  console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`)
-}
-client.log("log", `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, "CMD");
-}
 
 
   // Best Practice: **do not** reply with a message if the command does

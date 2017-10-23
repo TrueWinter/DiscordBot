@@ -13,28 +13,28 @@ example, putting it in one file is a little simpler. Just *a little*.
 */
 
 // Native Node Imports
-const url = require("url");
-const path = require("path");
+const url = require('url');
+const path = require('path');
 
 // Used for Permission Resolving...
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 
 // Express Session
-const express = require("express");
+const express = require('express');
 const app = express();
 
 // Express Plugins
 // Specifically, passport helps with oauth2 in general.
 // passport-discord is a plugin for passport that handles Discord's specific implementation.
-const passport = require("passport");
-const session = require("express-session");
-const Strategy = require("passport-discord").Strategy;
+const passport = require('passport');
+const session = require('express-session');
+const Strategy = require('passport-discord').Strategy;
 
-// Helmet is specifically a security plugin that enables
-const helmet = require('helmet');
+// Helmet is a security plugin
+//const helmet = require('helmet');
 
 // Used to parse Markdown from things like ExtendedHelp
-const md = require("marked");
+const md = require('marked');
 
 // For logging
 const morgan = require('morgan');
@@ -54,7 +54,7 @@ module.exports = (client) => {
   app.set('trust proxy', '127.0.0.1'); // Proxy support
   // The public data directory, which is accessible from the *browser*.
   // It contains all css, client javascript, and images needed for the site.
-  app.use("/public", express.static(path.resolve(`${dataDir}${path.sep}public`)));
+  app.use('/public', express.static(path.resolve(`${dataDir}${path.sep}public`)));
   app.use(morgan('combined')); // Logger
 
   // uhhhh check what these do.
@@ -85,7 +85,7 @@ module.exports = (client) => {
     clientID: client.appInfo.id,
     clientSecret: client.config.dashboard.oauthSecret,
     callbackURL: client.config.dashboard.callbackURL,
-    scope: ["identify", "guilds"]
+    scope: ['identify', 'guilds']
   },
   (accessToken, refreshToken, profile, done) => {
     process.nextTick(() => done(null, profile));
@@ -93,7 +93,7 @@ module.exports = (client) => {
 
 
   // Session data, used for temporary storage of your visitor's session information.
-  // the `secret` is in fact a "salt" for the data, and should not be shared publicly.
+  // the `secret` is in fact a 'salt' for the data, and should not be shared publicly.
   app.use(session({
     secret: client.config.dashboard.sessionSecret,
     resave: false,
@@ -108,14 +108,14 @@ module.exports = (client) => {
   app.locals.domain = client.config.dashboard.domain;
 
   // The EJS templating engine gives us more power
-  app.engine("html", require("ejs").renderFile);
-  app.set("view engine", "html");
+  app.engine('html', require('ejs').renderFile);
+  app.set('view engine', 'html');
 
   // body-parser reads incoming JSON or FORM data and simplifies their
   // use in code.
-  var bodyParser = require("body-parser");
-  app.use(bodyParser.json());       // to support JSON-encoded bodies
-  app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.json()); // to support JSON-encoded bodies
+  app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
   }));
 
@@ -127,18 +127,18 @@ module.exports = (client) => {
   function checkAuth(req, res, next) {
     if (req.isAuthenticated()) return next();
     req.session.backURL = req.url;
-    res.redirect("/login");
+    res.redirect('/login');
   }
 
   function checkAdmin(req, res, next) {
     if (req.isAuthenticated() && req.user.id === client.config.ownerID) return next();
     req.session.backURL = req.originalURL;
-    res.redirect("/");
+    res.redirect('/');
   }
 
   // Index page. If the user is authenticated, it shows their info
   // at the top right of the screen.
-  app.get("/", (req, res) => {
+  app.get('/', (req, res) => {
     if (req.isAuthenticated()) {
       res.render(path.resolve(`${templateDir}${path.sep}index.ejs`), {
         bot: client,
@@ -155,7 +155,7 @@ module.exports = (client) => {
   });
 
 
-   app.get('/stats', checkAuth, (req, res) => {
+  app.get('/stats', checkAuth, (req, res) => {
     const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
     const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
     const textChannels = client.channels.filter(c => c.type === 'text').size;
@@ -180,7 +180,7 @@ module.exports = (client) => {
 
   // The login page saves the page the person was on in the session,
   // then throws the user to the Discord OAuth2 login page.
-  app.get("/login", (req, res, next) => {
+  app.get('/login', (req, res, next) => {
     if (req.session.backURL) {
       req.session.backURL = req.session.backURL;
     } else if (req.headers.referer) {
@@ -189,24 +189,24 @@ module.exports = (client) => {
         req.session.backURL = parsed.path;
       }
     } else {
-      req.session.backURL = "/";
+      req.session.backURL = '/';
     }
     next();
   },
-  passport.authenticate("discord"));
+  passport.authenticate('discord'));
 
-  app.get("/callback", passport.authenticate("discord", {
-    failureRedirect: "/"
+  app.get('/callback', passport.authenticate('discord', {
+    failureRedirect: '/'
   }), (req, res) => {
     if (req.session.backURL) {
       res.redirect(req.session.backURL);
       req.session.backURL = null;
     } else {
-      res.redirect("/");
+      res.redirect('/');
     }
   });
 
-  app.get("/admin", checkAdmin, (req, res) => {
+  app.get('/admin', checkAdmin, (req, res) => {
     res.render(path.resolve(`${templateDir}${path.sep}admin.ejs`), {
       bot: client,
       user: req.user,
@@ -214,7 +214,7 @@ module.exports = (client) => {
     });
   });
 
-  app.get("/dashboard", checkAuth, (req, res) => {
+  app.get('/dashboard', checkAuth, (req, res) => {
     const perms = Discord.EvaluatedPermissions;
     res.render(path.resolve(`${templateDir}${path.sep}dashboard.ejs`), {
       perms: perms,
@@ -226,8 +226,8 @@ module.exports = (client) => {
 
   app.get('/add/:guildID', checkAuth, (req, res) => {
     req.session.backURL = '/dashboard';
-    invitePerm = '470019271'; // TODO: Allow this to be changed in config file
-    inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
+    var invitePerm = client.config.invitePerm;
+    var inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
     if (client.guilds.has(req.params.guildID)) {
       res.send('<p>The bot is already there... <script>setTimeout(function () { window.location="/dashboard"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/dashboard" /></noscript>');
     } else {
@@ -235,31 +235,31 @@ module.exports = (client) => {
     }
   });
 
-  app.post("/manage/:guildID", checkAuth, (req, res) => {
+  app.post('/manage/:guildID', checkAuth, (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
-    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false; // eslint-disable-line max-len
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/dashboard");
+      res.redirect('/dashboard');
     }
     const guildSettings = client.settings.get(guild.id);
     for (const key in guildSettings) {
       guildSettings[key] = req.body[key];
     }
     client.settings.set(guild.id, guildSettings);
-    res.redirect("/manage/"+req.params.guildID);
+    res.redirect(`/manage/${req.params.guildID}`);
   });
 
-  app.get("/manage/:guildID", checkAuth, (req, res) => {
+  app.get('/manage/:guildID', checkAuth, (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
-    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false;
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/dashboard");
+      res.redirect('/dashboard');
     }
     res.render(path.resolve(`${templateDir}${path.sep}manage.ejs`), {
       bot: client,
@@ -269,37 +269,37 @@ module.exports = (client) => {
     });
   });
 
-  app.get("/leave/:guildID", checkAuth, async (req, res) => {
+  app.get('/leave/:guildID', checkAuth, async (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
-    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false;
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/dashboard");
+      res.redirect('/dashboard');
     }
     await guild.leave();
     if (req.user.id === client.config.ownerID) {
-      return res.redirect("/admin");
+      return res.redirect('/admin');
     }
-    res.redirect("/dashboard");
+    res.redirect('/dashboard');
   });
 
-  app.get("/reset/:guildID", checkAuth, async (req, res) => {
+  app.get('/reset/:guildID', checkAuth, async (req, res) => {
     const guild = client.guilds.get(req.params.guildID);
     if (!guild) return res.status(404);
-    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has("MANAGE_GUILD") : false;
+    const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false;
     if (req.user.id === client.config.ownerID) {
       console.log(`Admin bypass for managing server: ${req.params.guildID}`);
     } else if (!isManaged) {
-      res.redirect("/dashboard");
+      res.redirect('/dashboard');
     }
     client.settings.set(guild.id, client.config.defaultSettings);
-    res.redirect("/manage/"+req.params.guildID);
+    res.redirect(`/manage/${req.params.guildID}`);
   });
 
 
-  app.get("/commands", (req, res) => {
+  app.get('/commands', (req, res) => {
     if (req.isAuthenticated()) {
       res.render(path.resolve(`${templateDir}${path.sep}commands.ejs`), {
         bot: client,
@@ -317,14 +317,14 @@ module.exports = (client) => {
     }
   });
 
-  app.get("/logout", function(req, res) {
+  app.get('/logout', function (req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect('/');
   });
 
-    app.get("*", function(req, res) { // Catch-all 404
-      res.send('<p>404 File Not Found. Please wait...<p> <script>setTimeout(function () { window.location = "/"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/" /></noscript>');
-    });
+  app.get('*', function(req, res) { // Catch-all 404
+    res.send('<p>404 File Not Found. Please wait...<p> <script>setTimeout(function () { window.location = "/"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/" /></noscript>');
+  });
 
   client.site = app.listen(client.config.dashboard.port);
 };

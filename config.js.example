@@ -21,6 +21,7 @@ var config = {
     "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
     "domain": `{{DOMAIN_NAME}}`, // Similar to the callbackURL above but this is without the protocol
     "port": "33445", // The port that it should run on, (you can also store this in an environmental variable)
+    "invitePerm": "470019271" // Invite permissions integer
   }
 };
 
