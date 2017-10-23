@@ -3,7 +3,6 @@ if(process.version.slice(1).split(".")[0] < 8) throw new Error('Node 8.0.0 or hi
 const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
-//const PersistentCollection = require("djs-collection-persistent");
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
 
