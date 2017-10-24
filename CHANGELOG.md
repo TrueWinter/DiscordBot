@@ -7,7 +7,11 @@ __Not all changes will be posted here.__
 
 ---
 
-## Version 5.0.4-alpha:
+## Version 5.0.6:
+
+Time to push the dev version to the master branch
+
+## Version 5.0.5-alpha:
 
 Small change in the package.json file
 
