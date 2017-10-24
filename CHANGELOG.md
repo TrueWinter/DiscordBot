@@ -9,6 +9,10 @@ __Not all changes will be posted here.__
 
 ## Version 5.0.4-alpha:
 
+Small change in the package.json file
+
+## Version 5.0.4-alpha:
+
 - Some small changes to make the linter stop giving errors
 - Hopefully fixed the bug where per guild settings change the settings for all guilds
 - Added two new configuration options
