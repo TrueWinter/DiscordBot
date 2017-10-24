@@ -7,6 +7,14 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 5.0.4-alpha:
+
+- Some small changes to make the linter stop giving errors
+- Hopefully fixed the bug where per guild settings change the settings for all guilds
+- Added two new configuration options
+	- `status`: You can now change the bot status to be online/idle/invisible/dnd
+	- `debug`: If you have run into some issues, you can change this setting to `"true"` (yes, with the double quotes) and some debug information will be logged to console
+
 ## Version 5.0.3-alpha:
 
 Changed the order of the CHANGELOG.md
