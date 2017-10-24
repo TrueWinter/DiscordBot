@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 5.0.7:
+
+Minor bug fix
+
 ## Version 5.0.6:
 
 Time to push the dev version to the master branch
