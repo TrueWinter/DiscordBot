@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 5.0.8:
+
+Added privacy policy
+
 ## Version 5.0.7:
 
 Minor bug fix
