@@ -1,7 +1,7 @@
 <%- include('blocks/header', {bot:bot, user: user, auth: auth}) %>
 <h1 class="display-3">Administration</h1>
 <ul class="list-unstyled">
-<% bot.guilds.forEach(guild => { 
+<% bot.guilds.forEach(guild => {
 %>
 <li class="media" style="padding: 10px;">
     <% if (guild.icon) { %>
@@ -11,16 +11,16 @@
     <% } %>
     <div class="media-body">
       <h5 class="mt-0 mb-1"><%= guild.name %></h5>
-      <% 
+      <%
       let href, text;
       if(bot.guilds.get(guild.id)) {
         href = "/manage/" + guild.id;
         text = "Manage";
       } else {
-        href = `https://discordapp.com/oauth2/authorize?client_id=${bot.config.dashboard.clientID}&scope=bot&guild_id=${guild.id}`;
+        href = `/add/${guild.id}`;
         text = "Invite Bot";
       }
-      %> 
+      %>
       <a class="btn btn-primary btn-lg" role="button" href="<%= href %>">
           <%= text %>
           <i class="right chevron icon"></i>
