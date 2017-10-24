@@ -18,7 +18,7 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
   - Embed command (basic, using RichEmbed)
   - Deleted message logs
   - Invite link filter
-  - Web Dashboard (IT'S FINALLY HERE, in the dev version)
+  - Web Dashboard
 
 ## Planned features!
 
