@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 5.0.9:
+
+Added softban command
+
 ## Version 5.0.8:
 
 Added privacy policy
