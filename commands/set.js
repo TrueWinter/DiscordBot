@@ -2,7 +2,6 @@ const { inspect } = require('util');
 
 exports.run = async (client, message, [action, key, ...value]) => {
 	const settings = client.settings.get(message.guild.id);
-	const defaultSet = client.config.defaultSettings;
 
 	if (action === 'edit') {
 		if (!key) return message.reply('Please specify a key to edit');
@@ -19,7 +18,7 @@ exports.run = async (client, message, [action, key, ...value]) => {
 		message.reply(`The value of ${key} is currently ${settings[key]}`);
 	} else
 	if (action === 'reset') {
-		client.settings.set(message.guild.id, defaultSet);
+		await client.settings.set(message.guild.id, client.config.defaultSettings);
 		message.reply('Done');
 	} else {
 		message.channel.send(inspect(settings), { code: 'json' });

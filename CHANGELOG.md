@@ -7,6 +7,18 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 5.1.0:
+
+- Bug fixes
+- New configuration option: `logDeletes`. This can be set to `"false"` (with the double quotes) if you do not want to log deleted messages. **You will need to run the `[prefix]set reset` command in every guild that the bot is in. This will add the new setting but will unfortunately also reset the settings for that guild**
+- New commands!
+	- `remindme`: Can be used to remind you of something later. NOTE: This should not be used for important reminders. A bot restart or similar will cause current reminders to be removed.
+	- `serverinfo`: Gives you information about the current server.
+	- `warn`: Running this command will add a warning to the mod log channel
+- New events:
+	- `disconnect`
+	- `reconnecting`
+
 ## Version 5.0.9:
 
 Added softban command

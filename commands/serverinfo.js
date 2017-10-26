@@ -1,0 +1,34 @@
+const Discord = require('discord.js');
+exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+
+	if (!message.guild.available) return;
+
+	console.log(message.guild.iconURL);
+
+	const embed = new Discord.RichEmbed()
+		.setColor('RED')
+		.setTitle('Server Info')
+		.setThumbnail(message.guild.iconURL)
+		.addField(`Server Name`, `${message.guild.name}`, true)
+		.addField(`Owner`, `${message.guild.owner}`, true)
+		.addField(`Server Region`, `${message.guild.region}`, true)
+		.addField(`Members`, `${message.guild.members.size} (${message.guild.presences.filter(p => p.status === 'online').size} online, ${message.guild.presences.filter(p => p.status === 'idle').size} idle, ${message.guild.presences.filter(p => p.status === 'dnd').size} dnd, ${message.guild.presences.filter(p => p.status === 'dnd').size} invisible/offline)`, true)
+		.addField(`Created At`, `${message.guild.createdAt.toDateString()}`, true)
+		.addField(`Features`, `${message.guild.features.join(', ') || 'None'}`, true)
+		.addField(`Channels`, `${message.guild.channels.size} (${message.guild.channels.filter(c => c.type === 'voice').size} voice)`, true);
+	message.channel.send({ embed });
+};
+
+exports.conf = {
+	enabled: true,
+	guildOnly: false,
+	aliases: [],
+	permLevel: 0
+};
+
+exports.help = {
+	name: 'serverinfo',
+	category: 'Miscelaneous',
+	description: 'Will give you info about this server',
+	usage: 'serverinfo'
+};

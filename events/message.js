@@ -13,7 +13,6 @@ module.exports = (client, message) => {
 		return;
 	}
 
-
 	// Grab the settings for this server from the enmap
 	const guildSettings = client.settings.get(message.guild.id);
 
@@ -35,7 +34,7 @@ module.exports = (client, message) => {
 		}
 	}
 
-	if (guildSettings.swearFilter === 'true' && guildSettings.swearWords.includes(message.content.toLowerCase())) {
+	if (guildSettings.swearFilter === 'true' && guildSettings.swearWords.some(word => message.content.includes(word))) {
 		message.delete();
 		message.reply('Swear words are not allowed');
 	}
