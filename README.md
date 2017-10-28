@@ -31,7 +31,7 @@ This bot requires [Node.js](https://nodejs.org/) v8+ (and npm) to run.
 
 Also, please make a channel for mod logs in your Discord server.
 
-Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`. Make sure the callback URL specified is the same one as the redirection URL in the bot settings on the Discord Applications page.
+Once you have that done, edit the `config.js.example` file and then rename the file to `config.js`. Make sure the callback URL specified is in the format of `{{http|https}}{{domain_name}}/callback` (Examples: `https://dashoard.bot-website.com/callback` OR `http://dashboard.bot-website.com/callback` OR `http://localhost:33445/callback`). This should be the public URL (proxied URL (by something like Nginx) is recommended).
 
 ![Bot Application](https://i.imgur.com/sechKvg.png)
 
@@ -78,6 +78,8 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 
 module.exports = config;
 ```
+
+In the config file above, the callbackURL would be set by the code to `https://dashboard.bot-website.com/callback`.
 
 **It is recommended to run the dashboard with a proxy (like Nginx)**
 
