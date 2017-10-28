@@ -22,7 +22,8 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
     "swearWords": ["damn"], // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
 		"logDeletes": "true",
 		"logNewMember": "true",
-		"logMemberLeave": "true"
+		"logMemberLeave": "true",
+		"logCommandUsage": "true"
   },
     "dashboard" : {
     "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
