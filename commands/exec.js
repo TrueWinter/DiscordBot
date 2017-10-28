@@ -1,6 +1,11 @@
 const { exec } = require('child_process');
 
 exports.run = async (client, message, args) => {
+	if (client.config.blockConfigEval === 'true') {
+		if (message.content.toLowerCase().indexOf('config.js') !== -1 || message.content.toLowerCase().indexOf('client.config') !== -1) {
+			return message.reply('No, you cannot leak your config file...');
+		}
+	}
 	message.reply(`Running command \`${args.join(' ').replace('`', '\`')}\`... Please wait. _(The exec command **will** terminate the exec process if it takes longer that 10 seconds)_`); // eslint-disable-line no-useless-escape
 	exec(`${args.join(' ')}`, { timeout: 10000 }, (error, stdout) => {
 		const response = (error || stdout); // eslint-disable-line no-extra-parens
@@ -10,7 +15,7 @@ exports.run = async (client, message, args) => {
 			var chunks = [];
 
 			for (var i = 0, charsLength = response.length; i < charsLength; i += 1800) {
-				chunks.push('```' + response.replace('`', '\`').replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --').substring(i, i + 1800) + '```'); // eslint-disable-line prefer-template, no-useless-escape
+				chunks.push('```' + response.replace('`', '\`').replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --').replace(client.config.dashboard.oauthSecret, 'Nk-- NOPE --...').replace(client.config.sessionSecret, 'B8-- NOPE --...').replace(client.config.dashboard.sessionSecret, 'p1-- NOPE --.').substring(i, i + 1800) + '```'); // eslint-disable-line prefer-template, no-useless-escape, newline-per-chained-call
 			}
 
 			//console.log(chunks);

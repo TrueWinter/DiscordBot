@@ -49,7 +49,7 @@ module.exports = (client) => {
 	*/
 	client.log = (type, msg, title) => {
 		if (!title) title = 'Log';
-		console.log(`[${type}] [${title}]${msg}`);
+		console.log(`[${type}] [${title}] ${msg}`);
 	};
 
 
@@ -92,7 +92,9 @@ module.exports = (client) => {
 		text = text
 			.replace(/`/g, '`' + String.fromCharCode(8203)) // eslint-disable-line prefer-template
 			.replace(/@/g, '@' + String.fromCharCode(8203)) // eslint-disable-line prefer-template
-			.replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --');
+			.replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --')
+			.replace(client.config.dashboard.oauthSecret, 'Nk-- NOPE --...')
+			.replace(client.config.dashboard.sessionSecret, 'B8-- NOPE --...');
 
 		return text;
 	};

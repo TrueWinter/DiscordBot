@@ -8,9 +8,10 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 		.setThumbnail(message.author.displayAvatarURL)
 		.addField(`User`, `${message.author.tag}`, true)
 		.addField(`ID`, `${message.author.id}`, true)
-		.addField(`Game`, `${message.author.presence.game || 'No Game'}`, true)
+		.addField(`Game`, `${message.author.presence.game.name || 'No Game'}`, true)
 		.addField(`Created At`, `${message.author.createdAt.toDateString()}`, true)
-		.addField(`Joined At`, `${message.member.joinedAt.toDateString()}`, true);
+		.addField(`Joined At`, `${message.member.joinedAt.toDateString()}`, true)
+		.addField(`Roles`, `${message.guild.members.get(message.author.id).roles.filter(r => r.position !== 0).map(R => R.name).join(', ') || 'No Roles'}`, true); // Filter is to filter out @everyone role
 	message.channel.send({ embed });
 };
 

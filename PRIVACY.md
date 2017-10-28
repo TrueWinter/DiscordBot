@@ -6,14 +6,17 @@ By using this bot **in any way**, whether this be by using the code for a bot us
 
 Cases of collecting **END USER DATA**:
 
-_(Note that this list may not be complete)_
+_(Note that this list may not be complete. If marked with a asterisk_ (`*`) _these logs can be disabled)_
 
-- Message deletions logs _(Username, Discriminator, Message Content)_
-- Kick logs _(Username, Discriminator, Moderator Username, Moderator Discriminator, Reason)_
-- Ban logs _(Username, Discriminator, Moderator Username, Moderator Discriminator, Reason)_
-- Unban logs _(Username, Discriminator, Moderator Username, Moderator Discriminator, Reason)_
-- Command usage logs _(Username, Discriminator, Command Used, Message Content)_
-- Dashboard access logs _(Username, Discriminator, Changes Made to Settings, IP Address, Device Information, Referrer URL, etc.)_
+- Message deletions logs * _(Username, Message Content)_
+- Kick logs _(Username, Moderator Username, Reason)_
+- Ban logs _(Username, Moderator Username, Reason)_
+- Warn logs _(Username, Moderator Username, Reason)_
+- Join logs * _(Username)_
+- Leave logs * _(Username)_
+- Unban logs _(Username, Moderator Username, Reason)_
+- Command usage logs * _(Username, Command Used, Message Content)_
+- Dashboard access logs _(Username, Changes Made to Settings, IP Address, Device Information, Referrer URL, etc.)_
 
 I, ***NdT3Development***, (as the bot developer) _will not be liable or responsible for damages of_ ***any*** _kind_ (including, without limitation, damages caused, loss of information or data, or any other indirect, incidental, special or consequential damages) arising out of the use of this bot, even if advised of the possibility of such damages.
 

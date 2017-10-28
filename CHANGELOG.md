@@ -7,6 +7,29 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.0.0:
+
+Things are going by so fast, already at bot version 6.0.0!
+
+- Bug fixes
+- `warn` command now DMs the member warned.
+- Some small changes in preparation for the next version of the `warn` command
+- Some more protection against leaking your token or other details
+- New configuration options:
+	- `playingGame`: Now you can set the game that the bot plays!
+	- `blockConfigEval`: This option will try to stop you from intentionally trying to leak your configuration file when using the `eval` or `exec` commands
+	- PER GUILD SETTINGS:
+		- `logDeletes`: You can now control whether message deletions are logged
+		- `logNewMember`: You can now control whether member joins are logged
+		- `logMemberLeave`: You can now control whether members leaving are logged
+	- DASHBOARD SETTINGS:
+		- `protectStats`: This controls if you need to be logged in to view the bot stats
+- Cleaned up the configuration file a bit
+- Some changes to allow for a custom bot playing game including automatically updating when the bot leaves or joins a guild and "templates strings" for the configuration of this
+- Can now log deletes to the modLogChannel depending on the setting in the configuration file
+- Some changes to how the dashboard callback URL is set. Now, it is done in the code depending on the values of configuration settings
+- New event added: `guildMemberRemove`: This logs when a user leaves a guild
+
 ## Version 5.1.0:
 
 - Bug fixes

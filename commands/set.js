@@ -20,8 +20,11 @@ exports.run = async (client, message, [action, key, ...value]) => {
 	if (action === 'reset') {
 		await client.settings.set(message.guild.id, client.config.defaultSettings);
 		message.reply('Done');
-	} else {
+	} else
+	if (action === 'view') {
 		message.channel.send(inspect(settings), { code: 'json' });
+	} else {
+		message.reply('Action must be one of view/get/edit/reset');
 	}
 };
 
@@ -36,5 +39,5 @@ exports.help = {
 	name: 'set',
 	category: 'System',
 	description: 'View or change settings for your server.',
-	usage: 'set [view/get/edit] [key] [value]'
+	usage: 'set [view/get/edit/reset] [key] [value]'
 };

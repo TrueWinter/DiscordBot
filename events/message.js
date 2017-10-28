@@ -67,31 +67,49 @@ module.exports = (client, message) => {
 	// using this const varName = thing OR otherthign; is a pretty efficient
 	// and clean way to grab one of 2 values!
 
-	// If the command exists, **AND** the user has permission and it is not disabled, run it. Else, give error
-	if (cmd) {
-		if (level >= cmd.conf.permLevel) {
-			if (cmd.conf.enabled === true) {
-				const embed = new Discord.RichEmbed()
-					.setColor('RED')
-					.setTitle('Command Used')
-					.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-					.addField(`Command`, `${message.content}`, true)
-					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-				if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-					message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
-						.catch((err) => {
-							console.log(err);
-						});
+	if (guildSettings.logCommandUsage === 'true') {
+		// If the command exists, **AND** the user has permission and it is not disabled, run it. Else, give error
+		if (cmd) {
+			if (level >= cmd.conf.permLevel) {
+				if (cmd.conf.enabled === true) {
+					const embed = new Discord.RichEmbed()
+						.setColor('RED')
+						.setTitle('Command Used')
+						.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
+						.addField(`Command`, `${message.content}`, true)
+						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+					if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+						message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
+							.catch((err) => {
+								console.log(err);
+							});
+					} else {
+						console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+					}
+					cmd.run(client, message, args, level);
+					console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
 				} else {
-					console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+					message.reply('This command is disabled');
+					const embed = new Discord.RichEmbed()
+						.setColor('RED')
+						.setTitle('Disabled Command Usage')
+						.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
+						.addField(`Command`, `${message.content}`, true)
+						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+					if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
+						message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
+							.catch((err) => {
+								console.log(err);
+							});
+					} else {
+						console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
+					}
+					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
 				}
-				cmd.run(client, message, args, level);
-				console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
 			} else {
-				message.reply('This command is disabled');
 				const embed = new Discord.RichEmbed()
 					.setColor('RED')
-					.setTitle('Disabled Command Usage')
+					.setTitle('No Permissions')
 					.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 					.addField(`Command`, `${message.content}`, true)
 					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
@@ -103,12 +121,12 @@ module.exports = (client, message) => {
 				} else {
 					console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 				}
-				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
+				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
 			}
 		} else {
 			const embed = new Discord.RichEmbed()
 				.setColor('RED')
-				.setTitle('No Permissions')
+				.setTitle('Non-existant Command')
 				.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 				.addField(`Command`, `${message.content}`, true)
 				.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
@@ -120,24 +138,8 @@ module.exports = (client, message) => {
 			} else {
 				console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 			}
-			client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
+			client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
 		}
-	} else {
-		const embed = new Discord.RichEmbed()
-			.setColor('RED')
-			.setTitle('Non-existant Command')
-			.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-			.addField(`Command`, `${message.content}`, true)
-			.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
-		if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
-			message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
-				.catch((err) => {
-					console.log(err);
-				});
-		} else {
-			console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
-		}
-		client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
 	}
 
 

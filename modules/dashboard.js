@@ -81,6 +81,18 @@ module.exports = (client) => {
 
 	See config.js.example to set these up.
 	*/
+
+	var callbackURL, protocol;
+
+	if (client.config.dashboard.secure === 'true') {
+		protocol = 'https://';
+	} else {
+		protocol = 'http://';
+	}
+
+	callbackURL = `${protocol}${client.config.dashboard.domain}/callback`;
+	client.log('log', `Callback URL: ${callbackURL}`, 'INFO');
+
 	passport.use(new Strategy({
 		clientID: client.appInfo.id,
 		clientSecret: client.config.dashboard.oauthSecret,
@@ -130,6 +142,12 @@ module.exports = (client) => {
 		res.redirect('/login');
 	}
 
+	function cAuth(req, res) {
+		if (req.isAuthenticated()) return;
+		req.session.backURL = req.url;
+		res.redirect('/login');
+	}
+
 	function checkAdmin(req, res, next) {
 		if (req.isAuthenticated() && req.user.id === client.config.ownerID) return next();
 		req.session.backURL = req.originalURL;
@@ -155,9 +173,13 @@ module.exports = (client) => {
 	});
 
 
-	app.get('/stats', checkAuth, (req, res) => {
+	app.get('/stats', (req, res) => {
+		if (client.config.dashboard.protectStats === 'true') {
+			cAuth(req, res);
+		}
 		const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
-		const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
+		//const members = client.guilds.reduce((p, c) => p + c.memberCount, 0);
+		const members = `${client.users.filter(u => u.id !== '1').size} (${client.users.filter(u => u.bot).size} bots)`;
 		const textChannels = client.channels.filter(c => c.type === 'text').size;
 		const voiceChannels = client.channels.filter(c => c.type === 'voice').size;
 		const guilds = client.guilds.size;
@@ -326,5 +348,7 @@ module.exports = (client) => {
 		res.send('<p>404 File Not Found. Please wait...<p> <script>setTimeout(function () { window.location = "/"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/" /></noscript>');
 	});
 
-	client.site = app.listen(client.config.dashboard.port);
+	client.site = app.listen(client.config.dashboard.port, function() {
+		client.log('log', `Dashboard running on port ${client.config.dashboard.port}`, 'INFO');
+	});
 };

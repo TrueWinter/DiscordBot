@@ -10,6 +10,8 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 
 	// TODO: Save warnings in a collection or similar
 
+	//const userWarnings = client.warnings.get(`${message.guild.id}-${member.user.id}`);
+
 	message.reply(`${member.user.tag} (${member.user.id}) has been warned by ${message.author.tag} (${message.author.id}) because: ${reason}`);
 	if (!message.guild.channels.find('name', guildSettings.modLogChannel)) {
 		console.log(`Cannot find modLogChannel (${guildSettings.modLogChannel}) on server (or I do not have the permissions): ${message.guild.name} (${message.guild.id})`);
@@ -30,6 +32,16 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 		.catch((err) => {
 			console.log(err);
 		});
+
+	const warnDM = new Discord.RichEmbed()
+		.setColor('RED')
+		.setTitle('Warned')
+		.addField('Guild', `${message.guild.name} (${message.guild.id})`, true)
+		.addField('Reason', reason, true)
+		.addField('Moderator', `${message.author.tag} (${message.author.id})`, true);
+	member.send({ embed: warnDM }).catch((e) => {
+		console.log(`Unable to DM user \`${member.user.tag} (${member.user.id})\` for warning \`${reason}\` by moderator \`${message.author.tag} (${message.author.id}) \n Error: \n ${e}`);
+	});
 };
 
 exports.conf = {
@@ -42,6 +54,6 @@ exports.conf = {
 exports.help = {
 	name: 'warn',
 	category: 'Moderation',
-	description: 'Warns a user',
+	description: 'Warns a user, sends them a message, saves the warning to a mod log channel',
 	usage: 'warn [@\\user] [reason]'
 };

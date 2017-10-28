@@ -35,16 +35,17 @@ require('./modules/functions.js')(client);
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.settings = new Enmap({ provider: new EnmapLevel({ name: 'settings' }) });
+//client.warnings = new Enmap({ provider: new EnmapLevel({ name: 'warnings' }) }); // Coming soon (format: `${guild.id}-${user.id}`)
 
 const init = async () => {
 
 	const cmdFiles = await readdir('./commands/');
-	client.log('log', `Loading a total of ${cmdFiles.length} commands.`);
+	client.log('loading', `Loading a total of ${cmdFiles.length} commands.`);
 	cmdFiles.forEach(f => {
 		try {
 			const props = require(`./commands/${f}`);
 			if (f.split('.').slice(-1)[0] !== 'js') return;
-			client.log('log', `Loading Command: ${props.help.name}.`);
+			client.log('log', `Loading Command: ${props.help.name}.`, 'loading');
 			client.commands.set(props.help.name, props);
 			props.conf.aliases.forEach(alias => {
 				client.aliases.set(alias, props.help.name);
@@ -55,9 +56,10 @@ const init = async () => {
 	});
 
 	const evtFiles = await readdir('./events/');
-	client.log('log', `Loading a total of ${evtFiles.length} events.`);
+	client.log('log', `Loading a total of ${evtFiles.length} events.`, 'loading');
 	evtFiles.forEach(file => {
 		const eventName = file.split('.')[0];
+		client.log('log', `Loading Event: ${eventName}.`, 'loading');
 		const event = require(`./events/${file}`);
 		client.on(eventName, event.bind(null, client));
 		delete require.cache[require.resolve(`./events/${file}`)];

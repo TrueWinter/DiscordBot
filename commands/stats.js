@@ -11,7 +11,7 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 		.setTitle('BOT STATS')
 		.addField(`Memory Usage`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
 		.addField(`Uptime`, `${duration}`, true)
-		.addField(`Users`, `${client.users.size.toLocaleString()}`, true)
+		.addField(`Users`, `${client.users.filter(u => u.id !== '1').size.toLocaleString()}`, true)
 		.addField(`Servers`, `${client.guilds.size.toLocaleString()}`, true)
 		.addField(`Channels`, `${client.channels.size.toLocaleString()}`, true)
 		.addField(`Discord.js`, `v${version}`, true)

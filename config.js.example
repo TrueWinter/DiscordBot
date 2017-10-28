@@ -1,31 +1,37 @@
 /* eslint-disable */
 var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
+	// ALL settings are strings. Do NOT just use true or false, use these in strings such as "true" or "false". This is due to how some code works when changing the settings
   "ownerID": "", // Your ID here (or use `process.env.OWNERID`)
   "token": "", // Your bot token here (or use `process.env.TOKEN`)
 	"status": "dnd", // Bot status [online/idle/invisible/dnd]
-	"debug": "false", // Yes, this is a string. This is used to output some debug info if needed. The token will be in the console and other information could be in the console
+	"debug": "false", // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
+	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below and {{guilds}} is replaced with the guild count. Leave blank to disable
+	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
   "defaultSettings" : {
-    "prefix": "!",
+    "prefix": "&&&",
     "modLogChannel": "mod-log",
     "modRole": "Moderator",
     "adminRole": "Admin",
     "welcomeChannel": "general",
     "welcomeMessage": "Welcome {{user}}!",
-    "welcomeEnabled": "false", // Yes, this is a string due to the way some things in the code work
-    "inviteFilterEnabled": "false", // Yes, this is a string due to the way some things in the code work
+    "welcomeEnabled": "false",
+    "inviteFilterEnabled": "false",
     "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
     "facepalms": "false", // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'
-    "swearFilter": "false", // Yes, this is a string due to the way some things in the code work
+    "swearFilter": "false",
     "swearWords": ["damn"], // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
-		"logDeletes": "true"
+		"logDeletes": "true",
+		"logNewMember": "true",
+		"logMemberLeave": "true"
   },
     "dashboard" : {
     "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
-    "callbackURL": "https://{{DOMAIN_NAME}}/callback", // IMPORTANT: Replace {{DOMAIN_NAME}} with the domain name of the server the bot is hosted on
+    "secure": "true", // HTTPS: "true" for true, "false" for false
     "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
     "domain": "{{DOMAIN_NAME}}", // Similar to the callbackURL above but this is without the protocol
-    "port": "33445", // The port that it should run on, (you can also store this in an environmental variable)
-    "invitePerm": "470019271" // Invite permissions integer
+    "port": "33445", // The port that it should run on
+		"invitePerm": "470019271",
+		"protectStats": "false"
   }
 };
 

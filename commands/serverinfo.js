@@ -15,7 +15,8 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 		.addField(`Members`, `${message.guild.members.size} (${message.guild.presences.filter(p => p.status === 'online').size} online, ${message.guild.presences.filter(p => p.status === 'idle').size} idle, ${message.guild.presences.filter(p => p.status === 'dnd').size} dnd, ${message.guild.presences.filter(p => p.status === 'dnd').size} invisible/offline)`, true)
 		.addField(`Created At`, `${message.guild.createdAt.toDateString()}`, true)
 		.addField(`Features`, `${message.guild.features.join(', ') || 'None'}`, true)
-		.addField(`Channels`, `${message.guild.channels.size} (${message.guild.channels.filter(c => c.type === 'voice').size} voice)`, true);
+		.addField(`Channels`, `${message.guild.channels.size} (${message.guild.channels.filter(c => c.type === 'voice').size} voice)`, true)
+		.addField(`Roles`, `${message.guild.roles.filter(r => r.position !== 0).map(R => R.name).join(', ')}`, true); // Filter is to filter out @everyone role
 	message.channel.send({ embed });
 };
 
