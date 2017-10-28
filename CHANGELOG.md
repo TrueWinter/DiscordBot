@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.0.1:
+
+Small fix for something that broke the bot completely
+
 ## Version 6.0.0:
 
 Things are going by so fast, already at bot version 6.0.0!

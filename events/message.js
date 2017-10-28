@@ -140,6 +140,8 @@ module.exports = (client, message) => {
 			}
 			client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
 		}
+	} else {
+		cmd.run(client, message, args, level);
 	}
 
 
