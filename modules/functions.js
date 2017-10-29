@@ -18,7 +18,7 @@ module.exports = (client) => {
 		if (message.author.id === ownerID) return 10;
 
 		// If DMs or webhook, return 0 perm level.
-		if (!message.guild || !message.member) return 0;
+		if (message.channel.type === 'dm' || !message.member) return 0;
 
 		// The rest of the perms rely on roles. If those roles are not found
 		// in the settings, or the user does not have it, their level will be 0
