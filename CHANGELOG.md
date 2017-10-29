@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.1:
+
+`say` command disabled in DMs
+
 ## Version 6.1.0:
 
 Getting a lot of work done on this bot.
