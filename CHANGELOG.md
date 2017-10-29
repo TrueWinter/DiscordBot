@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.6:
+
+ Added more logging for DMs
+
 ## Version 6.1.4:
 
 Should probably do local tests before pushing
