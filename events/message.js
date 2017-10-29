@@ -28,6 +28,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 	var command;
 	if (message.channel.type !== 'dm') {
 		const gS = client.settings.get(message.guild.id); // TODO: Allow for per guild command disables
+		message.settings = gS;
 		command = args.shift().slice(gS.prefix.length)
 			.toLowerCase();
 	} else {
