@@ -196,7 +196,8 @@ module.exports = (client) => {
 				commands: client.commandsNumber,
 				memoryUsage: (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2),
 				dVersion: Discord.version,
-				nVersion: process.version
+				nVersion: process.version,
+				bVersion: client.version
 			}
 		});
 	});

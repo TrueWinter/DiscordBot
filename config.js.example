@@ -32,7 +32,8 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
     "domain": "", // Domain name (with port if not running behind proxy running on port 80). Example: "domain": "dashboard.bot-website.com" OR "domain": "localhost:33445"
     "port": "33445", // The port that it should run on
 		"invitePerm": "470019271",
-		"protectStats": "false"
+		"protectStats": "false",
+		"borderedStats": "false" // Controls whether stats in the dashboard should have a border or not
   }
 };
 

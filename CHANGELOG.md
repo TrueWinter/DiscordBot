@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.4.0:
+
+Some dashboard changes and new dashboard config option
+
 ## Version 6.3.0:
 
 Guild image in front of guild name in manage settings
