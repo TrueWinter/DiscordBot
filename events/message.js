@@ -107,6 +107,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 						} else {
 							console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 						}
+						cmd.run(client, message, args, level);
 						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
 					} else {
 						message.reply('This command is disabled');
