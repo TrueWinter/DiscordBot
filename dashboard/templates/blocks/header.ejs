@@ -23,12 +23,12 @@
       <a class="navbar-brand" href="/"><img src="<%= bot.user.avatarURL %>" width="30" height="30" class="d-inline-block align-top rounded-circle" alt=""> <%= bot.user.username %></a>
       <div class="collapse navbar-collapse" id="navbar01">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/commands">Commands</a></li>
-          <li class="nav-item"><a class="nav-link" href="/stats">Stats</a></li>
+          <li class="nav-item active"><a class="nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/commands"><i class="fa fa-book" aria-hidden="true"></i> Commands</a></li>
+          <li class="nav-item"><a class="nav-link" href="/stats"><i class="fa fa-info-circle" aria-hidden="true"></i> Stats</a></li>
           <% var invitePerm = "470019271" %>
          <li class="nav-item"><a class="nav-link <% if(!bot.appInfo.botPublic) { %> disabled <% } %>" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot%20identify%20guilds&response_type=code&redirect_uri=<%= encodeURIComponent(`${bot.config.dashboard.callbackURL}`) %>&permissions=<%= invitePerm %>">Add to Server</a></li>
-        <li class="nav-item"><a class="nav-link disabled">On <%= bot.guilds.size %> Servers</a></li>
+        <li class="nav-item"><a class="nav-link disabled">On <%= bot.guilds.size %> Guilds</a></li>
         </ul>
         <ul class="navbar-nav">
           <% if(auth) { %>

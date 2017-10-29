@@ -1,27 +1,37 @@
 exports.run = (client, message, args, level) => {
-	const guildSettings = client.settings.get(message.guild.id);
 
 	if (!args[0]) {
 		const myCommands = client.commands.filter(c => c.conf.permLevel <= level);
 		const commandNames = myCommands.keyArray();
 		const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
 		let currentCategory = '';
-		let output = `= Command List =\n\n[Use ${guildSettings.prefix}help <commandname> for details]\n`;
+		let output = `= Command List =\n\n[Use [prefix]help <commandname> for details]\n`;
+		if (message.channel.type === 'dm') {
+			output += `Moderation commands are disabled and hidden in DMs. Some other commands may also be disabled\n`;
+		}
 		const sorted = myCommands.sort((p, c) => p.help.category > c.help.category ? 1 : -1);
 		sorted.forEach(c => {
 			const cat = c.help.category.toProperCase();
 			if (currentCategory !== cat) {
-				output += `\n== ${cat} ==\n`;
+				if (message.channel.type !== 'dm' || cat !== 'Moderation') {
+					output += `\n== ${cat} ==\n`;
+				}
+				//output += `\n== ${cat} ==\n`;
 				currentCategory = cat;
 			}
-			output += `${guildSettings.prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
+			if (cat === 'Moderation' && message.channel.type === 'dm') {
+				output += '';
+			} else {
+				output += `${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
+			}
+
 		});
 		message.channel.send(output, { code: 'asciidoc' });
 	} else {
 		let command = args[0];
 		if (client.commands.has(command)) {
 			command = client.commands.get(command);
-			message.channel.send(`= ${guildSettings.prefix}${command.help.name} = \n${command.help.description}\nusage::${command.help.usage}`, { code: 'asciidoc' });
+			message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage::${command.help.usage}`, { code: 'asciidoc' });
 		}
 	}
 };

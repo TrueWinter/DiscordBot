@@ -1,11 +1,11 @@
 /* eslint-disable */
 var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 	// ALL settings are strings. Do NOT just use true or false, use these in strings such as "true" or "false". This is due to how some code works when changing the settings
-  "ownerID": "", // Your ID here (or use `process.env.OWNERID`)
-  "token": "", // Your bot token here (or use `process.env.TOKEN`)
+  "ownerID": "", // Your ID here
+  "token": "", // Your bot token here
 	"status": "dnd", // Bot status [online/idle/invisible/dnd]
 	"debug": "false", // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
-	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below and {{guilds}} is replaced with the guild count. Leave blank to disable
+	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
 	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
   "defaultSettings" : {
     "prefix": "&&&",
@@ -26,10 +26,10 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		"logCommandUsage": "true"
   },
     "dashboard" : {
-    "oauthSecret": "", // The client secret from the Discord bot page, (you can also store this in an environmental variable)
+    "oauthSecret": "", // The client secret from the Discord bot page
     "secure": "true", // HTTPS: "true" for true, "false" for false
-    "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret, (you can also store this in an environmental variable)
-    "domain": "{{DOMAIN_NAME}}", // Similar to the callbackURL above but this is without the protocol
+    "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret
+    "domain": "", // Domain name (with port if not running behind proxy running on port 80). Example: "domain": "dashboard.bot-website.com" OR "domain": "localhost:33445"
     "port": "33445", // The port that it should run on
 		"invitePerm": "470019271",
 		"protectStats": "false"

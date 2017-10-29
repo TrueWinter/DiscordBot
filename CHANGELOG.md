@@ -7,6 +7,24 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.0:
+
+Getting a lot of work done on this bot.
+
+- You can now DM the bot with certain commands! _(That was harder to implement than I thought it would be)_
+- Moved the `createinvite` command to the moderation category
+- The `exec` and `eval` commands will now require code to run. (They will reply with a message saying that you need to give some code to run)
+- `exec` command now uses the client.clean function
+- Some changes in the commands to allow for them to be used in DMs
+- `playingGame` configuration option now has a `{{version}}` "template string". This will be replaced with the bot version.
+- A lot of changes in the `message` event... _(That was hard the hard part)_
+- `client.clean` is no longer async
+- Embed colour for `guildMemberRemove` event is now orange
+- New commands!
+	- `info`: Gives some basic bot info such as bot creator _(that's me!)_ and version numbers
+	- `urban`: You don't need to leave Discord to get a definition from UrbanDictionary!
+- Some new icons in the dashboard
+
 ## Version 6.0.2:
 
 Small fix for the previous fix

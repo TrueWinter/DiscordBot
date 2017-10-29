@@ -85,8 +85,8 @@ module.exports = (client) => {
 	and stringifies objects!
 	This is mostly only used by the Eval and Exec commands.
 	*/
-	client.clean = async (client, text) => {
-		if (text && text.constructor.name === 'Promise') text = await text;
+	client.clean = (client, text) => {
+		//if (text && text.constructor.name === 'Promise') text = await text;
 		if (typeof evaled !== 'string') text = require('util').inspect(text, { depth: 0 });
 
 		text = text
@@ -120,6 +120,8 @@ module.exports = (client) => {
 		}
 		return myArr;
 	};
+
+	client.version = require('../package.json').version;
 
 	// These 2 simply handle unhandled things. Like Magic. /shrug
 	process.on('uncaughtException', (err) => {

@@ -37,7 +37,6 @@
         "null": "void"
       }
     }],
-
     "accessor-pairs": "warn",
     "array-callback-return": "error",
     "complexity": "warn",
@@ -90,7 +89,6 @@
     "indent": ["error", "tab", { "SwitchCase": 1 }],
     "key-spacing": "error",
     "keyword-spacing": "error",
-    
     "max-nested-callbacks": ["error", { "max": 4 }],
     "max-statements-per-line": ["error", { "max": 2 }],
     "new-cap": "off",
@@ -118,7 +116,6 @@
     "space-unary-ops": "error",
     "template-tag-spacing": "error",
     "unicode-bom": "error",
-
     "arrow-body-style": "error",
     "arrow-spacing": "error",
     "no-duplicate-imports": "error",

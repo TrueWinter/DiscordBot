@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-
+exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
+// TODO: Allow you to check stats of other user
 	const embed = new Discord.RichEmbed()
 		.setColor('RED')
 		.setAuthor(message.author.tag, message.author.displayAvatarURL)
@@ -9,9 +9,12 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 		.addField(`User`, `${message.author.tag}`, true)
 		.addField(`ID`, `${message.author.id}`, true)
 		.addField(`Game`, `${message.author.presence.game.name || 'No Game'}`, true)
-		.addField(`Created At`, `${message.author.createdAt.toDateString()}`, true)
-		.addField(`Joined At`, `${message.member.joinedAt.toDateString()}`, true)
-		.addField(`Roles`, `${message.guild.members.get(message.author.id).roles.filter(r => r.position !== 0).map(R => R.name).join(', ') || 'No Roles'}`, true); // Filter is to filter out @everyone role
+		.addField(`Created At`, `${message.author.createdAt.toDateString()}`, true);
+
+	if (message.channel.type !== 'dm') {
+		embed.addField(`Joined At`, `${message.member.joinedAt.toDateString()}`, true)
+			.addField(`Roles`, `${message.guild.members.get(message.author.id).roles.filter(r => r.position !== 0).map(R => R.name).join(', ') || 'No Roles'}`, true); // Filter is to filter out @everyone role
+	}
 	message.channel.send({ embed });
 };
 

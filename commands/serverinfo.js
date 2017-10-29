@@ -2,9 +2,7 @@ const Discord = require('discord.js');
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 
 	if (!message.guild.available) return;
-
-	console.log(message.guild.iconURL);
-
+	// TODO: Allow you to check stats for another server
 	const embed = new Discord.RichEmbed()
 		.setColor('RED')
 		.setTitle('Server Info')
@@ -22,7 +20,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 
 exports.conf = {
 	enabled: true,
-	guildOnly: false,
+	guildOnly: true,
 	aliases: [],
 	permLevel: 0
 };

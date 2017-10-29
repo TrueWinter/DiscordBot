@@ -40,7 +40,8 @@ client.settings = new Enmap({ provider: new EnmapLevel({ name: 'settings' }) });
 const init = async () => {
 
 	const cmdFiles = await readdir('./commands/');
-	client.log('loading', `Loading a total of ${cmdFiles.length} commands.`);
+	client.commandsNumber = cmdFiles.length;
+	client.log('loading', `Loading a total of ${client.commandsNumber} commands.`);
 	cmdFiles.forEach(f => {
 		try {
 			const props = require(`./commands/${f}`);

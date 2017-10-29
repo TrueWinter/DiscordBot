@@ -8,6 +8,9 @@
 // you don't want to put in a command.
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 	const code = args.join(' ');
+	if (!code) {
+		return message.reply('You need to give me some code...');
+	}
 	if (client.config.blockConfigEval === 'true') {
 		if (message.content.match(/((client\.config)|(config\.js))/g)) {
 			return message.reply('No, you cannot leak your config file...');

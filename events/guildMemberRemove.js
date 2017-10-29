@@ -7,7 +7,7 @@ module.exports = (client, member) => {
 	const guildSettings = client.settings.get(member.guild.id);
 
 	const logLeave = new Discord.RichEmbed()
-		.setColor('GREEN')
+		.setColor('ORANGE')
 		.setTitle('User Left')
 		.addField('User tag', member.user.tag)
 		.addField('User ID', member.user.id);

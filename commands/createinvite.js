@@ -44,14 +44,14 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 
 exports.conf = {
 	enabled: true,
-	guildOnly: false,
+	guildOnly: true,
 	aliases: [],
 	permLevel: 2
 };
 
 exports.help = {
 	name: 'createinvite',
-	category: 'Miscelaneous',
+	category: 'Moderation',
 	description: 'Creates an invite to the channel it is sent in. Example usage: `createinvite 1 5m` will create a single use invite valid for 5 mintues',
 	usage: 'createinvite [uses] [time (s/m/h/d)]'
 };
