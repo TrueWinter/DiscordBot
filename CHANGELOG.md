@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.10:
+
+Dashboard bug fix
+
 ## Version 6.1.9:
 
 - Added a new commands field to `stats` embed.
