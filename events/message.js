@@ -161,8 +161,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
 			}
 		}
-	}
-	if (cmd) {
+	} else if (cmd) {
 		if (level >= cmd.conf.permLevel) {
 			if (cmd.conf.enabled) {
 				cmd.run(client, message, args, level);
