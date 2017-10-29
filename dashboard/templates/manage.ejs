@@ -1,7 +1,7 @@
 <%- include('blocks/header', {bot:bot, user: user, auth: auth}) %>
 <div class="jumbotron">
     <div class="col-sm-8 mx-auto">
-      <h1><%= guild.name %></h1>
+      <h1><% if (guild.iconURL) { %><img class="img-fluid img-thumbnail" src="<%= guild.iconURL %>"> <% } %><%= guild.name %></h1>
       <div class="row">
 				<div class="col">
           <i class="fa fa-user" aria-hidden="true"></i> Owner: <%= `${guild.owner.user.tag}` %>
