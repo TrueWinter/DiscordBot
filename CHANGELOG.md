@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.7:
+
+Small change
+
 ## Version 6.1.6:
 
  Added more logging for DMs
