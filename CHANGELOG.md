@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.1.3:
+
+Fixed a bug where DM commands are not logged to console
+
 ## Version 6.1.2:
 
 Fixed a `userinfo` bug

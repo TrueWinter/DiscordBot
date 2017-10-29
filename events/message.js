@@ -166,6 +166,9 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 		if (level >= cmd.conf.permLevel) {
 			if (cmd.conf.enabled) {
 				cmd.run(client, message, args, level);
+				if (client.config.defaultSettings.logCommandUsage === 'true') {
+					console.log('log', `DM: ${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
+				}
 			}
 		}
 	}
