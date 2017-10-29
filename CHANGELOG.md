@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.2.0:
+
+Added guild owner on dashboard
+
 ## Version 6.1.10:
 
 Dashboard bug fix
