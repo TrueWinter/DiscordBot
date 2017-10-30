@@ -8,7 +8,7 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
 	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
   "defaultSettings" : {
-    "prefix": "&&&",
+    "prefix": "!",
     "modLogChannel": "mod-log",
     "modRole": "Moderator",
     "adminRole": "Admin",
