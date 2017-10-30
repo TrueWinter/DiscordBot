@@ -17,6 +17,8 @@ _(Note that this list may not be complete. If marked with a asterisk_ (`*`) _the
 - Unban logs _(Username, Moderator Username, Reason)_
 - Command usage logs * _(Username, Command Used, Message Content)_
 - Dashboard access logs _(Username, Changes Made to Settings, IP Address, Device Information, Referrer URL, etc.)_
+- Guild join logs _(Guild name)_
+- Guild leave logs _(Guild name)_
 
 I, ***NdT3Development***, (as the bot developer) _will not be liable or responsible for damages of_ ***any*** _kind_ (including, without limitation, damages caused, loss of information or data, or any other indirect, incidental, special or consequential damages) arising out of the use of this bot, even if advised of the possibility of such damages.
 
