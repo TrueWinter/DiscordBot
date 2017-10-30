@@ -19,7 +19,15 @@ module.exports = async client => {
 	client.log('log', `Logged into '${client.user.tag}' (${client.user.id}). Ready to serve ${cMembers} users in ${gCount} guilds. Bot Version: ${client.version}`, 'Ready!');
 
 	// Ensure that any guild added while the bot was offline gets a default configuration.
-	//client.guilds.forEach(guild => client.settings.set(guild.id, client.config.defaultSettings));
+	var g = [];
+	await client.guilds.forEach(guild => g.push(guild.id));
+
+	for (i = 0; i < g.length; i++) {
+		if (!client.settings.get(g[i])) {
+			client.settings.set(g[i], client.config.defaultSettings);
+		}
+	}
+
 	var game = client.config.playingGame.replace('{{prefix}}', client.config.defaultSettings.prefix).replace('{{guilds}}', gCount).replace('{{version}}', client.version);
 	client.user.setPresence({ status: client.config.status, game: { name: game, type: 0 } });
 };

@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 
 module.exports = (client, member) => {
 	// Load the guild's settings
+	if (member.user.id === client.user.id) return;
 	const guildSettings = client.settings.get(member.guild.id);
 
 	const logLeave = new Discord.RichEmbed()
