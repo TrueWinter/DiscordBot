@@ -27,7 +27,7 @@
           <li class="nav-item"><a class="nav-link" href="/commands"><i class="fa fa-book fa-fw" aria-hidden="true"></i> Commands</a></li>
           <li class="nav-item"><a class="nav-link" href="/stats"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i> Stats</a></li>
           <% var invitePerm = "470019271" %>
-         <li class="nav-item"><a class="nav-link <% if(!bot.appInfo.botPublic) { %> disabled <% } %>" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot%20identify%20guilds&response_type=code&redirect_uri=<%= encodeURIComponent(`${client.callbackURL}`) %>&permissions=<%= invitePerm %>">Add to Guild</a></li>
+         <li class="nav-item"><a class="nav-link <% if(!bot.appInfo.botPublic) { %> disabled <% } %>" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot%20identify%20guilds&response_type=code&redirect_uri=<%= encodeURIComponent(`${bot.callbackURL}`) %>&permissions=<%= invitePerm %>">Add to Guild</a></li>
         <li class="nav-item"><a class="nav-link disabled">On <%= bot.guilds.size %> Guilds</a></li>
         </ul>
         <ul class="navbar-nav">
