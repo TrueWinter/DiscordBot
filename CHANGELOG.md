@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 6.4.2:
+
+Dashboard bug fixes
+
 ## Version 6.4.1:
 
 Fixed a bug where commands may not run if logging is disabled

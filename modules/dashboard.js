@@ -82,21 +82,22 @@ module.exports = (client) => {
 	See config.js.example to set these up.
 	*/
 
-	var callbackURL, protocol;
+	var protocol;
 
 	if (client.config.dashboard.secure === 'true') {
-		protocol = 'https://';
+		client.protocol = 'https://';
 	} else {
-		protocol = 'http://';
+		client.protocol = 'http://';
 	}
 
-	callbackURL = `${protocol}${client.config.dashboard.domain}/callback`;
-	client.log('log', `Callback URL: ${callbackURL}`, 'INFO');
+	protocol = client.protocol;
 
+	client.callbackURL = `${protocol}${client.config.dashboard.domain}/callback`;
+	client.log('log', `Callback URL: ${client.callbackURL}`, 'INFO');
 	passport.use(new Strategy({
 		clientID: client.appInfo.id,
 		clientSecret: client.config.dashboard.oauthSecret,
-		callbackURL: client.config.dashboard.callbackURL,
+		callbackURL: client.callbackURL,
 		scope: ['identify', 'guilds']
 	},
 	(accessToken, refreshToken, profile, done) => {
@@ -251,7 +252,7 @@ module.exports = (client) => {
 	app.get('/add/:guildID', checkAuth, (req, res) => {
 		req.session.backURL = '/dashboard';
 		var invitePerm = client.config.dashboard.invitePerm;
-		var inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.config.dashboard.callbackURL}`)}&permissions=${invitePerm}`;
+		var inviteURL = `https://discordapp.com/oauth2/authorize?client_id=${client.appInfo.id}&scope=bot&guild_id=${req.params.guildID}&response_type=code&redirect_uri=${encodeURIComponent(`${client.callbackURL}`)}&permissions=${invitePerm}`;
 		if (client.guilds.has(req.params.guildID)) {
 			res.send('<p>The bot is already there... <script>setTimeout(function () { window.location="/dashboard"; }, 1000);</script><noscript><meta http-equiv="refresh" content="1; url=/dashboard" /></noscript>');
 		} else {
