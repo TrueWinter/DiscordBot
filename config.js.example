@@ -7,6 +7,7 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 	"debug": "false", // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
 	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
 	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
+	"purgeLogFormat": "\n Message ID: {{mID}} | Message Timestamp: {{mTS}} | Content: {{mC}} \n", // {{mID}}: Message ID; {{mTS}} Message Timestamp; {{mC}}: Message Content;
   "defaultSettings" : {
     "prefix": "!",
     "modLogChannel": "mod-log",
@@ -23,7 +24,8 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		"logDeletes": "true",
 		"logNewMember": "true",
 		"logMemberLeave": "true",
-		"logCommandUsage": "true"
+		"logCommandUsage": "true",
+		"logPurge": "true"
   },
     "dashboard" : {
     "oauthSecret": "", // The client secret from the Discord bot page

@@ -1,26 +1,38 @@
 const Discord = require('discord.js');
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
+
+	let member = message.mentions.users.first();
+	//if (!member) return message.reply('Please mention a valid member of this server');
+	var user;
+	if (!member) {
+		user = message.author;
+	} else {
+		user = member;
+	}
+
+	console.log(user);
+
 // TODO: Allow you to check stats of other user
 	var game;
-	if (!message.author.presence.game) {
+	if (!user.presence.game) {
 		game = 'No Game';
 	} else {
-		game = message.author.presence.game.name;
+		game = user.presence.game.name;
 	}
 
 	const embed = new Discord.RichEmbed()
 		.setColor('RED')
-		.setAuthor(message.author.tag, message.author.displayAvatarURL)
+		.setAuthor(user.tag, user.displayAvatarURL)
 		.setTitle('User Info')
-		.setThumbnail(message.author.displayAvatarURL)
-		.addField(`User`, `${message.author.tag}`, true)
-		.addField(`ID`, `${message.author.id}`, true)
+		.setThumbnail(user.displayAvatarURL)
+		.addField(`User`, `${user.tag}`, true)
+		.addField(`ID`, `${user.id}`, true)
 		.addField(`Game`, `${game}`, true)
-		.addField(`Created At`, `${message.author.createdAt.toDateString()}`, true);
+		.addField(`Created At`, `${user.createdAt.toDateString()}`, true);
 
 	if (message.channel.type !== 'dm') {
-		embed.addField(`Joined At`, `${message.member.joinedAt.toDateString()}`, true)
-			.addField(`Roles`, `${message.guild.members.get(message.author.id).roles.filter(r => r.position !== 0).map(R => R.name).join(', ') || 'No Roles'}`, true); // Filter is to filter out @everyone role
+		embed.addField(`Joined At`, `${message.guild.members.get(user.id).joinedAt.toDateString()}`, true)
+			.addField(`Roles`, `${message.guild.members.get(user.id).roles.filter(r => r.position !== 0).map(R => R.name).join(', ') || 'No Roles'}`, true); // Filter is to filter out @everyone role
 	}
 	message.channel.send({ embed });
 };

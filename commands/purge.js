@@ -1,12 +1,29 @@
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-	// TODO: Include the deleted messages as an attachment in the logs (and add logs for this of course)
+
+	const gS = await client.settings.get(message.guild.id);
+
 	var deleteCount = parseInt(args[0]);
 
 	if (!deleteCount || deleteCount < 1 || deleteCount > 100) return message.reply('Please provide a number between 1 and 100 for the number of messages to delete');
 
 	//var fetched =	message.channel.fetchMessages({count: deleteCount});
-	message.channel.bulkDelete(deleteCount + 1)
-		.catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+	//message.channel.bulkDelete(deleteCount + 1)
+	//	.catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+
+
+	var fs = require('fs'); var Discord = require('discord.js');
+	var msgs = '';
+	await message.channel.fetchMessages({ limit: deleteCount })
+		.then(messages => messages.forEach(g => msgs += client.config.purgeLogFormat.replace('{{mID}}', g.id).replace('{{mTS}}', g.createdTimestamp).replace('{{mC}}', g.content))) // client.config.purgeLogFormat.replace('{{mID}}', g.id).replace('{{mTS}}', g.createdTimestamp).replace('{{mC}}', g.content) |||| `\n Message ID: ${g.id}  |  Message Timestamp: ${g.createdTimestamp} | Content: ${g.content} \n`
+		.catch(console.error);
+	setTimeout(function() {
+		if (gS.logPurge === 'true') {console.log(msgs);}
+		fs.writeFileSync('purge-log.txt', msgs);
+		message.guild.channels.find('name', gS.modLogChannel).send('Messages purged', new Discord.Attachment('./purge-log.txt'))
+			.then(() =>	fs.unlinkSync('purge-log.txt'));
+		if (gS.logPurge === 'true') {message.channel.bulkDelete(deleteCount + 1);}
+	}, 1000);
+
 };
 
 exports.conf = {

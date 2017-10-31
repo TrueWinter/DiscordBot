@@ -7,6 +7,17 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.0.0:
+
+"A major update? Doesn't seem so major..." This is considered a major update due to it requiring you to reset the per guild settings before being able to use a new feature. Failure to do so will result in the feature not working or the bot even crashing. You can reset the per guild settings by running the bot command `[prefix]set reset` in a guild, or if that doesn't work, stopping the bot, then deleting the entire `data` directory, then starting the bot again.
+
+Now enough of that, let's get into this short changelog update.
+
+- Improved `userinfo` command. You can now check the info of another user!
+- New feature in the `purge` command. LOGS! That's right, you can now have a log of the messages deleted by a purge. The log is in the form of a file attached to a message in the mod-log channel and also in the console. The purge command also brought the need for a new configuration option...
+- New configuration option for per guild settings: `logPurge`. This option will allow you to set whether purges should have their messages logged.  _(As always, per guild configuration changes require a per guild setting reset. I will be working on a way to automatically add new settings with an `update` command)_
+- New general configuration option: `purgeLogFormat`. This allows you to control the format of purge logs.
+
 ## Version 6.4.2:
 
 Dashboard bug fixes
