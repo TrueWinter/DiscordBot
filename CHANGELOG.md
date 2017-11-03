@@ -7,6 +7,13 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.1.0:
+
+- Some changes to the dashboard to fix CSS issues
+- A new configuration option: `dashboard.enabled`. This allows you to disable the dashboard
+- Added some code to ensure that the bot code can only be used on a bot account
+- Slight update to the PRIVACY.md file
+
 ## Version 7.0.0:
 
 "A major update? Doesn't seem so major..." This is considered a major update due to it requiring you to reset the per guild settings before being able to use a new feature. Failure to do so will result in the feature not working or the bot even crashing. You can reset the per guild settings by running the bot command `[prefix]set reset` in a guild, or if that doesn't work, stopping the bot, then deleting the entire `data` directory, then starting the bot again.

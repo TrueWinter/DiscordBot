@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link href="https://bootswatch.com/4-alpha/darkly/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <% if (bot.user.avatarURL) { %><link rel='icon' href='<%= bot.user.avatarURL %>'><% } %>
   <title>
@@ -17,7 +17,7 @@
 
 <body>
   <a name="top"></a>
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar01" aria-controls="navbar01" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="container">
       <a class="navbar-brand" href="/"><% if (bot.user.avatarURL) { %><img src="<%= bot.user.avatarURL %>" width="30" height="30" class="d-inline-block align-top rounded-circle" alt=""><% } %> <%= bot.user.username %></a>

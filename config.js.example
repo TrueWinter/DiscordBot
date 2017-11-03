@@ -28,6 +28,7 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		"logPurge": "true"
   },
     "dashboard" : {
+		"enabled": "true", // This setting controls whether the dashboard is enabled or not.
     "oauthSecret": "", // The client secret from the Discord bot page
     "secure": "true", // HTTPS: "true" for true, "false" for false
     "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret

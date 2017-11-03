@@ -1,6 +1,6 @@
 <%- include('blocks/header', {bot:bot, user: user, auth: auth}) %>
 
-  <% 
+  <%
 const help = {};
 bot.commands.forEach((command) => {
   const cat = command.help.category;
@@ -20,7 +20,7 @@ bot.commands.forEach((command) => {
         <% for (const command of help[category]) { %>
           <div class="card">
             <h3 class="card-header"><%= command.help.name %></h3>
-              <div class="card-block">
+              <div class="card-block" style="margin: 7px">
                 <p class="card-text"><%= command.help.description %></p>
                 <h6 class="card-subtitle text-muted">Permission: <%= command.conf.permLevel %><br /><a href="#" data-toggle="modal" data-target="#<%= `${command.help.name}` %>Modal">more...</a></h6>
               </div>
@@ -38,7 +38,7 @@ bot.commands.forEach((command) => {
                     <p>Enabled: <%= command.conf.enabled %></p>
                     <p>Usage Example: <%= command.help.usage %></p>
                     <p>Command Aliases: <%= command.conf.aliases %></p>
-                    
+
                   </div>
                 <div class="modal-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button></div>
               </div>

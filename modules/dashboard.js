@@ -43,6 +43,8 @@ const morgan = require('morgan');
 const moment = require('moment');
 
 module.exports = (client) => {
+
+	if (client.config.dashboard.enabled !== 'true') return client.log('log', 'Dashboard disabled', 'INFO');
 	// It's easier to deal with complex paths.
 	// This resolves to: yourbotdir/dashboard/
 	const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);

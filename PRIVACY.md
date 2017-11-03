@@ -9,6 +9,7 @@ Cases of collecting **END USER DATA**:
 _(Note that this list may not be complete. If marked with a asterisk_ (`*`) _these logs can be disabled)_
 
 - Message deletions logs * _(Username, Message Content)_
+- Message purge logs * _(Message Content)_
 - Kick logs _(Username, Moderator Username, Reason)_
 - Ban logs _(Username, Moderator Username, Reason)_
 - Warn logs _(Username, Moderator Username, Reason)_
