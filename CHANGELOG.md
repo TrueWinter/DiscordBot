@@ -7,6 +7,13 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.2.0:
+
+- Added guild ID and guild owner ID to the `serverinfo` command
+- Made a small change to the `dashboard.js` file which will now give the error code if there is an error starting the dashboard
+- Included the CSS for the theme used in the dashboard (`https://bootswatch.com/darkly/`) as the Bootswatch hosted version of the CSS has URL changes which break the dashboard
+- Minor bug fixes
+
 ## Version 7.1.0:
 
 - Some changes to the dashboard to fix CSS issues

@@ -355,5 +355,8 @@ module.exports = (client) => {
 
 	client.site = app.listen(client.config.dashboard.port, function() {
 		client.log('log', `Dashboard running on port ${client.config.dashboard.port}`, 'INFO');
+	}).on('error', (err) => {
+		client.log('ERROR', `Error with starting dashboard: ${err.code}`);
+		return process.exit(0);
 	});
 };
