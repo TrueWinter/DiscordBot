@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.4.1:
+
+Fixed the dashboard expand menu button being in the wrong position
+
 ## Version 7.4.0:
 
 - Removed `dashboard.theme` configuration option
