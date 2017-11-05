@@ -6,16 +6,65 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<% if (bot.config.dashboard.theme === 'light') { %>
-		<link href="/public/theme-light.css" rel="stylesheet" />
-	<% } else { %>
-		<link href="/public/theme-dark.css" rel="stylesheet" />
-	<% } %>
+	<script>
+		function setCookie(cname, cvalue, exdays) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+ d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+				var name = cname + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var ca = decodedCookie.split(';');
+				for(var i = 0; i <ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0) == ' ') {
+								c = c.substring(1);
+						}
+						if (c.indexOf(name) == 0) {
+								return c.substring(name.length, c.length);
+						}
+				}
+				return "";
+		}
+	</script>
+		<div id="themeDiv"><link href="/public/theme-dark.css" rel="stylesheet" id="theme"/></div>
+		<script>
+			if (getCookie('theme') === 'light') {
+				document.getElementById('themeDiv').innerHTML = '<link href="/public/theme-light.css" rel="stylesheet" id="theme"/>';
+			} else {
+				document.getElementById('themeDiv').innerHTML = '<link href="/public/theme-dark.css" rel="stylesheet" id="theme"/>';
+			}
+		</script>
+		<!--<link href="/public/theme-light.css" rel="stylesheet" id="theme"/>-->
+
+		<!--<link href="/public/theme-dark.css" rel="stylesheet" id="theme"/>-->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <% if (bot.user.avatarURL) { %><link rel='icon' href='<%= bot.user.avatarURL %>'><% } %>
   <title>
     <%= bot.user.username %> - Dashboard
   </title>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#7289da"
+    },
+    "button": {
+      "background": "#30252e"
+    }
+  },
+  "showLink": false,
+  "theme": "classic",
+  "position": "bottom-left"
+})});
+</script>
 </head>
 
 <body>
@@ -32,6 +81,28 @@
           <% var invitePerm = "470019271" %>
          <li class="nav-item"><a class="nav-link <% if(!bot.appInfo.botPublic) { %> disabled <% } %>" href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot%20identify%20guilds&response_type=code&redirect_uri=<%= encodeURIComponent(`${bot.callbackURL}`) %>&permissions=<%= invitePerm %>">Add to Guild</a></li>
         <li class="nav-item"><a class="nav-link disabled">On <%= bot.guilds.size %> Guilds</a></li>
+				<script>
+					function changeTheme() {
+						var t = document.getElementById('theme').href;
+						if (t === `${document.location.origin}/public/theme-light.css`) {
+							theme = 'light';
+						} else {
+							theme = 'dark';
+						}
+
+						if (theme === 'light') {
+							document.getElementById('theme').href = '/public/theme-dark.css';
+							setCookie('theme', 'dark', 1);
+							console.log('Changed to dark theme');
+						} else {
+							document.getElementById('theme').href = '/public/theme-light.css';
+							setCookie('theme', 'light', 1);
+							console.log('Changed to light theme');
+						}
+
+					}
+				</script>
+				<li class="nav-item"><a class="nav-link" onclick="changeTheme()">Change Theme</a></li>
         </ul>
         <ul class="navbar-nav">
           <% if(auth) { %>

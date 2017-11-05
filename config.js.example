@@ -38,7 +38,6 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		"invitePerm": "470019271",
 		"protectStats": "false",
 		"borderedStats": "false", // Controls whether stats in the dashboard should have a border or not
-		"theme": "dark" // Theme for the dashboard. Possible options: dark, light. If the theme is invalid, it will use dark theme
   }
 };
 

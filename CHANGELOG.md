@@ -7,6 +7,12 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.4.0:
+
+- Removed `dashboard.theme` configuration option
+- Added a `Change Theme` button on the dashboard
+- Added Cookie Consent as the above change uses cookies
+
 ## Version 7.3.1:
 
 Bug fix
