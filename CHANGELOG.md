@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.3.1:
+
+Bug fix
+
 ## Version 7.3.0:
 
 New commands!

@@ -8,7 +8,7 @@ module.exports = (client, message) => {
 				.setColor('RED')
 				.setTitle('Message Deleted')
 				.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
-				.addField(`Content`, `${message.content}`, true)
+				.addField(`Content`, `${message.content | '<<NO CONTENT>>'}`, true)
 				.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
 			if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 				message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
