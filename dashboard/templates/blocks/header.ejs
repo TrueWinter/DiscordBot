@@ -6,8 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link href="/public/theme.css" rel="stylesheet" />
+	<% if (bot.config.dashboard.theme === 'light') { %>
+		<link href="/public/theme-light.css" rel="stylesheet" />
+	<% } else { %>
+		<link href="/public/theme-dark.css" rel="stylesheet" />
+	<% } %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <% if (bot.user.avatarURL) { %><link rel='icon' href='<%= bot.user.avatarURL %>'><% } %>
   <title>

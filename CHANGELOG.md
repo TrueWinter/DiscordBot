@@ -7,6 +7,18 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.3.0:
+
+New commands!
+- `8ball`: Ask a yes/no question and the 8ball will give you an answer
+- `pin`: Pins a message to the channel
+
+New configuration options
+- `eightBallResponses`: You can change the 8ball responses
+- `dashboard.theme`: Choose between dark or light theme dashboard
+
+- Included light theme CSS with the code under `dashboard/public` and renamed the dark theme CSS file
+
 ## Version 7.2.0:
 
 - Added guild ID and guild owner ID to the `serverinfo` command

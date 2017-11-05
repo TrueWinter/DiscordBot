@@ -22,7 +22,7 @@ module.exports = async client => {
 	var cMembers = client.users.filter(u => u.id !== '1').size; // Get's number of members cached. (Filters out Clyde)
 	var gCount = client.guilds.size;
 	// Both `wait` and `client.log` are in `./modules/functions`.
-	client.log('log', `Logged into '${client.user.tag}' (${client.user.id}). Ready to serve ${cMembers} users in ${gCount} guilds. Bot Version: ${client.version}`, 'Ready!');
+	client.log('EVENT', `Logged into '${client.user.tag}' (${client.user.id}). Ready to serve ${cMembers} users in ${gCount} guilds. Bot Version: ${client.version}`);
 
 	// Ensure that any guild added while the bot was offline gets a default configuration.
 	var g = [];
