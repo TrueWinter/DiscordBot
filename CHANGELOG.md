@@ -7,6 +7,10 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.4.2:
+
+Fixed bad code in `purge` command
+
 ## Version 7.4.1:
 
 Fixed the dashboard expand menu button being in the wrong position
