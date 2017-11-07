@@ -1,0 +1,44 @@
+/* eslint-disable */
+var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
+	// ALL settings are strings. Do NOT just use true or false, use these in strings such as "true" or "false". This is due to how some code works when changing the settings
+  "ownerID": "", // Your ID here
+  "token": "", // Your bot token here
+	"status": "dnd", // Bot status [online/idle/invisible/dnd]
+	"debug": "false", // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
+	"playingGame": "{{prefix}}help | {{guilds}} guilds", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
+	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
+	"purgeLogFormat": "\n Message ID: {{mID}} | Message Timestamp: {{mTS}} | Content: {{mC}} \n", // {{mID}}: Message ID; {{mTS}} Message Timestamp; {{mC}}: Message Content;
+	"eightBallResponses": ['Yes', 'No', 'Certainly', 'My sources say yes', 'Try again later', 'Without a doubt', 'Better not to tell you now'], // An array of responses for the 8ball command
+  "defaultSettings" : {
+    "prefix": "!",
+    "modLogChannel": "mod-log",
+    "modRole": "Moderator",
+    "adminRole": "Admin",
+    "welcomeChannel": "general",
+    "welcomeMessage": "Welcome {{user}}!",
+    "welcomeEnabled": "false",
+    "inviteFilterEnabled": "false",
+    "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
+    "facepalms": "false", // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'
+    "swearFilter": "false",
+    "swearWords": ["damn"], // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
+		"logDeletes": "true",
+		"logNewMember": "true",
+		"logMemberLeave": "true",
+		"logCommandUsage": "true",
+		"logPurge": "true"
+  },
+    "dashboard" : {
+		"enabled": "true", // This setting controls whether the dashboard is enabled or not.
+    "oauthSecret": "", // The client secret from the Discord bot page
+    "secure": "true", // HTTPS: "true" for true, "false" for false
+    "sessionSecret": "", // Go crazy on the keyboard here, this is used as a session secret
+    "domain": "", // Domain name (with port if not running behind proxy running on port 80). Example: "domain": "dashboard.bot-website.com" OR "domain": "localhost:33445"
+    "port": "33445", // The port that it should run on
+		"invitePerm": "470019271",
+		"protectStats": "false",
+		"borderedStats": "false", // Controls whether stats in the dashboard should have a border or not
+  }
+};
+
+module.exports = config;
