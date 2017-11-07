@@ -274,7 +274,7 @@ module.exports = (client) => {
 	});
 
 	app.post('/manage/:guildID', checkAuth, async (req, res) => {
-		const guild = await client.guilds.get(req.params.guildID);
+		const guild = client.guilds.get(req.params.guildID);
 		if (!guild) return res.status(404);
 		const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false; // eslint-disable-line max-len
 		if (req.user.id === client.config.ownerID) {
@@ -282,9 +282,9 @@ module.exports = (client) => {
 		} else if (!isManaged) {
 			res.redirect('/dashboard');
 		}
-		const guildSettings = await client.settings.get(guild.id);
+		const guildSettings = client.settings.get(guild.id);
 		for (const key in guildSettings) {
-			guildSettings[key] = await req.body[key];
+			guildSettings[key] = req.body[key];
 		}
 		client.settings.set(guild.id, guildSettings);
 		res.redirect(`/manage/${req.params.guildID}`);
