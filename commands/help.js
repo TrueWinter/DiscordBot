@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 exports.run = (client, message, args, level) => {
 
 	if (!args[0]) {
@@ -7,26 +9,30 @@ exports.run = (client, message, args, level) => {
 		let currentCategory = '';
 		let output = `= Command List =\n\n[Use [prefix]help <commandname> for details]\n`;
 		if (message.channel.type === 'dm') {
-			output += `Moderation commands are disabled and hidden in DMs. Some other commands may also be disabled\n`;
+			output += `Moderation commands are disabled in DMs. Some other commands may also be disabled\n`;
 		}
 		const sorted = myCommands.sort((p, c) => p.help.category > c.help.category ? 1 : -1);
 		sorted.forEach(c => {
 			const cat = c.help.category.toProperCase();
 			if (currentCategory !== cat) {
-				if (message.channel.type !== 'dm' || cat !== 'Moderation') {
+				//if (message.channel.type !== 'dm' || cat !== 'Moderation') {
 					output += `\n== ${cat} ==\n`;
-				}
+				//}
 				//output += `\n== ${cat} ==\n`;
 				currentCategory = cat;
 			}
-			if (cat === 'Moderation' && message.channel.type === 'dm') {
+			/*if (cat === 'Moderation' && message.channel.type === 'dm') {
 				output += '';
-			} else {
+			} else {*/
 				output += `${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
-			}
+			//}
 
 		});
-		message.channel.send(output, { code: 'asciidoc' });
+    
+    var helpEmbed = new Discord.RichEmbed()
+      .setTitle('Help')
+      .setDescription(output);
+		message.channel.send({ embed: helpEmbed }, { code: 'asciidoc' });
 	} else {
 		let command = args[0];
 		if (client.commands.has(command)) {
