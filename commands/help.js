@@ -31,8 +31,8 @@ exports.run = (client, message, args, level) => {
     
     var helpEmbed = new Discord.RichEmbed()
       .setTitle('Help')
-      .setDescription(output);
-		message.channel.send({ embed: helpEmbed }, { code: 'asciidoc' });
+      .setDescription(`\`\`\`asciidoc\n${output}\`\`\``);
+		message.channel.send({ embed: helpEmbed });
 	} else {
 		let command = args[0];
 		if (client.commands.has(command)) {
