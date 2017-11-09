@@ -47,7 +47,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 	// and clean way to grab one of 2 values!
 
 	if (message.channel.type === 'dm') {
-		if (!cmd) return;
+		if (!cmd.conf.enabled) return;
 		if (cmd.conf.guildOnly) return message.channel.send('This command is disabled in DMs');
 	}
 
