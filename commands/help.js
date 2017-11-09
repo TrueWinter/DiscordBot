@@ -19,11 +19,11 @@ exports.run = (client, message, args, level) => {
 				//output += `\n== ${cat} ==\n`;
 				currentCategory = cat;
 			}
-			/*if (cat === 'Moderation' && message.channel.type === 'dm') {
+			if (cat === 'Moderation' && message.channel.type === 'dm') {
 				output += '';
-			} else {*/
+			} else {
 				output += `${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
-			//}
+			}
 
 		});
 		message.channel.send(output, { code: 'asciidoc' });

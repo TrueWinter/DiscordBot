@@ -157,8 +157,6 @@ module.exports = (client) => {
 		res.redirect('/');
 	}
 
-<<<<<<< HEAD
-=======
 	switch (client.config.dashboard.theme) {
 		case 'dark':
 			client.log('INFO', 'Using dark theme for dashboard');
@@ -170,7 +168,6 @@ module.exports = (client) => {
 			client.log('INFO', 'Dashboard theme provided invalid. Using dark theme');
 	}
 
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 	// Index page. If the user is authenticated, it shows their info
 	// at the top right of the screen.
 	app.get('/', (req, res) => {
@@ -277,11 +274,7 @@ module.exports = (client) => {
 	});
 
 	app.post('/manage/:guildID', checkAuth, async (req, res) => {
-<<<<<<< HEAD
-		const guild = client.guilds.get(req.params.guildID);
-=======
 		const guild = await client.guilds.get(req.params.guildID);
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 		if (!guild) return res.status(404);
 		const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false; // eslint-disable-line max-len
 		if (req.user.id === client.config.ownerID) {
@@ -289,15 +282,9 @@ module.exports = (client) => {
 		} else if (!isManaged) {
 			res.redirect('/dashboard');
 		}
-<<<<<<< HEAD
-		const guildSettings = client.settings.get(guild.id);
-		for (const key in guildSettings) {
-			guildSettings[key] = req.body[key];
-=======
 		const guildSettings = await client.settings.get(guild.id);
 		for (const key in guildSettings) {
 			guildSettings[key] = await req.body[key];
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 		}
 		client.settings.set(guild.id, guildSettings);
 		res.redirect(`/manage/${req.params.guildID}`);
