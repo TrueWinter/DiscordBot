@@ -5,8 +5,22 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <style>
+    .pageContent {
+      display:none;
+    }
+
+    #loading {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #000; z-index:9999; 
+        font-size: 60px; text-align: center; padding-top: 200px; color: #fff;
+    }
+  </style>
 
 	<script>
+    $(window).on('load', function() {
+      $('#loading').hide();
+      $('.pageContent').show();
+    });
 		function setCookie(cname, cvalue, exdays) {
 			var d = new Date();
 			d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -68,6 +82,8 @@ window.cookieconsent.initialise({
 </head>
 
 <body>
+  <div id="loading">Loading...</div>
+  <div class="pageContent">
   <a name="top"></a>
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
