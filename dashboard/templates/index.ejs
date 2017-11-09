@@ -4,17 +4,7 @@
       
       <div class="container">
         
-      <% if (bot.user.avatarURL) { %><div class="col-2"><img style="float:left;padding-right:10px;@media (min-width: 768px) {
-    .text-justify-sm {
-         margin: auto;
-    width: 50%;
-    }
-}" class="img-responsive rounded-circle bounce"src='<%= bot.user.avatarURL %>?size=128'></div>
-        <script>
-          $(".bounce").hover(function () {
-            $(".bounce").effect( "bounce", { times : 1 }, 1500);
-          });
-        </script>
+      <% if (bot.user.avatarURL) { %><div class="col-2"><img style="float:left;padding-right:10px;" class="img-responsive rounded-circle bounce"src='<%= bot.user.avatarURL %>?size=128'></div>
       <div class="col-8"><% } %>
       <h1><%= bot.user.username %> Dashboard</h1><% if (bot.user.avatarURL) { %></div><% } %>
       <p>This is an <a href="https://github.com/NdT3Development/DiscordBot">opensource bot</a> made by NdT3Development (NdT3#0717 on Discord) to fit his moderation needs.</p>
