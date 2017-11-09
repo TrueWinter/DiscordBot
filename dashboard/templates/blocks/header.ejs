@@ -13,15 +13,22 @@
     .pageContent {
       display:none;
     }
-
-    /*#loading {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #000; z-index:9999; 
-        font-size: 60px; text-align: center; padding-top: 200px; color: #fff;
-    }*/
     
     #loading {
+     position: fixed;
+      z-index: 999;
+      height: 2em;
+      width: 2em;
+      overflow: show;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
       border: 16px solid #f3f3f3;
       border-radius: 50%;
       border-top: 16px solid #3498db;
+      align:center;
       width: 120px;
       height: 120px;
       -webkit-animation: spin 2s linear infinite;
@@ -105,7 +112,7 @@ window.cookieconsent.initialise({
 </head>
 
 <body>
-  <div id="loading">Loading...</div>
+  <div id="loading"></div>
   <div class="pageContent">
     
   <a name="top"></a>
