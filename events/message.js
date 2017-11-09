@@ -47,7 +47,11 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 	// and clean way to grab one of 2 values!
 
 	if (message.channel.type === 'dm') {
+<<<<<<< HEAD
 		if (!cmd.conf.enabled) return;
+=======
+		if (!cmd) return;
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 		if (cmd.conf.guildOnly) return message.channel.send('This command is disabled in DMs');
 	}
 
@@ -94,13 +98,21 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 			if (cmd) {
 				if (level >= cmd.conf.permLevel) {
 					if (cmd.conf.enabled === true) {
+<<<<<<< HEAD
             var embed = client.createCommandEmbed('C', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
 						/*const embed = new Discord.RichEmbed()
+=======
+						const embed = new Discord.RichEmbed()
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 							.setColor('RED')
 							.setTitle('Command Used')
 							.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 							.addField(`Command`, `${message.content}`, true)
+<<<<<<< HEAD
 							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
+=======
+							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 						if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 							message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 								.catch((err) => {
@@ -110,16 +122,27 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 							console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 						}
 						cmd.run(client, message, args, level);
+<<<<<<< HEAD
 						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) ran command ${message.content}`, 'CMD');
 					} else {
 						message.reply('This command is disabled');
             var embed = client.createCommandEmbed('D', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
 						/*const embed = new Discord.RichEmbed()
+=======
+						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
+					} else {
+						message.reply('This command is disabled');
+						const embed = new Discord.RichEmbed()
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 							.setColor('RED')
 							.setTitle('Disabled Command Usage')
 							.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 							.addField(`Command`, `${message.content}`, true)
+<<<<<<< HEAD
 							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
+=======
+							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 						if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 							message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 								.catch((err) => {
@@ -128,17 +151,28 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 						} else {
 							console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 						}
+<<<<<<< HEAD
 						client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
 					}
 				} else {
           
           var embed = client.createCommandEmbed('P', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
 					/*const embed = new Discord.RichEmbed()
+=======
+						client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
+					}
+				} else {
+					const embed = new Discord.RichEmbed()
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 						.setColor('RED')
 						.setTitle('No Permissions')
 						.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 						.addField(`Command`, `${message.content}`, true)
+<<<<<<< HEAD
 						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
+=======
+						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 					if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 						message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 							.catch((err) => {
@@ -147,16 +181,27 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 					} else {
 						console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 					}
+<<<<<<< HEAD
 					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
 				}
 			} else {
         var embed = client.createCommandEmbed('N', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
 				/*const embed = new Discord.RichEmbed()
+=======
+					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
+				}
+			} else {
+				const embed = new Discord.RichEmbed()
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 					.setColor('RED')
 					.setTitle('Non-existant Command')
 					.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 					.addField(`Command`, `${message.content}`, true)
+<<<<<<< HEAD
 					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
+=======
+					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 				if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 					message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 						.catch((err) => {
@@ -165,7 +210,11 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 				} else {
 					console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 				}
+<<<<<<< HEAD
 				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
+=======
+				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 			}
 		} else {
 			cmd.run(client, message, args, level);
@@ -174,9 +223,15 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 		if (level >= cmd.conf.permLevel) {
 			if (cmd.conf.enabled) {
 				cmd.run(client, message, args, level);
+<<<<<<< HEAD
 				if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) ran command ${message.content}`, 'CMD');}
 			} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');}
 		} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) tried to run command without permissions: ${message.content}`, 'CMD');}
+=======
+				if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');}
+			} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');}
+		} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) tried to run command without permissions: ${message.content}`, 'CMD');}
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 	}
 
 

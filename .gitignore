@@ -1,5 +1,9 @@
 node_modules
 config.js
+<<<<<<< HEAD
+=======
+data
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 configsetup.js
 .cache
 .config

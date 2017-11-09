@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 const Discord = require('discord.js');
+=======
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 module.exports = (client) => {
 
 	/*
@@ -121,6 +124,7 @@ module.exports = (client) => {
 		}
 		return myArr;
 	};
+<<<<<<< HEAD
   
   // Bot version
 	client.version = require('../package.json').version;
@@ -154,6 +158,10 @@ module.exports = (client) => {
       return createdEmbed;
       
   }
+=======
+
+	client.version = require('../package.json').version;
+>>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 
 	// These 2 simply handle unhandled things. Like Magic. /shrug
 	process.on('uncaughtException', (err) => {
