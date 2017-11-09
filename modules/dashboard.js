@@ -157,17 +157,6 @@ module.exports = (client) => {
 		res.redirect('/');
 	}
 
-	switch (client.config.dashboard.theme) {
-		case 'dark':
-			client.log('INFO', 'Using dark theme for dashboard');
-			break;
-		case 'light':
-			client.log('INFO', 'Using light theme for dashboard');
-			break;
-		default:
-			client.log('INFO', 'Dashboard theme provided invalid. Using dark theme');
-	}
-
 	// Index page. If the user is authenticated, it shows their info
 	// at the top right of the screen.
 	app.get('/', (req, res) => {
