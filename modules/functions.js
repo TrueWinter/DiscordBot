@@ -151,7 +151,7 @@ module.exports = (client) => {
         return console.log('Invalid type');
       }
     
-    
+      return createdEmbed;
       
   }
 

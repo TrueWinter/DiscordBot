@@ -94,12 +94,13 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 			if (cmd) {
 				if (level >= cmd.conf.permLevel) {
 					if (cmd.conf.enabled === true) {
-						const embed = new Discord.RichEmbed()
+            var embed = client.createCommandEmbed('C', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
+						/*const embed = new Discord.RichEmbed()
 							.setColor('RED')
 							.setTitle('Command Used')
 							.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 							.addField(`Command`, `${message.content}`, true)
-							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
 						if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 							message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 								.catch((err) => {
@@ -112,12 +113,13 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) ran command ${message.content}`, 'CMD');
 					} else {
 						message.reply('This command is disabled');
-						const embed = new Discord.RichEmbed()
+            var embed = client.createCommandEmbed('D', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
+						/*const embed = new Discord.RichEmbed()
 							.setColor('RED')
 							.setTitle('Disabled Command Usage')
 							.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 							.addField(`Command`, `${message.content}`, true)
-							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+							.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
 						if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 							message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 								.catch((err) => {
@@ -129,12 +131,14 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 						client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
 					}
 				} else {
-					const embed = new Discord.RichEmbed()
+          
+          var embed = client.createCommandEmbed('P', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
+					/*const embed = new Discord.RichEmbed()
 						.setColor('RED')
 						.setTitle('No Permissions')
 						.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 						.addField(`Command`, `${message.content}`, true)
-						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+						.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
 					if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 						message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 							.catch((err) => {
@@ -146,12 +150,13 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
 				}
 			} else {
-				const embed = new Discord.RichEmbed()
+        var embed = client.createCommandEmbed('N', `${message.author.tag} (${message.author.id})`, `${message.content}`, `${message.channel.name} (${message.channel.id})`);
+				/*const embed = new Discord.RichEmbed()
 					.setColor('RED')
 					.setTitle('Non-existant Command')
 					.addField(`User`, `${message.author.tag} (${message.author.id})`, true)
 					.addField(`Command`, `${message.content}`, true)
-					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);
+					.addField(`Channel`, `${message.channel.name} (${message.channel.id})`, true);*/
 				if (message.guild.channels.find('name', guildSettings.modLogChannel)) {
 					message.guild.channels.find('name', guildSettings.modLogChannel).send({ embed })
 						.catch((err) => {
