@@ -7,6 +7,12 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 7.4.3:
+
+- Removed some code that was not removed from a change in version 7.4.0
+- Fixed up the `pin` command a bit
+- Some CSS changes
+
 ## Version 7.4.2:
 
 Fixed bad code in `purge` command

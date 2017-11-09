@@ -1,6 +1,7 @@
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
 	var id = args[0];
-	if (!id) return message.reply('You need to give an ID of the message to pin');
+	//if (!id) return message.reply('You need to give an ID of the message to pin');
+	if (!id) await message.channel.fetchMessages({ limit: 2 }).then((m) => id = m.array()[1].id);
 
 	message.channel.fetchMessage(id).then((m) => {
 		m.pin().then(() => {
