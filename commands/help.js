@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-const Discord = require('discord.js');
-
-=======
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 exports.run = (client, message, args, level) => {
 
 	if (!args[0]) {
@@ -12,20 +7,15 @@ exports.run = (client, message, args, level) => {
 		let currentCategory = '';
 		let output = `= Command List =\n\n[Use [prefix]help <commandname> for details]\n`;
 		if (message.channel.type === 'dm') {
-<<<<<<< HEAD
-			output += `Moderation commands are disabled in DMs. Some other commands may also be disabled\n`;
-=======
 			output += `Moderation commands are disabled and hidden in DMs. Some other commands may also be disabled\n`;
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 		}
 		const sorted = myCommands.sort((p, c) => p.help.category > c.help.category ? 1 : -1);
 		sorted.forEach(c => {
 			const cat = c.help.category.toProperCase();
 			if (currentCategory !== cat) {
-<<<<<<< HEAD
-				//if (message.channel.type !== 'dm' || cat !== 'Moderation') {
+				if (message.channel.type !== 'dm' || cat !== 'Moderation') {
 					output += `\n== ${cat} ==\n`;
-				//}
+				}
 				//output += `\n== ${cat} ==\n`;
 				currentCategory = cat;
 			}
@@ -36,27 +26,7 @@ exports.run = (client, message, args, level) => {
 			//}
 
 		});
-    
-    var helpEmbed = new Discord.RichEmbed()
-      .setTitle('Help')
-      .setDescription(`\`\`\`asciidoc\n${output}\`\`\``);
-		message.channel.send({ embed: helpEmbed });
-=======
-				if (message.channel.type !== 'dm' || cat !== 'Moderation') {
-					output += `\n== ${cat} ==\n`;
-				}
-				//output += `\n== ${cat} ==\n`;
-				currentCategory = cat;
-			}
-			if (cat === 'Moderation' && message.channel.type === 'dm') {
-				output += '';
-			} else {
-				output += `${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
-			}
-
-		});
 		message.channel.send(output, { code: 'asciidoc' });
->>>>>>> d85b943838bb366cd7629067c31beacdd486857d
 	} else {
 		let command = args[0];
 		if (client.commands.has(command)) {
