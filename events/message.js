@@ -109,7 +109,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 							console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 						}
 						cmd.run(client, message, args, level);
-						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');
+						console.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) ran command ${message.content}`, 'CMD');
 					} else {
 						message.reply('This command is disabled');
 						const embed = new Discord.RichEmbed()
@@ -126,7 +126,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 						} else {
 							console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 						}
-						client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
+						client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');
 					}
 				} else {
 					const embed = new Discord.RichEmbed()
@@ -143,7 +143,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 					} else {
 						console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 					}
-					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
+					client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run command ${message.content} without having the correct permission level`, 'CMD');
 				}
 			} else {
 				const embed = new Discord.RichEmbed()
@@ -160,7 +160,7 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 				} else {
 					console.log(`Unable to send message to modLogChannel (${guildSettings.modLogChannel})`);
 				}
-				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.username} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
+				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}):${message.author.tag} (${message.author.id}) tried to run non-existant command ${message.content}`, 'CMD');
 			}
 		} else {
 			cmd.run(client, message, args, level);
@@ -169,9 +169,9 @@ module.exports = (client, message) => { // eslint-disable-line complexity
 		if (level >= cmd.conf.permLevel) {
 			if (cmd.conf.enabled) {
 				cmd.run(client, message, args, level);
-				if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) ran command ${message.content}`, 'CMD');}
-			} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');}
-		} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.username} (${message.author.id}) tried to run command without permissions: ${message.content}`, 'CMD');}
+				if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) ran command ${message.content}`, 'CMD');}
+			} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) tried to run disabled command ${message.content}`, 'CMD');}
+		} else if (client.config.defaultSettings.logCommandUsage === 'true') {client.log('log', `DM: ${message.author.tag} (${message.author.id}) tried to run command without permissions: ${message.content}`, 'CMD');}
 	}
 
 
