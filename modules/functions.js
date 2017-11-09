@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 module.exports = (client) => {
 
 	/*
@@ -120,8 +121,39 @@ module.exports = (client) => {
 		}
 		return myArr;
 	};
-
+  
+  // Bot version
 	client.version = require('../package.json').version;
+  
+  client.createCommandEmbed = function (type, u, comm, ch) {
+    if (!type || !u || !comm || !ch) return console.log('Function values are required');
+    
+    const createdEmbed = new Discord.RichEmbed()
+      .setColor('RED')
+      .addField(`User`, `${u})`, true)
+      .addField(`Command`, `${comm}`, true)
+      .addField(`Channel`, `${ch})`, true);
+    
+    switch (type) {
+      case 'C':
+        createdEmbed.setTitle('Command Used');
+        break;
+      case 'D':
+        createdEmbed.setTitle('Disabled Command Usage');
+        break;
+      case 'P':
+        createdEmbed.setTitle('No Permissions');
+        break;
+      case 'N':
+        createdEmbed.setTitle('Non-existant Command Usage');
+        break;
+      default:
+        return console.log('Invalid type');
+      }
+    
+    
+      
+  }
 
 	// These 2 simply handle unhandled things. Like Magic. /shrug
 	process.on('uncaughtException', (err) => {
