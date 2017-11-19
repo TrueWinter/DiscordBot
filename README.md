@@ -105,7 +105,6 @@ $ cd DiscordBot
 $ npm install
 $ npm start
 ```
-**OR** start the bot using the `linux_run.sh` for Linux or `windows_run.bat` for Windows.
 
 **NOTE:** Running the bot with a process manager (like PM2) is recommended.
 
@@ -125,7 +124,7 @@ This bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Gui
 
 ## Privacy Policy:
 
-Please read the `PRIVACY.md` file.
+Please read the `PRIVACY.md` file. NOTE: This is for you to know what information the bot will be collecting. No information will be sent to me about the bot in any way.
 
 ## License
 

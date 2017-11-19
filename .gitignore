@@ -2,5 +2,5 @@ node_modules
 config.js
 data
 configsetup.js
-linux_run.sh
-windows_run.bat
+_linux_run.sh
+_windows_run.bat
