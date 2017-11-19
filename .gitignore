@@ -1,8 +1,6 @@
 node_modules
-config.js
+-config.js
 data
 configsetup.js
-.cache
-.config
-.data
-.env
+linux_run.sh
+windows_run.bat
