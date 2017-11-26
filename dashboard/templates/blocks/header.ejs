@@ -28,11 +28,33 @@
       border: 16px solid #f3f3f3;
       border-radius: 50%;
       border-top: 16px solid #3498db;
-      align:center;
+      align: center;
       width: 120px;
       height: 120px;
       -webkit-animation: spin 2s linear infinite;
       animation: spin 2s linear infinite;
+    }
+    
+    #noscript {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      height: 2em;
+      overflow: show;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      /*border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      align:center;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;*/
     }
 
     @-webkit-keyframes spin {
@@ -47,49 +69,25 @@
     
     
     
-          @keyframes bounce {
-	0%, 100%, 20%, 50%, 80% {
-		-webkit-transform: translateY(0);
-		-ms-transform:     translateY(0);
-		transform:         translateY(0)
-	}
-	40% {
-		-webkit-transform: translateY(-30px);
-		-ms-transform:     translateY(-30px);
-		transform:         translateY(-30px)
-	}
-	60% {
-		-webkit-transform: translateY(-15px);
-		-ms-transform:     translateY(-15px);
-		transform:         translateY(-15px)
-	}
-}
-.bounce {  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 180px;
-  width: 180px;
-  border-radius: 50%;
-  line-height: 180px;
-  text-align: center;
-  text-transform: uppercase;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  color: white;
-}
-.bounce:hover {
-  cursor: pointer;
-  animation-name: bounce;
-  -moz-animation-name: bounce;
-}
+          
   </style>
+  <noscript>
+    <style>
+      #noscript {
+        display: block;
+      }
+      #loading {
+        border: none;
+        -webkit-animation: unset;
+        animation: unset;
+        height: 0;
+        width: 0;
+      }
+      .pageContent {
+        display: none;
+      }
+    </style>
+  </noscript>
 
 	<script>
     $(window).on('load', function() {
@@ -157,6 +155,11 @@ window.cookieconsent.initialise({
 </head>
 
 <body>
+  <div id="noscript">
+    <h1>
+      You need JavaScript enabled to view this page...
+    </h1>  
+  </div>
   <div id="loading"></div>
   <div class="pageContent">
     

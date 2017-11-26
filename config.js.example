@@ -26,7 +26,8 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		"logNewMember": "true",
 		"logMemberLeave": "true",
 		"logCommandUsage": "true",
-		"logPurge": "true"
+		"logPurge": "true",
+    "sendHelp": "channel" // Available options: channel, dm
   },
     "dashboard" : {
 		"enabled": "true", // This setting controls whether the dashboard is enabled or not.

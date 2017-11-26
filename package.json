@@ -1,6 +1,6 @@
 {
   "name": "ndt3-discord-bot",
-  "version": "7.4.3",
+  "version": "8.0.0-dev",
   "description": "My first Discord bot made in Discord.js",
   "main": "bot.js",
   "dependencies": {
@@ -25,7 +25,8 @@
     "process-nextick-args": "^1.0.7",
     "rebuild": "^0.1.2",
     "url": "^0.11.0",
-    "util-deprecate": "^1.0.2"
+    "util-deprecate": "^1.0.2",
+    "showdown": "^1.8.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

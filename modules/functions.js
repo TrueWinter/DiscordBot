@@ -40,7 +40,13 @@ module.exports = (client) => {
 
 		return permlvl;
 	};
-
+	client.permLevels = {
+		0: 'DM/Webhook',
+		2: 'Guild Moderator',
+		3: 'Guild Administrator',
+		4: 'Guild Owner',
+		10: 'Bot Owner'
+	};
 
 	/*
 	LOGGING FUNCTION

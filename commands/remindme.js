@@ -2,6 +2,9 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 	var time = args[0];
 	var reminder = args.splice(1).join(' ');
 
+	if (!time) return message.reply('Can\'t remind you if I don\'t know when to do so...');
+	if (!reminder) return message.reply('You forgot the reminder');
+
 	// This will not work if the bot is restarted or stopped
 
 	time = await time.toString();
@@ -41,5 +44,5 @@ exports.help = {
 	name: 'remindme',
 	category: 'Miscelaneous',
 	description: 'For when you need to remember something',
-	usage: 'remindme [.s/m/h/d] [reminder]'
+	usage: 'remindme [s/m/h/d] [reminder]'
 };

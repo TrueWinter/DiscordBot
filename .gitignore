@@ -4,3 +4,10 @@ data
 configsetup.js
 _linux_run.sh
 _windows_run.bat
+.cache
+.config
+.gitconfig
+.data
+.env
+linux_run.sh
+windows_run.sh

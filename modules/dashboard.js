@@ -15,6 +15,7 @@ example, putting it in one file is a little simpler. Just *a little*.
 // Native Node Imports
 const url = require('url');
 const path = require('path');
+const fs = require('fs');
 
 // Used for Permission Resolving...
 const Discord = require('discord.js');
@@ -53,7 +54,7 @@ module.exports = (client) => {
 	// which is the folder that stores all the internal template files.
 	const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
 
-	app.set('trust proxy', '127.0.0.1'); // Proxy support
+	app.set('trust proxy', 5); // Proxy support
 	// The public data directory, which is accessible from the *browser*.
 	// It contains all css, client javascript, and images needed for the site.
 	app.use('/public', express.static(path.resolve(`${dataDir}${path.sep}public`)));
@@ -157,6 +158,29 @@ module.exports = (client) => {
 		res.redirect('/');
 	}
 
+	var privacyMD = '';
+	fs.readFile(`${process.cwd()}${path.sep}dashboard${path.sep}public${path.sep}PRIVACY.md`, function(err, data) {
+		if (err) {
+			console.log(err);
+			privacyMD = 'Error';
+			return;
+		}
+		privacyMD = data.toString().replace(/\{\{botName\}\}/g, client.user.username).replace(/\{\{email\}\}/g, client.config.dashboard.legalTemplates.contactEmail);
+		if (client.config.dashboard.secure !== 'true') {
+			privacyMD = privacyMD.replace('Sensitive and private data exchange between the Site and its Users happens over a SSL secured communication channel and is encrypted and protected with digital signatures.', '');
+		}
+	});
+
+	var termsMD = '';
+	fs.readFile(`${process.cwd()}${path.sep}dashboard${path.sep}public${path.sep}TERMS.md`, function(err, data) {
+		if (err) {
+			console.log(err);
+			privacyMD = 'Error';
+			return;
+		}
+		termsMD = data.toString().replace(/\{\{botName\}\}/g, client.user.username).replace(/\{\{email\}\}/g, client.config.dashboard.legalTemplates.contactEmail);
+	});
+
 	// Index page. If the user is authenticated, it shows their info
 	// at the top right of the screen.
 	app.get('/', (req, res) => {
@@ -202,6 +226,24 @@ module.exports = (client) => {
 				nVersion: process.version,
 				bVersion: client.version
 			}
+		});
+	});
+
+	app.get('/legal', function (req, res) {
+
+		var showdown	= require('showdown');
+		var	converter = new showdown.Converter(),
+			textPr			= privacyMD,
+			htmlPr			= converter.makeHtml(textPr),
+			textTe			= termsMD,
+			htmlTe			= converter.makeHtml(textTe);
+		res.render(path.resolve(`${templateDir}${path.sep}legal.ejs`), {
+			bot: client,
+			auth: req.isAuthenticated() ? true : false,
+			user: req.isAuthenticated() ? req.user : null,
+			privacy: htmlPr.replace(/\\'/g, `'`),
+			terms: htmlTe.replace(/\\'/g, `'`),
+			edited: client.config.dashboard.legalTemplates.lastEdited
 		});
 	});
 
@@ -262,20 +304,20 @@ module.exports = (client) => {
 		}
 	});
 
-	app.post('/manage/:guildID', checkAuth, async (req, res) => {
-		const guild = await client.guilds.get(req.params.guildID);
+	app.post('/manage/:guildID', checkAuth, (req, res) => {
+		const guild = client.guilds.get(req.params.guildID);
 		if (!guild) return res.status(404);
-		const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false; // eslint-disable-line max-len
+		const isManaged = guild && !!guild.member(req.user.id) ? guild.member(req.user.id).permissions.has('MANAGE_GUILD') : false;
 		if (req.user.id === client.config.ownerID) {
 			console.log(`Admin bypass for managing server: ${req.params.guildID}`);
 		} else if (!isManaged) {
-			res.redirect('/dashboard');
+			res.redirect('/');
 		}
-		const guildSettings = await client.settings.get(guild.id);
-		for (const key in guildSettings) {
-			guildSettings[key] = await req.body[key];
+		const settings = client.settings.get(guild.id);
+		for (const key in settings) {
+			settings[key] = req.body[key];
 		}
-		client.settings.set(guild.id, guildSettings);
+		client.settings.set(guild.id, settings);
 		res.redirect(`/manage/${req.params.guildID}`);
 	});
 
