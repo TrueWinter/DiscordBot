@@ -1,0 +1,11 @@
+node_modules
+config.js
+data
+configsetup.js
+.cache
+.config
+.gitconfig
+.data
+.env
+linux_run.sh
+windows_run.sh
