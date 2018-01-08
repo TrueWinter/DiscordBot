@@ -1,0 +1,15 @@
+node_modules
+config.js
+data
+configsetup.js
+_linux_run.sh
+_windows_run.bat
+.glitch-assets
+watch.json
+.restart
+.cache
+.config
+.gitconfig
+.data
+linux_run.sh
+windows_run.sh
