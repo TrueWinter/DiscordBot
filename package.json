@@ -1,6 +1,6 @@
 {
   "name": "ndt3-discord-bot",
-  "version": "8.0.0-dev",
+  "version": "8.3.0",
   "description": "My first Discord bot made in Discord.js",
   "main": "bot.js",
   "dependencies": {
@@ -13,7 +13,6 @@
     "enmap-level": "^1.0.0",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "google": "^2.1.0",
     "helmet": "^3.9.0",
     "marked": "^0.3.6",
     "moment": "^2.19.1",
@@ -26,7 +25,15 @@
     "rebuild": "^0.1.2",
     "url": "^0.11.0",
     "util-deprecate": "^1.0.2",
-    "showdown": "^1.8.1"
+    "showdown": "^1.8.1",
+    "cleverbot-node": "^0.3.11",
+    "cheerio": "^0.22.0",
+    "goo.gl": "^0.1.4",
+    "node-bypasser": "^1.8.0",
+    "simple-youtube-api": "^5.0.0",
+    "ytdl-core": "^0.18.5",
+    "opusscript": "^0.0.6",
+    "prism-media": "^0.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -19,7 +19,7 @@ exports.conf = {
 
 exports.help = {
 	name: '8ball',
-	category: 'Miscelaneous',
+	category: 'Fun',
 	description: 'Ask a yes/no question, get an answer',
 	usage: '8ball [question]'
 };

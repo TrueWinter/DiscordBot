@@ -4,6 +4,7 @@ require('moment-duration-format');
 const Discord = require('discord.js');
 
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
+	var time = Date.now();
 	const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]');
 	const embed = new Discord.RichEmbed()
 		.setColor('RED')
@@ -16,7 +17,9 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 		.addField(`Servers`, `${client.guilds.size.toLocaleString()}`, true)
 		.addField(`Channels`, `${client.channels.size.toLocaleString()}`, true)
 		.addField(`Discord.js`, `v${version}`, true)
-		.addField(`Node`, `${process.version}`, true);
+		.addField(`Node`, `${process.version}`, true)
+		.addField(`Bot Version`, `${client.version}`, true)
+		.setFooter(`Time taken: ${Date.now() - time}ms`);
 	message.channel.send({ embed });
 };
 

@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = (client) => {
 
 	/*
@@ -40,12 +42,27 @@ module.exports = (client) => {
 
 		return permlvl;
 	};
+
 	client.permLevels = {
-		0: 'DM/Webhook',
+		0: 'User',
 		2: 'Guild Moderator',
 		3: 'Guild Administrator',
 		4: 'Guild Owner',
 		10: 'Bot Owner'
+	};
+
+	client.pointsMonitor = (client, message) => {
+		if (message.channel.type !== 'text') return;
+		const settings = client.settings.get(message.guild.id);
+		if (message.content.startsWith(settings.prefix)) return;
+		const score = client.points.get(`${message.guild.id}-${message.author.id}`) || { points: 0, level: 0 };
+		score.points++;
+		const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
+		if (score.level < curLevel) {
+			message.reply(`You've leveled up to level **${curLevel}**!`);
+			score.level = curLevel;
+		}
+		client.points.set(`${message.guild.id}-${message.author.id}`, score);
 	};
 
 	/*
@@ -54,8 +71,9 @@ module.exports = (client) => {
 	Logs to console. Future patches may include time+colors
 	*/
 	client.log = (type, msg, title) => {
+		var time = moment().format(client.config.logTimeFormat);
 		if (!title) title = 'Log';
-		console.log(`[${type}] [${title}] ${msg}`);
+		console.log(`${time}: [${type}] [${title}] ${msg}`);
 	};
 
 
@@ -94,15 +112,21 @@ module.exports = (client) => {
 	client.clean = (client, text) => {
 		//if (text && text.constructor.name === 'Promise') text = await text;
 		if (typeof evaled !== 'string') text = require('util').inspect(text, { depth: 0 });
+		//console.log(`T (${typeof text}): ${text}`);
 
-		text = text
+		var t = text
 			.replace(/`/g, '`' + String.fromCharCode(8203)) // eslint-disable-line prefer-template
 			.replace(/@/g, '@' + String.fromCharCode(8203)) // eslint-disable-line prefer-template
-			.replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE... --')
-			.replace(client.config.dashboard.oauthSecret, 'Nk-- NOPE --...')
-			.replace(client.config.dashboard.sessionSecret, 'B8-- NOPE --...');
+			.replace(/\n/g, '\n' + String.fromCharCode(8203)) // eslint-disable-line prefer-template
+			.replace(client.config.token, 'mfa.VkO_2G4Qv3T-- NO TOKEN HERE --')
+			.replace(client.config.dashboard.oauthSecret, 'Nk-- NOPE --')
+			.replace(client.config.dashboard.sessionSecret, 'B8-- NOPE --')
+			.replace(client.config.cleverbotToken, 'CC-- NOPE --')
+			.replace(client.config.googleAPIToken, 'AI-- NOPE --...');
 
-		return text;
+		//console.log(`T2 (${typeof t}): ${t}`);
+
+		return t;
 	};
 
 

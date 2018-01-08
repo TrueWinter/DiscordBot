@@ -24,6 +24,6 @@ exports.conf = {
 exports.help = {
 	name: 'pin',
 	category: 'Moderation',
-	description: 'Pins a message',
-	usage: 'pin [message ID]'
+	description: 'Pins a message. If no message ID given, pins one message above',
+	usage: 'pin\n pin [message ID]'
 };

@@ -25,8 +25,4 @@ _(Note that this list may not be complete. If marked with a asterisk_ (`*`) _the
 
 I, ***NdT3Development***, (as the bot developer) _will not be liable or responsible for damages of_ ***any*** _kind_ (including, without limitation, damages caused, loss of information or data, or any other indirect, incidental, special or consequential damages) arising out of the use of this bot, even if advised of the possibility of such damages.
 
-<<<<<<< HEAD
 It is recommended to inform users of your Discord guild that the bot may collect their **END USER DATA**.
-=======
-It is recommended to inform users of your Discord guild that the bot may collect their **END USER DATA**.
->>>>>>> 63e2c6397d06d694e04802bbe45e4eea0a1a7f36

@@ -57,7 +57,7 @@ module.exports = (client) => {
 	app.set('trust proxy', 5); // Proxy support
 	// The public data directory, which is accessible from the *browser*.
 	// It contains all css, client javascript, and images needed for the site.
-	app.use('/public', express.static(path.resolve(`${dataDir}${path.sep}public`)));
+	app.use('/public', express.static(path.resolve(`${dataDir}${path.sep}public`), { maxAge: '10d' }));
 	app.use(morgan('combined')); // Logger
 
 	// uhhhh check what these do.
@@ -231,7 +231,18 @@ module.exports = (client) => {
 
 	app.get('/legal', function (req, res) {
 
-		var showdown	= require('showdown');
+		md.setOptions({
+			renderer: new md.Renderer(),
+			gfm: true,
+			tables: true,
+			breaks: false,
+			pedantic: false,
+			sanitize: false,
+			smartLists: true,
+			smartypants: false
+		});
+
+		/*var showdown	= require('showdown');
 		var	converter = new showdown.Converter(),
 			textPr			= privacyMD,
 			htmlPr			= converter.makeHtml(textPr),
@@ -243,6 +254,15 @@ module.exports = (client) => {
 			user: req.isAuthenticated() ? req.user : null,
 			privacy: htmlPr.replace(/\\'/g, `'`),
 			terms: htmlTe.replace(/\\'/g, `'`),
+			edited: client.config.dashboard.legalTemplates.lastEdited
+		});*/
+
+		res.render(path.resolve(`${templateDir}${path.sep}legal.ejs`), {
+			bot: client,
+			auth: req.isAuthenticated() ? true : false,
+			user: req.isAuthenticated() ? req.user : null,
+			privacy: md(privacyMD),
+			terms: md(termsMD),
 			edited: client.config.dashboard.legalTemplates.lastEdited
 		});
 	});
@@ -315,7 +335,30 @@ module.exports = (client) => {
 		}
 		const settings = client.settings.get(guild.id);
 		for (const key in settings) {
-			settings[key] = req.body[key];
+			var value = req.body[key];
+			//console.log(typeof value);
+			//console.log(value);
+			/*if (value.length > 1) {
+				for (var i = 0; i < value.length; i++) {
+					console.log(value[i]);
+					value[i] = value[i].replace(',', '');
+					console.log(value[i]);
+				}
+			} else {*/
+			if (value.indexOf(',') > -1) {
+				settings[key] = value.split(',');
+				//console.log('S: ' + settings[key]);
+				//console.log(typeof settings[key]);
+				//console.log('Split');
+				//console.log(typeof value);
+				//console.log(value);
+
+			} else {
+				settings[key] = value;
+				//console.log(typeof value);
+				//console.log(value);
+			}
+			//settings[key] = req.body[key];
 		}
 		client.settings.set(guild.id, settings);
 		res.redirect(`/manage/${req.params.guildID}`);

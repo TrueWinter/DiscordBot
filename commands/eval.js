@@ -6,22 +6,40 @@
 
 // However it's, like, super ultra useful for troubleshooting and doing stuff
 // you don't want to put in a command.
+var Discord = require('discord.js');
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+	var time = Date.now();
 	const code = args.join(' ');
 	if (!code) {
 		return message.reply('You need to give me some code...');
 	}
-	if (client.config.blockConfigEval === 'true') {
-		if (message.content.match(/((client\.config)|(config\.js))/g)) {
-			return message.reply('No, you cannot leak your config file...');
-		}
-	}
 	try {
 		const evaled = eval(code);
 		const clean = await client.clean(client, evaled);
-		message.channel.send(`\`\`\`xl\n${clean}\n\`\`\``);
+		if (clean.length > 1800) {
+			message.channel.send(`${clean}\n\nTime taken: ${Date.now() - time}ms`, { code: 'xl', split: true }).catch(console.error);
+		} else {
+			var evalEmbed = new Discord.RichEmbed()
+				.setAuthor(client.user.username, client.user.avatarURL || client.user.defaultAvatarURL)
+				.setTitle('Eval Output')
+				.setColor('GREEN')
+				.setDescription(`\`\`\`xl\n${clean}\`\`\``)
+				.setFooter(`Time taken: ${Date.now() - time}ms`);
+			message.channel.send({ embed: evalEmbed }).catch(console.error);
+		}
 	} catch (err) {
-		message.channel.send(`\`ERROR\` \`\`\`xl\n${await client.clean(client, err)}\n\`\`\``);
+		if (err.message.length < 150) {
+			var errorClean = await client.clean(client, err.message);
+			var errorEmbed = new Discord.RichEmbed()
+				.setTitle('ERROR (Check console for error stack)')
+				.setColor('RED')
+				.setAuthor(client.user.username, client.user.avatarURL || client.user.defaultAvatarURL)
+				.setDescription(`\`\`\`xl\n${errorClean}\`\`\``)
+				.setFooter(`Time taken: ${Date.now() - time}ms`);
+			message.channel.send({ embed: errorEmbed }).catch(console.error);
+		} else {
+			message.channel.send(`\`ERROR (Check console for error stack)\` \`\`\`xl\n${await client.clean(client, err.message)}\n\nTime taken: ${Date.now() - time}ms\n\`\`\``, { split: true }).catch(console.error);
+		}
 		console.log(err);
 	}
 };

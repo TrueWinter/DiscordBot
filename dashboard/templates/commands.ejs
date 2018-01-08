@@ -33,11 +33,11 @@ bot.commands.forEach((command) => {
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Description: <%= command.help.description %></p>
-                    <p>Category: <%= command.help.category %></p>
-                    <p>Enabled: <%= command.conf.enabled %></p>
-                    <p>Usage Example: <%= command.help.usage %></p>
-                    <p>Command Aliases: <%= command.conf.aliases %></p>
+                  <p><span style="font-weight: bold;">Description:</span> <%= command.help.description %></p>
+                    <p><span style="font-weight: bold;">Category:</span> <%= command.help.category %></p>
+                    <p><span style="font-weight: bold;">Enabled:</span> <%= command.conf.enabled %></p>
+                    <p><span style="font-weight: bold;">Usage Example(s):</span> <%- '<br>' + command.help.usage.replace(/\n/g, '<br>') %></p>
+                    <p><span style="font-weight: bold;">Command Aliases: <%= command.conf.aliases %></p>
 
                   </div>
                 <div class="modal-footer"><button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button></div>

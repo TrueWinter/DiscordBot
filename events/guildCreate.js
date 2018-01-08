@@ -2,7 +2,7 @@
 
 module.exports = (client, guild) => {
 	// We need to add this guild to our settings!
-	wait(1000);
+	wait(1000); // eslint-disable-line no-undef
 	client.log('log', `Joined guild ${guild.name} (${guild.id})`, 'GUILD');
 	client.settings.set(guild.id, client.config.defaultSettings);
 

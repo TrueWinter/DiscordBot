@@ -1,5 +1,5 @@
 exports.run = async (client, message, args, level) => {// eslint-disable-line no-unused-vars
-	if (!args || args.size < 1) return message.reply('Must provide a command to reload.');
+	if (!args[0]) return message.reply('Must provide a command to reload.');
 
 	let command;
 	if (client.commands.has(args[0])) {

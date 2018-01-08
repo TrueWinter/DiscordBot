@@ -33,7 +33,7 @@ It is recommended to inform users of your Discord guild that the bot may collect
 
 We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our site, register on the site and in connection with other activities, services, features, resources we make available on our Site, or use the Discord bot application linked to this Site. Users may be asked for, as appropriate, name, email address. Users will be required to log into an external account - [Discord](https://discordapp.com) - by means of OAuth2 before being able to access parts of the Site.
 
-We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities. **Note: Messages sent to a Discord Guild that contains the bot may be collected.**
+We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities. **Other information from the Discord bot may be collected as given in the above `Bot` section of this policy**
 
 ### Non-personal identification information
 
@@ -43,12 +43,8 @@ We may collect non-personal identification information about Users whenever they
 
 Our Site may use "cookies" to enhance User experience. User's web browser places cookies on their hard drive for record-keeping purposes and sometimes to track information about them. User may choose to set their web browser to refuse cookies, or to alert you when cookies are being sent. If they do so, note that some parts of the Site may not function properly.
 
-How we use collected information
-NdT3Development collects and uses Users personal information for the following purposes:
+The dashboard collects and uses Users personal information for the following purposes:
 
-- To improve customer service
-- Your information helps us to more effectively respond to your customer service requests and support needs.
-- To personalize user experience
 - We may use information in the aggregate to understand how our Users as a group use the services and resources provided on our Site.
 - To improve our Site
 - To allow for proper operation of our Site
@@ -69,13 +65,13 @@ Sensitive and private data exchange between the Site and its Users happens over 
 
 ### Third party websites
 
-Users may find advertising or other content on our Site that link to the sites and services of our partners, suppliers, advertisers, sponsors, licensors and other third parties. We do not control the content or links that appear on these sites and are not responsible for the practices employed by websites linked to or from our Site. In addition, these sites or services, including their content and links, may be constantly changing. These sites and services may have their own privacy policies and customer service policies. Browsing and interaction on any other website, including websites which have a link to our Site, is subject to that website\'s own terms and policies.
+Users may find advertising or other content on our Site that link to the sites and services of our partners, suppliers, advertisers, sponsors, licensors and other third parties. We do not control the content or links that appear on these sites and are not responsible for the practices employed by websites linked to or from our Site. In addition, these sites or services, including their content and links, may be constantly changing. These sites and services may have their own privacy policies and customer service policies. Browsing and interaction on any other website, including websites which have a link to our Site, is subject to that website's own terms and policies.
 
 In addition to the above, certain parts of the Site will require log in to a external provider - [Discord](https://discordapp.com) - which has it's own policies that you must agree to.
 
  **Other information from the Discord bot may be collected as given in the above `Bot` section of this policy**
 
-### Compliance with children\'s online privacy protection act
+### Compliance with children's online privacy protection act
 
 Protecting the privacy of the very young is especially important. For that reason, we never collect or maintain information at our Site from those we actually know are under 13, and no part of our website is structured to attract anyone under 13.
 

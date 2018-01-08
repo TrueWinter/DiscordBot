@@ -23,8 +23,7 @@ You must not:
 1.  Republish material from this Site
 2.  Sell, rent or sub-license material from this Site
 3.  Reproduce, duplicate or copy material from this Site
-
-Redistribute content from {{botName}} Dashboard (unless content is specifically made for redistribution).
+4.  Redistribute content from {{botName}} Dashboard (unless content is specifically made for redistribution).
 
 ## Hyperlinking to our Content
 

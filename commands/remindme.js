@@ -36,13 +36,13 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 exports.conf = {
 	enabled: true,
 	guildOnly: false,
-	aliases: [],
+	aliases: ['remind', 'reminder'],
 	permLevel: 0
 };
 
 exports.help = {
 	name: 'remindme',
-	category: 'Miscelaneous',
+	category: 'Utilities',
 	description: 'For when you need to remember something',
 	usage: 'remindme [s/m/h/d] [reminder]'
 };

@@ -11,6 +11,8 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 			//console.log(user);
 			//console.log(roleName);
 			if (!message.guild.roles.find('name', roleName)) return message.reply('No role with this name exists. _Roles names are case-sensitive_');
+ 			if (user.roles.exists('name', roleName)) return message.reply(':eyes: I see this role on that user already');
+
 
 			user.addRole(role).then(() => message.reply('Role added')).catch((err) => message.reply('Unable to add role').then(() => console.log(err)));
 			break;
@@ -42,5 +44,5 @@ exports.help = {
 	name: 'role',
 	category: 'Moderation',
 	description: 'Allows you to add or remove a single role from a user',
-	usage: 'role [add/remove] [@user] [role name]'
+	usage: 'role [add/remove] [user mention] [role name]'
 };

@@ -12,10 +12,11 @@ const { inspect } = require('util');
 // const action = args[0]; const key = args[1]; const value = args.slice(2);
 // OR the same as:
 // const [action, key, ...value] = args;
-exports.run = async (client, message, [action, key, ...value], level) => { // eslint-disable-line no-unused-vars
+exports.run = async (client, message, [action, key, ...value], level) => { // eslint-disable-line no-unused-vars, complexity
 
 	// Retrieve current guild settings
 	const settings = client.settings.get(message.guild.id);
+
 
 	// First, if a user does `-set add <key> <new value>`, let's add it
 	if (action === 'add') {
@@ -23,12 +24,30 @@ exports.run = async (client, message, [action, key, ...value], level) => { // es
 		if (settings[key]) return message.reply('This key already exists in the settings');
 		if (value.length < 1) return message.reply('Please specify a value');
 
+		if (value.length > 1) {
+			for (var i = 0; i < value.length; i++) {
+				console.log(value[i]);
+				value[i] = value[i].replace(',', '');
+				console.log(value[i]);
+			}
+		} else if (value[0].indexOf(',') > -1) {
+			value = value[0].split(',');
+			//console.log(typeof value);
+			//console.log(value);
+
+		} else {
+			value = value[0];
+			//console.log(typeof value);
+			//console.log(value);
+		}
+
+
 		// `value` being an array, we need to join it first.
-		settings[key] = value.join(' ');
+		settings[key] = value;
 
 		// One the settings is modified, we write it back to the collection
 		client.settings.set(message.guild.id, settings);
-		message.reply(`${key} successfully added with the value of ${value.join(' ')}`);
+		message.reply(`${key} successfully added with the value of ${value}`);
 	} else
 
 	// Secondly, if a user does `-set edit <key> <new value>`, let's change it
@@ -36,11 +55,37 @@ exports.run = async (client, message, [action, key, ...value], level) => { // es
 		if (!key) return message.reply('Please specify a key to edit');
 		if (!settings[key]) return message.reply('This key does not exist in the settings');
 		if (value.length < 1) return message.reply('Please specify a new value');
+		//console.log(typeof value);
+		//console.log(value);
+		//if (typeof value === 'object') {
+		//value = value[0].split(',');
+		// console.log(value.length);
+		if (value.length > 1) {
+			for (var i = 0; i < value.length; i++) { //eslint-disable-line no-redeclare
+				console.log(value[i]);
+				value[i] = value[i].replace(',', '');
+				console.log(value[i]);
+			}
+		} else if (value[0].indexOf(',') > -1) {
+			value = value[0].split(',');
+			//console.log(typeof value);
+			//console.log(value);
 
-		settings[key] = value.join(' ');
+		} else {
+			value = value[0];
+			//console.log(typeof value);
+			//console.log(value);
+		}
+		//console.log(value);
+		//} else {
+		//value = value.join(' ');
+		//}
+		//console.log(value);
+
+		settings[key] = value;
 
 		client.settings.set(message.guild.id, settings);
-		message.reply(`${key} successfully edited to ${value.join(' ')}`);
+		message.reply(`${key} successfully edited to ${value}`);
 	} else
 
 	// Thirdly, if a user does `-set del <key>`, let's ask the user if they're sure...
@@ -85,5 +130,5 @@ exports.help = {
 	name: 'set',
 	category: 'System',
 	description: 'View or change settings for your server.',
-	usage: 'set [view/get/edit] [key] [value]'
+	usage: 'set\nset [get] [key]\n set [edit] [key] [value]\n set [add] [key] [value]\n set [del] [key]'
 };

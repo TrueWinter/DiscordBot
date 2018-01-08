@@ -19,10 +19,11 @@ This is my first Discord bot made using [Discord.js](https://github.com/hydrabol
   - Deleted message logs
   - Invite link filter
   - Web Dashboard
+  - Music Commands (Code from: https://github.com/iCrawl/Music-Bot)
 
-## Planned features!
+## Upcoming Features
 
-  - ~~Music commands~~ I have decided to completely remove the `play` command and remove all future plans for music features (Found issue in [#1](https://github.com/NdT3Development/DiscordBot/issues/1) and given reasons for this decision [here](https://github.com/NdT3Development/DiscordBot/projects/1#card-4201008))
+- Change of database
 
 ### Installation
 First of all, clone this repository.
@@ -42,45 +43,53 @@ Once you have that done, edit the `config.js.example` file and then rename the f
 ```javascript
 /* eslint-disable */
 var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
-	// ALL settings are strings. Do NOT just use true or false, use these in strings such as "true" or "false". This is due to how some code works when changing the settings
-  "ownerID": "123456789012345678", // Your ID here
-  "token": "Mxfxawx-token021kxxmkalpr-m", // Your bot token here
-	"status": "dnd", // Bot status [online/idle/invisible/dnd]
-	"debug": "false", // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
-	"playingGame": "{{prefix}}help | {{guilds}} guilds | v{{version}}", // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
-	"blockConfigEval": "true", // RECOMMENDED TO KEEP THIS SET TO "true"! This setting ensures that you cannot use the eval or exec commands if the eval/exec code contains 'config.js'
-	"purgeLogFormat": "\n Message ID: {{mID}} | Message Timestamp: {{mTS}} | Content: {{mC}} \n", // {{mID}}: Message ID; {{mTS}} Message Timestamp; {{mC}}: Message Content;
-	"eightBallResponses": ['Yes', 'No', 'Certainly', 'My sources say yes', 'Try again later', 'Without a doubt', 'Better not to tell you now'], // An array of responses for the 8ball command
-  "defaultSettings" : {
-    "prefix": "!",
-    "modLogChannel": "mod-log",
-    "modRole": "Moderator",
-    "adminRole": "Admin",
-    "welcomeChannel": "general",
-    "welcomeMessage": "Welcome {{user}}!",
-    "welcomeEnabled": "false",
-    "inviteFilterEnabled": "false",
-    "inviteWhitelist": ["discord-testers", "discord-developers"], // This can be changed, these are just defaults as an example
-    "facepalms": "false", // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'
-    "swearFilter": "false",
-    "swearWords": ["damn"], // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
-		"logDeletes": "true",
-		"logNewMember": "true",
-		"logMemberLeave": "true",
-		"logCommandUsage": "true",
-		"logPurge": "true"
-  },
-    "dashboard" : {
-		"enabled": "true", // This setting controls whether the dashboard is enabled or not.
-    "oauthSecret": "0eFle4ArGsecret0sa", // The client secret from the Discord bot page
-    "secure": "true", // HTTPS: "true" for true, "false" for false
-    "sessionSecret": "-crazyKeyboard-qwaszxerdfcvtyghbnuijkmopl", // Go crazy on the keyboard here, this is used as a session secret
-    "domain": "dashboard.bot-website.com", // Domain name (with port if not running behind proxy running on port 80). Example: "domain": "dashboard.bot-website.com" OR "domain": "localhost:33445"
-    "port": "33445", // The port that it should run on
-		"invitePerm": "470019271",
-		"protectStats": "false",
-		"borderedStats": "false", // Controls whether stats in the dashboard should have a border or not
-  }
+	// ALL settings are strings. Do NOT just use true or false, use these in strings such as 'true' or 'false'. This is due to how some code works when changing the settings
+	ownerID: '123456789012345678', // Your ID here
+	token: 'Mxfxawx-token021kxxmkalpr-m', // Your bot token here
+	status: 'dnd', // Bot status [online/idle/invisible/dnd]
+	debug: 'false', // This is used to output some debug info if needed. The token will be in the console and other information could be in the console
+	playingGame: '{{prefix}}help | {{guilds}} guilds | v{{version}}', // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
+	purgeLogFormat: '\n Message ID: {{mID}} | Message Timestamp: {{mTS}} | Content: {{mC}} \n', // {{mID}}: Message ID; {{mTS}} Message Timestamp; {{mC}}: Message Content;
+	eightBallResponses: ['Yes', 'No', 'Certainly', 'My sources say yes', 'Try again later', 'Without a doubt', 'Better not to tell you now'], // An array of responses for the 8ball command
+	cleverbotToken: 'CC-3824abc', // API Token for CleverBot
+  googleAPIToken: 'AI-241scsc', // Used for link shortener and music features. You need to have these APIs enabled.
+  logTimeFormat: 'D MMM YYYY HH:mm:ss ZZ',
+  musicEnabled: 'true',
+	defaultSettings: {
+		prefix: '!',
+		modLogChannel: 'mod-log',
+		modRole: 'Moderator',
+		adminRole: 'Admin',
+		welcomeChannel: 'general',
+		welcomeMessage: 'Welcome {{user}}!',
+		welcomeEnabled: 'false',
+		inviteFilterEnabled: 'false',
+		inviteWhitelist: ['discord-testers', 'discord-developers'], // This can be changed, these are just defaults as an example
+		facepalms: 'false', // If enabled, the bot will reply with the facepalm emoji whenever a message contains 'facepalm'
+		swearFilter: 'false',
+		swearWords: ['damn'], // An array of swear words. These should be lowercase. (of course, I have not included much for certain reasons...)
+		logDeletes: 'true',
+		logNewMember: 'true',
+		logMemberLeave: 'true',
+		logCommandUsage: 'true',
+		logPurge: 'true',
+		sendHelp: 'channel' // Available options: channel, dm
+	},
+	dashboard: {
+		enabled: 'true', // This setting controls whether the dashboard is enabled or not.
+		oauthSecret: '0eFle4ArGsecret0sa', // The client secret from the Discord bot page
+		secure: 'false', // HTTPS: 'true' for true, 'false' for false
+		sessionSecret: '-crazyKeyboard-qwaszxerdfcvtyghbnuijkmopl', // Go crazy on the keyboard here, this is used as a session secret
+		domain: 'dashboard.bot-website.com', // Domain name (with port if not running behind proxy running on port 80). Example: 'domain': 'dashboard.bot-website.com' OR 'domain': 'localhost:33445'
+		port: '33445', // The port that it should run on
+		invitePerm: '536079575',
+		protectStats: 'false',
+		borderedStats: 'false', // Controls whether stats in the dashboard should have a border or not
+		legalTemplates: {
+			contactEmail: 'support@dashboard.bot-website.com', // This email will be used in the legal page of the dashboard if someone needs to contact you for any reason regarding this page
+			lastEdited: '18 November 2017' // Change this if you update the `TERMS.md` or `PRIVACY.md` files in `dashboard/public/`
+		}
+	}
 };
 
 module.exports = config;
@@ -136,12 +145,15 @@ NdT3 Discord Bot is written in Discord.js. If you want to add a feature or work 
 
 ## Credits
 
-This bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Guide/guidebot) with the dashboard being based on the one [here](https://idiots-dashboard.glitch.me/) and made using [Discord.js](https://github.com/hydrabolt/discord.js).
+- Bot based on AnIdiotsGuide's [example bot](https://github.com/An-Idiots-Guide/guidebot).
+- Dashboard based on the one [here](https://idiots-dashboard.glitch.me/).
+- Made using [Discord.js](https://github.com/hydrabolt/discord.js).
+- The music part of the bot is based on [this bot](https://github.com/iCrawl/Music-Bot).
 
-## Privacy Policy:
+## Privacy:
 
 Please read the `PRIVACY.md` file.
 
-## License
+## License:
 
 Please read the `LICENSE` file

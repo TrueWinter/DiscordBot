@@ -1,4 +1,5 @@
-var request = require('request');
+//var request = require('request');
+var snekfetch = require('snekfetch');
 const Discord = require('discord.js');
 
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
@@ -6,14 +7,15 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 
 	if (!term) return message.reply('Need a term to search for...');
 
-	request(`https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`, function (error, response, body) {
+	//request(`https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`, function (error, response, body) {
+	snekfetch.get(`https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`).then((data) => {
 
-		if (error) return message.reply('Unable to get definition at this time');
+		//if (error) return message.reply('Unable to get definition at this time');
 
-		if (!JSON.parse(body).list[0]) return message.reply('No definition found for that term');
+		if (!JSON.parse(data.text).list[0]) return message.reply('No definition found for that term');
 
-		var definition = JSON.parse(body).list[0].definition;
-		var example = JSON.parse(body).list[0].example;
+		var definition = JSON.parse(data.text).list[0].definition;
+		var example = JSON.parse(data.text).list[0].example || 'NO EXAMPLE GIVEN';
 		var more = `http://${term.replace(' ', '-')}.urbanup.com`;
 
 		var defEmbed = new Discord.RichEmbed()
@@ -23,10 +25,10 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 			.addField(`Example`, example)
 			.addField(`More definitions for this term`, more);
 
-		message.channel.send({ embed: defEmbed });
+		message.channel.send({ embed: defEmbed }).catch((e) => { console.error(e); });
 		//console.log(body);
 
-	});
+	}).catch((err) => console.error(err));
 
 };
 
@@ -39,7 +41,7 @@ exports.conf = {
 
 exports.help = {
 	name: 'urban',
-	category: 'Miscelaneous',
+	category: 'Utilities',
 	description: 'Gets a definition from UrbanDictionary',
 	usage: 'urban [term]'
 };

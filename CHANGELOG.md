@@ -7,6 +7,52 @@ __Not all changes will be posted here.__
 
 ---
 
+## Version 8.3.0:
+
+**New Commands!**
+
+- Cleverbot
+- Expand (expands short URLs)
+- Level (Checks your level (works with point))
+- Loadcommand (This allows you to load a new command without having to restart the bot)
+- Lockdown (Locks a channel)
+- Mute (Mutes a user (prevents them from talking))
+- Permlevel (Check what permission level you have)
+- Points (Check how many points you have)
+- Reason (Allows a moderator to update a reason for a case)
+- Remindme (Set reminders. Note: these will be reset when the bot restarts or the command is reloaded)
+- Role (Allows moderators or above to give roles to members)
+- Shorten (Allows you to shorten a long URL)
+- Tags (Allows a moderator to store responses and a user to access these using `[prefix]tag tagname`)
+- Weather (Now you can check the weather from Discord)
+
+**New Music Commands!**
+
+Music commands were added into the bot in this update:
+- Np (Allows you to check what's playing)
+- Pause (Pause the current song)
+- Play (Plays a song)
+- Queue (Check what's coming up)
+- Resume (Continue a paused song)
+- Skip (Allows you to skip a song)
+- Stop (Stops the music, clears the queue, and leaves the channel)
+
+*Please note that the music features are basic. I still need to add in a check for if there is no members in a voice channel that the music bot leaves that voice channel to save memory.*
+
+**New Features!**
+
+- Music Commands!
+- Basic level system (You get points by sending messages)
+- Case numbers
+
+**Removed Feature**
+
+- Removed the `blockConfigEval` option from the configuration file and removed this feature.
+
+## Version 8.2.0-dev:
+
+Big update, changelog coming later...
+
 ## Version 7.4.3:
 
 - Removed some code that was not removed from a change in version 7.4.0
