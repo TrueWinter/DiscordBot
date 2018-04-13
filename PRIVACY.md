@@ -4,6 +4,8 @@
 
 This bot may collect **END USER DATA** as part of its message logging or other features.
 
+**Note that the collected data is stored on the server that the bot is hosted on. None of the data is sent to NdT3Development (the bot developer)**
+
 By using this bot **in any way**, whether this be by using the code for a bot user or being in a server that this bot is in, **you agree to this and allow the bot to do so**. If you do not agree to this, either do not use the bot code, or if you are in a server that the bot is in, you may _leave_ the server to ensure that the bot does not collect your **END USER DATA**.
 
 Cases of collecting **END USER DATA**:
