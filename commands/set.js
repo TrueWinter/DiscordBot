@@ -36,7 +36,13 @@ exports.run = async (client, message, [action, key, ...value], level) => { // es
 			//console.log(value);
 
 		} else {
-			value = value[0];
+			if (key === "swearWords" || key === "inviteWhitelist") {
+			   var vArray = [];
+			   value.indexOf(',') > -1 ? vArray = value[0].split(',') : vArray.push(value[0]);
+			   value = vArray;
+			} else {
+			   value = value[0];
+			}
 			//console.log(typeof value);
 			//console.log(value);
 		}
