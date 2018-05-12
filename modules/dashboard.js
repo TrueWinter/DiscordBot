@@ -353,20 +353,20 @@ module.exports = (client) => {
 				//console.log(typeof value);
 				//console.log(value);
 
-			        } else if (key === "inviteWhitelist") {
-				  var iWArray = [];
-				  value = value.replace(/\s/g, '');
-				  value.indexOf(',') > -1 ? iWArray = value.split(',') : iWArray.push(value);
-				  settings[key] = iWArray;
+			} else if (key === "inviteWhitelist") {
+					var iWArray = [];
+					value = value.replace(/\s/g, '');
+					value.indexOf(',') > -1 ? iWArray = value.split(',') : iWArray.push(value);
+					settings[key] = iWArray;
 				} if (key === "swearWords") {
-				  var sWArray = [];
-				  value = value.replace(/\s/g, '');
-				  value.indexOf(',') > -1 ? sWArray = value.split(',') : sWArray.push(value);
-				  settings[key] = sWArray;
+					var sWArray = [];
+				 	value = value.replace(/\s/g, '');
+					value.indexOf(',') > -1 ? sWArray = value.split(',') : sWArray.push(value);
+				 	settings[key] = sWArray;
 				} else {
-				  settings[key] = value;
-				  //console.log(typeof value);
-				  //console.log(value);
+					settings[key] = value;
+					//console.log(typeof value);
+					//console.log(value);
 				}
 			//settings[key] = req.body[key];
 		}
