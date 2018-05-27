@@ -6,7 +6,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 	.setAuthor('You are currently')
 	.setDescription(scoreLevel)
 	.setFooter(client.user.username, client.user.avatarURL)
-  !scoreLevel ? message.channel.send('You have no levels yet.') : message.channel.send(embed);
+    !scoreLevel ? message.channel.send('You have no levels yet.') : message.channel.send(embed);
 };
 
 exports.conf = {
