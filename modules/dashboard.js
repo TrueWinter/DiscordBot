@@ -42,6 +42,7 @@ const morgan = require('morgan');
 
 // For stats
 const moment = require('moment');
+require('moment-duration-format');
 
 module.exports = (client) => {
 
