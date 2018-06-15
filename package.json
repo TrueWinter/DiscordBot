@@ -28,7 +28,6 @@
     "showdown": "^1.8.1",
     "cleverbot-node": "^0.3.11",
     "cheerio": "^0.22.0",
-    "goo.gl": "^0.1.4",
     "node-bypasser": "^1.8.0",
     "simple-youtube-api": "^5.0.0",
     "ytdl-core": "^0.18.5",
