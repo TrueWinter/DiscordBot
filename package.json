@@ -33,7 +33,8 @@
     "simple-youtube-api": "^5.0.0",
     "ytdl-core": "^0.18.5",
     "opusscript": "^0.0.6",
-    "prism-media": "^0.0.2"
+    "prism-media": "^0.0.2",
+    "isgd": "^1.1.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
