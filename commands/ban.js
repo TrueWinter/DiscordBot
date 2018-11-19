@@ -6,13 +6,13 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 	if (!member) return message.reply('Please mention a valid member of this server');
 	if (!member.bannable) return message.reply('I cannot ban this user! Do they have a higher role? Do I have ban permissions?');
 
-	const modlog = message.guild.channels.find('name', guildSettings.modLogChannel);
+	const modlog = message.guild.channels.find(channel => channel.name === guildSettings.modLogChannel);
 	const caseNum = await caseNumber(client, modlog);
 	const reason = args.splice(1, args.length).join(' ') || `Awaiting moderator's input. Use ${guildSettings.prefix}reason ${caseNum} <reason>.`;
 
 	message.guild.ban(member, `${message.author.username} banned this user with reason: ${reason}`).then(() => {
 		message.reply(`${member.user.tag} (${member.user.id}) has been banned by ${message.author.tag} because: ${reason}`);
-		if (!modlog) return console.log('modLogChannel does not exist on this server');
+		//if (!modlog) return console.log('modLogChannel does not exist on this server');
 		const embed = new Discord.RichEmbed()
 			.setColor('RED')
 			.setTitle('User Banned')
@@ -20,7 +20,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 			.addField(`Moderator`, `${message.author.tag} (${message.author.id})`, true)
 			.addField(`Reason`, `${reason}`, true)
 			.setFooter(`Case ${caseNum}`);
-		modlog.send({ embed })
+		if (modlog) modlog.send({ embed })
 			.then(() => {
 				client.log('log', `${message.guild.name}/#${message.channel.name} (${message.channel.id}): ${member.user.tag} (${member.user.id}) was banned by ${message.author.tag} (${message.author.id})`, 'CMD');
 			})
