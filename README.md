@@ -51,7 +51,6 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 	playingGame: '{{prefix}}help | {{guilds}} guilds | v{{version}}', // The game you want the bot to play. {{prefix}} is replaced with the default prefix below, {{guilds}} is replaced with the guild count and {{version}} is replaced with the bot version. Leave blank to disable
 	purgeLogFormat: '\n Message ID: {{mID}} | Message Timestamp: {{mTS}} | Content: {{mC}} \n', // {{mID}}: Message ID; {{mTS}} Message Timestamp; {{mC}}: Message Content;
 	eightBallResponses: ['Yes', 'No', 'Certainly', 'My sources say yes', 'Try again later', 'Without a doubt', 'Better not to tell you now'], // An array of responses for the 8ball command
-	cleverbotToken: 'CC-3824abc', // API Token for CleverBot
   googleAPIToken: 'AI-241scsc', // Used for link shortener and music features. You need to have these APIs enabled.
   logTimeFormat: 'D MMM YYYY HH:mm:ss ZZ',
   musicEnabled: 'true',
