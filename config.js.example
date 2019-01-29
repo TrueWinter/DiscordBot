@@ -30,6 +30,7 @@ var config = { // NOTE: DO NOT LEAVE ANYTHING BLANK
 		logMemberLeave: 'true',
 		logCommandUsage: 'true',
 		logPurge: 'true',
+		commandTimeout: '2500',
 		sendHelp: 'channel' // Available options: channel, dm
 	},
 	dashboard: {
