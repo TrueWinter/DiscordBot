@@ -6,7 +6,7 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
 	const embed = new Discord.RichEmbed()
 		.setColor('GREEN')
 		.setTitle('Bot Info')
-		.addField('Bot Author', '[NdT3Development](https://github.com/NdT3Development) (NdT3#0717)', true)
+		.addField('Bot Author', '[NdT3Development](https://github.com/NdT3Development) (Nicholis (NdT3)#0717)', true)
 		.addField(`Github Repository`, `https://github.com/NdT3Development/DiscordBot`, true)
 		.addField(`Discord.js Version`, `v${Discord.version}`, true)
 		.addField(`Node Version`, `${process.version}`, true)
