@@ -134,7 +134,7 @@ You may change code if needed under the following conditions:
 
 For the dashboard, you may change the theme, wording, design, links, etc. however I will not accept any bug reports coming from this. You will also agree to **not remove the copyright notice in the footer. You may add your name here, however, you must keep the original wording used**.
 
-**ALL** copyright notices and credits **must** be kept as is, not edited in any way and not removed.
+**ALL** copyright notices and credits **must** be kept as is, not edited in any way (except for adding your own name) and not removed.
 
 ## Contributing
 
