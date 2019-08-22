@@ -1,6 +1,6 @@
 {
   "name": "ndt3-discord-bot",
-  "version": "8.3.1",
+  "version": "8.6.1",
   "description": "My first Discord bot made in Discord.js",
   "main": "bot.js",
   "dependencies": {
@@ -9,11 +9,11 @@
     "discord.js": "^11.5.1",
     "djs-collection-persistent": "^0.1.5",
     "ejs": "^2.6.2",
-    "enmap": "^5.0.1",
+    "enmap": "^5.1.0",
     "enmap-level": "^2.1.0",
-    "express": "^4.16.2",
+    "express": "^4.16.4",
     "express-session": "^1.16.1",
-    "helmet": "^3.18.0",
+    "helmet": "^3.20.0",
     "marked": "^0.6.3",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.2.2",
@@ -29,8 +29,8 @@
     "cheerio": "^0.22.0",
     "node-bypasser": "^1.8.0",
     "simple-youtube-api": "^5.2.1",
-    "ytdl-core": "^0.29.3",
-    "opusscript": "^0.0.6",
+    "ytdl-core": "^0.29.5",
+    "opusscript": "^0.0.7",
     "prism-media": "^1.0.2",
     "isgd": "^1.1.3"
   },
