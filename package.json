@@ -25,7 +25,7 @@
     "rebuild": "^0.1.2",
     "url": "^0.11.0",
     "util-deprecate": "^1.0.2",
-    "showdown": "^1.8.1",
+    "showdown": "^1.9.1",
     "cheerio": "^0.22.0",
     "node-bypasser": "^1.8.0",
     "simple-youtube-api": "^5.0.0",
